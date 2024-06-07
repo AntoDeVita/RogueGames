@@ -9,6 +9,7 @@
 <script src="script/slider.js"></script>
 </head>
 <body>
+
       <div id="slider">
           <button onclick="prec()"><</button>
           <div id="img_slider">
@@ -20,5 +21,10 @@
           </div>
           <button onclick="succ()">></button>
        </div>
+       
+       <div class="divider"></div> 
+  <div id="content">
+    <p>Altre cose</p>
+  </div>
 </body>
 </html>
