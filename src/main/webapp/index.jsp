@@ -13,11 +13,11 @@
       <div id="slider">
           <button onclick="prec()"><</button>
           <div id="img_slider">
-              <img src="images/EldenRing.jpg">
-              <img src="images/Happy.jpg">
-              <img src="images/LinkAF.jpg">
-              <img src="images/PS5.png">
-              <img src="images/Xbox.jpg">
+              <img src="images/Ps5Banner.jpg">
+              <img src="images/XboxBanner.jpg">
+              <img src="images/SwitchBanner.jpg">
+              <img src="images/EldenringBanner.jpg">
+              <img src="images/DragonsBanner.jpg">
           </div>
           <button onclick="succ()">></button>
        </div>
