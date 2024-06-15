@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ora Prova Slidere</title>
+<title>RogueGames</title>
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <script src="script/slider.js"></script>
 </head>
