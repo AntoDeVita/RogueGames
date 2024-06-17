@@ -13,19 +13,11 @@
       <div id="slider">
           <button onclick="prec()"><</button>
           <div id="img_slider">
-<<<<<<< HEAD
-              <img src="">
-              <img src="">
-              <img src="">
-              <img src="">
-              <img src="">
-=======
               <img src="images/Ps5Banner.jpg">
               <img src="images/XboxBanner.jpg">
               <img src="images/SwitchBanner.jpg">
               <img src="images/EldenringBanner.jpg">
               <img src="images/DragonsBanner.jpg">
->>>>>>> branch 'master' of https://github.com/AntoDeVita/RogueGames.git
           </div>
           <button onclick="succ()">></button>
        </div>
