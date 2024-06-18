@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1>Product Store</h1>
+            <h1>RogueGames</h1>
         </div>
         <nav>
             <ul>
