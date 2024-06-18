@@ -24,7 +24,7 @@
        
        <div class="divider"></div> 
   <div id="content">
-    <p>Altre cose </p>
+    <p>Altre  cose </p>
   </div>
 </body>
 </html>
