@@ -14,6 +14,7 @@ public class prodottoBean implements  Serializable{
 	private String genere;
 	private String tipo;
 	private String dataRilascio;
+	private int quantita;
 	
 	public prodottoBean() {
 	
@@ -98,4 +99,11 @@ public class prodottoBean implements  Serializable{
 	public void setDataRilascio(String dataRilascio) {
 		this.dataRilascio= dataRilascio;
 	}
+	public int getQuantita() {
+		return quantita;
+	}
+	
+	public void setQuantita(int quantita) {
+		this.quantita = quantita;;
+	}	
 }

@@ -1,30 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"  import="model.*, java.util.*, control.*"%>
+   <% Collection <prodottoBean> p= (ArrayList<prodottoBean>)request.getAttribute("prod"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>RogueGames</title>
 <link rel="stylesheet" href="css/style.css" type="text/css">
-<script src="script/slider.js"></script>
 </head>
 <body>
 
-      <div id="slider">
-          <button onclick="prec()"><</button>
-          <div id="img_slider">
-              <img src="images/Ps5Banner.jpg">
-              <img src="images/XboxBanner.jpg">
-              <img src="images/SwitchBanner.jpg">
-              <img src="images/EldenringBanner.jpg">
-              <img src="images/DragonsBanner.jpg">
-          </div>
-          <button onclick="succ()">></button>
-       </div>
-       
-       <div class="divider"></div> 
-  <div id="content">
-    <p>Altre  cose </p>
+	
+	<div id="main" class="clear">
+	
+	<h2>Prodotti</h2>
+	
+		<%
+			if (p != null && p.size() != 0) {
+				Iterator<?> it = p.iterator();
+				while (it.hasNext()) {
+					prodottoBean bean = (prodottoBean) it.next();
+		%>
+		<div class="item">
+			<ul>
+			<li><a <%=bean.getIdProdotti()%>"></a></li>
+			<li><%=bean.getNome()%></li>
+			<li>prezzo: &euro;<%=bean.getPrezzo()%></li>
+		 </ul>
+		</div>
+		<%
+				}
+			} else {
+		%>
+		
+			<h2>No products available</h2>
+		<%
+			}
+		%>
+
   </div>
 </body>
 </html>

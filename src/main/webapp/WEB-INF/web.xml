@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>RogueGame</display-name>
-  <welcome-file-list>
+  
+  	<welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
-  </welcome-file-list>
+  	</welcome-file-list>
+  
+  	<resource-ref>
+  	<description>Riferimwnto alla JNDI</description>
+  	<res-ref-name>jdbc/gamerogue</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+   	<res-auth>Container</res-auth>
+  	</resource-ref>
+  
+    <servlet>
+    <servlet-name>prodotti</servlet-name>
+    <servlet-class>control.prodotti</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+    <servlet-name>prodotti</servlet-name>
+    <url-pattern>/prodotti</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+    <servlet-name>testbd</servlet-name>
+    <servlet-class>control.testbd</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    <servlet-name>testbd</servlet-name>
+    <url-pattern>/testbd</url-pattern>
+  	</servlet-mapping>
+  
 </web-app>

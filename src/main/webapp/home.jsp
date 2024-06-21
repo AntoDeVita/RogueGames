@@ -17,13 +17,13 @@
         				<a class="navbar-brand" href="#">RogueGames</a>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-heart "></i> Preferiti</a>
+                    <a class="nav-link" href="<%= request.getContextPath() %>/testbd?"><i class="fas fa-heart "></i> Prodotti</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Account</a>
+                    <a class="nav-link" href=""><i class="fas fa-user"></i> Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrello</a>
+                    <a class="nav-link" href=""><i class="fas fa-shopping-cart"></i> Carrello</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
