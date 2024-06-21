@@ -29,6 +29,7 @@ public class testbd extends HttpServlet {
             // Recupera tutti i prodotti usando il metodo doRetrieveAll del DAO
             List<prodottoBean> products = dao.doRetrieveAll(null);
 
+            
             // Imposta la lista dei prodotti come attributo della richiesta
             request.setAttribute("products", products);
 
