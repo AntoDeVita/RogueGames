@@ -130,6 +130,7 @@
             </section>
         </main>
         
+        
 <footer class="footer bg-dark text-light text-center py-3">
     <div class="contenitoreFooter">
         <span>@2024 RogueGames.it</span>
