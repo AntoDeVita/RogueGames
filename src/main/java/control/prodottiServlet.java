@@ -14,10 +14,10 @@ import model.prodottiDAO2;
 import model.prodottoBean;
 
 
-public class testbd extends HttpServlet {
+public class prodottiServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public testbd() {
+    public prodottiServlet() {
         super();
     }
 
@@ -34,7 +34,7 @@ public class testbd extends HttpServlet {
             request.setAttribute("products", products);
 
             // Inoltra la richiesta alla pagina JSP
-            request.getRequestDispatcher("/Prodotti.jsp").forward(request, response);
+            request.getRequestDispatcher("/carrello.jsp").forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();

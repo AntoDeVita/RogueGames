@@ -24,13 +24,13 @@
 	</servlet-mapping>
 
 	<servlet>
-    <servlet-name>testbd</servlet-name>
-    <servlet-class>control.testbd</servlet-class>
+    <servlet-name>prodottiServlet</servlet-name>
+    <servlet-class>control.prodottiServlet</servlet-class>
   	</servlet>
   
   	<servlet-mapping>
-    <servlet-name>testbd</servlet-name>
-    <url-pattern>/testbd</url-pattern>
+    <servlet-name>prodottiServlet</servlet-name>
+    <url-pattern>/prodottiServlet</url-pattern>
   	</servlet-mapping>
   
 </web-app>

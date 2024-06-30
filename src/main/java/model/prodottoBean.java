@@ -6,6 +6,7 @@ public class prodottoBean implements  Serializable{
 	
 	private int idProdotti;
 	private String nome;
+	private String immagine;
 	private String descrizione;
 	private boolean CoV; //True=Vendita False=Cancellato
 	private double prezzo;
@@ -104,6 +105,14 @@ public class prodottoBean implements  Serializable{
 	}
 	
 	public void setQuantita(int quantita) {
-		this.quantita = quantita;;
+		this.quantita = quantita;
+	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}	
 }
