@@ -12,28 +12,8 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-        				<a class="navbar-brand" href="#">RogueGames</a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-heart "></i> Preferiti</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrello</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search for products" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
-            </form>
-        </div>
-    </nav>
+	<jsp:include page="/header.jsp" />
     
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
@@ -60,10 +40,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-</div>
 
-
-        
         <main>
             <section class="catalog">
                 <div class="product">
@@ -99,14 +76,8 @@
             </section>
         </main>
         
-<!-- Footer -->
-<footer class="footer bg-dark text-light text-center py-3">
-    <div class="container">
-        <span>@2024 RogueGames.it</span>
-    </div>
-</footer>
+<jsp:include page="/Footer.jsp" />
 
-<!-- FontAwesome for icons -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 </body>
