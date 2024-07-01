@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,10 @@
         	<p class="navbar1">Games</p>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= request.getContextPath() %>/testbd?"><i class="fas fa-heart "></i> Prodotti</a>
+                    <form action="<%= request.getContextPath() %>/testbd" method="POST">
+    				<input type="hidden" name="param" value="prezzo" />
+    				<input type="submit" value="Prodotti" class="nav-link" class="fas fa-user">
+				</form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=""><i class="fas fa-user"></i> Account</a>
