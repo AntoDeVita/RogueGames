@@ -23,17 +23,19 @@ public class prodottiServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        prodottiDAO2 dao = new prodottiDAO2();
-        
-        try {
-            // Recupera tutti i prodotti usando il metodo doRetrieveAll del DAO
-            List<prodottoBean> products = dao.doRetrieveAll(null);
 
-            
-            // Imposta la lista dei prodotti come attributo della richiesta
-            request.setAttribute("products", products);
+        	response.getWriter().append("Served at: ").append(request.getContextPath());
+        	String i = request.getParameter("param");
+            prodottiDAO2 dao = new prodottiDAO2();
+             
+            try {
+                
+                List<prodottoBean> products = dao.doRetrieveAll(i);
 
-            // Inoltra la richiesta alla pagina JSP
+             
+                
+                request.setAttribute("products", products);
+
             request.getRequestDispatcher("/carrello.jsp").forward(request, response);
 
         } catch (SQLException e) {
