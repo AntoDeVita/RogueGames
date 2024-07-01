@@ -35,7 +35,7 @@
                 <button class="btn my-2 my-sm-0" type="submit">Cerca</button>
             </form>
         </div>
-    </nav>
+    </nav> 
     
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
