@@ -1,8 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  import="model.*, java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%
+		List<prodottoBean> products = (List<prodottoBean>) request.getAttribute("products");
+%>
+
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>Carrello</title>
 	<meta charset="utf-8">
@@ -11,29 +15,54 @@
 </head>
 
 <body>
-
-	<section>
-		<c:forEach var="product" items="${products}">
 			<div class="contenitore-grid">
-	      		<div class="item-grid" data-name="immagine">
-		      		<img src="${product.immagine}" class="img" alt="prod">
+	      		
+		<%
+			if (products != null && products.size() != 0) {
+				Iterator<?> it = products.iterator();
+				while (it.hasNext()) {
+					prodottoBean bean = (prodottoBean) it.next();
+		%>
+
+
+					<div class="item-grid" data-name="immagine">
+		      		<img src=<%=bean.getImmagine()%> class="img" alt="prod">
 	      		</div>
 	      		<div class="item-grid">
-					<h1>${product.nome}</h1>
-	      		</div>
-	      		<div
+					<h1><%=bean.getNome() %></h1>
+	      		</div>	
+	      		 <div
+	      		<%
+					if (bean.getQuantita()>0) {	
+				%>
+
 	      			class="button">
 			      	 <form action="<%= request.getContextPath() %>/testbd" method="POST">
     				<input type="hidden" name="param" value="prezzo" />
     				<input type="submit" value="Carrello">
 				</form>
+				<%
+				} else { 
+				%>
+					<h2>Esaurito</h2>
+				<% 
+					}
+				%>				
 		      	</div>
 				<div class="item-grid">
-			      	<h2>${product.prezzo}€</h2>
+			      	<h2><%=bean.getPrezzo()%>€</h2>
 		      	</div>
+		      		<%	}
+			}
+			else{
+			%>
+		
+			<h2>No products available</h2>
+			<% 
+				}
+			%>
 			</div>
-		</c:forEach>
-	</section>	
+
 	
 </body>
 </html>
