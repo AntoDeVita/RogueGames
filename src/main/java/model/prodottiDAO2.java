@@ -103,7 +103,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 		prodottoBean bean = new prodottoBean();
 
-		String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME + " WHERE CODE = ?";
+		String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME + " WHERE idProdotto = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -125,6 +125,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 				bean.setTipo(rs.getString("Tipo"));
 				bean.setDataRilascio(rs.getString("DataRilascio"));
 				bean.setQuantita(rs.getInt("Quantita"));
+				bean.setImmagine(selectSQL);
 			}
 
 		} finally {
@@ -142,7 +143,6 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 	@Override
 	public List<prodottoBean> doRetrieveAll(String where) throws SQLException {
-		// TODO Auto-generated method stub
 		Connection connection = null;
 		
 		PreparedStatement preparedStatement = null;
