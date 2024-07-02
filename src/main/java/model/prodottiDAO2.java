@@ -36,7 +36,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + prodottiDAO2.TABLE_NAME
-				+ "(idProdotti, Nome, Descrizione, CoV, prezzo, CasaProd, Piattaforma, Genere, Tipo, DataRilascio, Quantita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "(idProdotti, Nome, Immagine, Descrizione, CoV, prezzo, CasaProd, Piattaforma, Genere, Tipo, DataRilascio, Quantita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -44,15 +44,16 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, product.getIdProdotti());
 			preparedStatement.setString(2, product.getNome());
-			preparedStatement.setString(3, product.getDescrizione());
-			preparedStatement.setBoolean(4, product.getCoV());
-			preparedStatement.setDouble(5, product.getPrezzo());
-			preparedStatement.setString(6, product.getCasaProduttrice());
-			preparedStatement.setString(7, product.getPiattaforma());
-			preparedStatement.setString(8, product.getGenere());
-			preparedStatement.setString(9, product.getTipo());
-			preparedStatement.setString(10, product.getDataRilascio());
-			preparedStatement.setInt(11, product.getQuantita());
+			preparedStatement.setString(3, product.getImmagine());
+			preparedStatement.setString(4, product.getDescrizione());
+			preparedStatement.setBoolean(5, product.getCoV());
+			preparedStatement.setDouble(6, product.getPrezzo());
+			preparedStatement.setString(7, product.getCasaProduttrice());
+			preparedStatement.setString(8, product.getPiattaforma());
+			preparedStatement.setString(9, product.getGenere());
+			preparedStatement.setString(10, product.getTipo());
+			preparedStatement.setString(11, product.getDataRilascio());
+			preparedStatement.setInt(12, product.getQuantita());
 
 			preparedStatement.executeUpdate();
 
@@ -103,7 +104,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 		prodottoBean bean = new prodottoBean();
 
-		String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME + " WHERE idProdotto = ?";
+		String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME + " WHERE idProdotti = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -125,7 +126,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 				bean.setTipo(rs.getString("Tipo"));
 				bean.setDataRilascio(rs.getString("DataRilascio"));
 				bean.setQuantita(rs.getInt("Quantita"));
-				bean.setImmagine(selectSQL);
+				bean.setImmagine(rs.getString("Immagine"));
 			}
 
 		} finally {
@@ -178,7 +179,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 				bean.setTipo(rs.getString("Tipo"));
 				bean.setDataRilascio(rs.getString("DataRilascio"));
 				bean.setQuantita(rs.getInt("Quantita"));
-				
+				bean.setImmagine(rs.getString("Immagine"));
 				products.add(bean);
 			}
 			
@@ -201,7 +202,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		PreparedStatement preparedStatement = null;
 		
 		
-		String updateQntSQL = "UPDATE" + prodottiDAO2.TABLE_NAME + "SET Nome=?, Descrizione=?, CoV=?, prezzo=?, CasaProd=?, Piattaforma=?, Genere=?, Tipo=?, DataRilascio=?, Quantita=? WHERE CODE = ?";
+		String updateQntSQL = "UPDATE" + prodottiDAO2.TABLE_NAME + "SET Nome=?, Descrizione=?, CoV=?, prezzo=?, CasaProd=?, Piattaforma=?, Genere=?, Tipo=?, DataRilascio=?, Quantita=?, Immagine=? WHERE CODE = ?";
 		
 		try {
 			connection = ds.getConnection();
@@ -219,7 +220,8 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 			preparedStatement.setString(8, product.getTipo());
 			preparedStatement.setString(9, product.getDataRilascio());
 			preparedStatement.setInt(10, product.getQuantita());
-			preparedStatement.setInt(11, product.getIdProdotti());
+			preparedStatement.setString(11, product.getImmagine());
+			preparedStatement.setInt(12, product.getIdProdotti());
 			
 			preparedStatement.executeUpdate();
 
