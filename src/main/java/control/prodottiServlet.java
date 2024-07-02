@@ -30,7 +30,7 @@ public class prodottiServlet extends HttpServlet {
              
             try {
                 
-                List<prodottoBean> products = dao.doRetrieveAll("Quantita");
+                List<prodottoBean> products = dao.doRetrieveAll(i);
 
              
                 

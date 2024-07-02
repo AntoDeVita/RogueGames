@@ -22,7 +22,10 @@
         	<p class="navbar1">Games</p>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= request.getContextPath() %>/prodottiServlet?"><i class="fas fa-heart "></i> Prodotti</a>
+                   <form action="<%= request.getContextPath() %>/prodottiServlet" method="POST">
+    				<input type="hidden" name="param" value="prezzo" />
+    				<input type="submit" value="Prodotti" class="nav-link" class="fas fa-heart ">
+				   </form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.jsp"><i class="fas fa-user"></i> Account</a>
