@@ -32,5 +32,15 @@
     <servlet-name>prodottiServlet</servlet-name>
     <url-pattern>/prodottiServlet</url-pattern>
   	</servlet-mapping>
+  	
+    <servlet>
+    <servlet-name>carrelloServlet</servlet-name>
+    <servlet-class>control.carrelloServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    <servlet-name>carrelloServlet</servlet-name>
+    <url-pattern>/carrelloServlet</url-pattern>
+  	</servlet-mapping>
   
 </web-app>

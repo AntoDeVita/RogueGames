@@ -108,7 +108,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
+
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, id);
 
@@ -116,17 +116,18 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 			while (rs.next()) {
 				bean.setIdProdotti(rs.getInt("idProdotti"));
-				bean.setNome(rs.getString("Nome"));
-				bean.setDescrizione(rs.getString("Descrizione"));
-				bean.setCoV(rs.getBoolean("CoV"));
+				bean.setNome(rs.getString("nome"));
+				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setCoV(rs.getBoolean("CoV"));
 				bean.setCasaProduttrice(rs.getString("CasaProd"));
-				bean.setPiattaforma(rs.getString("Piattoforma"));
+				bean.setPiattaforma(rs.getString("Piattaforma"));
 				bean.setGenere(rs.getString("Genere"));
 				bean.setTipo(rs.getString("Tipo"));
 				bean.setDataRilascio(rs.getString("DataRilascio"));
 				bean.setQuantita(rs.getInt("Quantita"));
 				bean.setImmagine(rs.getString("Immagine"));
+
 			}
 
 		} finally {

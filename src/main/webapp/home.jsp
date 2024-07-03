@@ -8,39 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">	
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/home.css" type="text/css">
-    <script src="script/slider.js" defer></script>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <img src="images\RogueGameLogo.png	" class="logo" alt="Logo">
-        	<p class="navbar2">Rogue</p>
-        	<p class="navbar1">Games</p>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                   <form action="<%= request.getContextPath() %>/prodottiServlet" method="POST">
-    				<input type="hidden" name="param" value="prezzo" />
-    				<input type="submit" value="Prodotti" class="nav-link" class="fas fa-heart ">
-				   </form>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.jsp"><i class="fas fa-user"></i> Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= request.getContextPath() %>/prodottiServlet?"><i class="fas fa-shopping-cart"></i> Carrello</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search for products" aria-label="Search">
-                <button class="btn my-2 my-sm-0" type="submit">Cerca</button>
-            </form>
-        </div>
-    </nav>
-    
+	<%@ include file="./fragments/header.jsp" %>   
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

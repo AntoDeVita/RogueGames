@@ -15,6 +15,7 @@
 </head>
 
 <body>
+			<%@ include file="./fragments/header.jsp" %>   
 			<div class="contenitore-grid">
 	      		
 		<%
@@ -37,8 +38,8 @@
 				%>
 
 	      			class="button">
-			      	 <form action="<%= request.getContextPath() %>/testbd" method="POST">
-    				<input type="hidden" name="param" value="prezzo" />
+			      	 <form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
+    				<input type="hidden" name="param" value="<%=bean.getIdProdotti() %>" />
     				<input type="submit" value="Carrello">
 				</form>
 				<%

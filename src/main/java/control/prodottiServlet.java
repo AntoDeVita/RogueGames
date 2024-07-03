@@ -36,7 +36,7 @@ public class prodottiServlet extends HttpServlet {
                 
                 request.setAttribute("products", products);
 
-            request.getRequestDispatcher("/prodott.jsp").forward(request, response);
+            request.getRequestDispatcher("/prodotti.jsp").forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();
