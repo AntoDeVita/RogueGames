@@ -51,9 +51,9 @@
 				%>				
 		      	</div>
 				<div class="item-grid">
-			      	<h2><%=bean.getPrezzo()%>€</h2>
+			      	<h2><%=bean.getPrezzo()%>&euro;</h2>
 		      	</div>
-		      		<%	}
+		      		<% }
 			}
 			else{
 			%>
