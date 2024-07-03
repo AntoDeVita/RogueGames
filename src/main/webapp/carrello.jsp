@@ -30,8 +30,13 @@
       		</div>
       		<div class="item-grid">
 				<h1><%=bean.getNome() %></h1>
-      		</div>	
-
+      		</div>
+      		<div class="item-grid">	
+				<button onclick="decrementButton('myTextBox<%=bean.getIdProdotti()%>')"><</button>
+			      	<input class="set-quantita" id="myTextBox<%=bean.getIdProdotti()%>" type="text" value="1" readonly="readonly">
+			      	<button onclick="incrementButton('myTextBox<%=bean.getIdProdotti()%>')">></button>
+			      	<script src="script/btnQuantita.js"></script>
+			    </div>
 			<div class="item-grid">
 		      	<h2><%=bean.getPrezzo()%>&euro;</h2>
 	      	</div>
