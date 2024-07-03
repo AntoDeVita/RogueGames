@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/carrello.css" type="text/css">
-				      	<script src="script/btnQuantita.js"></script>
+	<script src="script/btnQuantita.js"></script>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
 
 			    </div>
 			<div class="item-grid">
-		      	<h2><input class="set-quantita" id="myTextBx<%=bean.getIdProdotti()%>" type="text" value="1" readonly="readonly"><%=bean.getPrezzo()%>&euro;</h2>
+		      	<h2><input class="set-quantita" id="myTextBx<%=bean.getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"><%=bean.getPrezzo()%>&euro;</h2>
 	      	</div>
 	      		<%	}
 		}

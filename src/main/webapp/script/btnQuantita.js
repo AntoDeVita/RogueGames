@@ -6,7 +6,7 @@ function incrementButton(idCasellaTesto, idCasella, b) {
       // Incrementa il valore solo se è un numero valido
       if (!isNaN(valoreAttuale)) {
         casellaTesto.value = valoreAttuale + 1;
-		casella.value = 
+		casella.value = valore+b;
 		
       } else {
         casellaTesto.value = 1; // Imposta a 1 se non è un numero valido
