@@ -33,7 +33,7 @@
 				<h1><%=bean.getNome() %></h1>
       		</div>
       		<div class="item-grid">	
-				<button onclick="decrementButton('myTextBox<%=bean.getIdProdotti()%>')"><</button>
+				<button onclick="decrementButton('myTextBox<%=bean.getIdProdotti()%>', 'myTextBx<%=bean.getIdProdotti()%>', '<%=bean.getPrezzo()%>')"><</button>
 			      	<input class="set-quantita" id="myTextBox<%=bean.getIdProdotti()%>" type="text" value="1" readonly="readonly">
 			      	<button onclick="incrementButton('myTextBox<%=bean.getIdProdotti()%>', 'myTextBx<%=bean.getIdProdotti()%>', '<%=bean.getPrezzo()%>')">></button>
 
