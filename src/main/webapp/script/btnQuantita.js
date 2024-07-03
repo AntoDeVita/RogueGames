@@ -1,10 +1,13 @@
-function incrementButton(idCasellaTesto) {
+function incrementButton(idCasellaTesto, idCasella, b) {
       var casellaTesto = document.getElementById(idCasellaTesto);
+	  var casella = document.getElementById(idCasella);
       var valoreAttuale = parseInt(casellaTesto.value);
-
+	  var valore = parseInt(casella.value);
       // Incrementa il valore solo se è un numero valido
       if (!isNaN(valoreAttuale)) {
         casellaTesto.value = valoreAttuale + 1;
+		casella.value = 
+		
       } else {
         casellaTesto.value = 1; // Imposta a 1 se non è un numero valido
       }
