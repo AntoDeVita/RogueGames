@@ -39,7 +39,7 @@
 
 			    </div>
 			<div class="item-grid">
-		      	<h2><input class="set-quantita" id="myTextBx<%=bean.getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"><%=bean.getPrezzo()%>&euro;</h2>
+		      	<h2><input class="set-prezzo" id="myTextBx<%=bean.getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>
 	      	</div>
 	      		<%	}
 		}
