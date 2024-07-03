@@ -21,7 +21,7 @@
 			 List <prodottoBean> cart=pcart.getProdotti();
 			 Iterator<?> it = cart.iterator();
 			 while (it.hasNext()) {
-				 prodottoBean bean = (prodottoBean) it.next();
+				  prodottoBean bean = (prodottoBean) it.next();
 	%>
 
 
