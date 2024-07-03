@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="css/home.css" type="text/css">
 </head>
 <body>
+
 	<%@ include file="./fragments/header.jsp" %>   
+
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
