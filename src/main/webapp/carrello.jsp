@@ -18,10 +18,10 @@
 		<%
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
 		if(pcart != null && !pcart.isEmpty()){
-			List <prodottoBean> cart=pcart.getProdotti();
-			Iterator<?> it = cart.iterator();
-			while (it.hasNext()) {
-				prodottoBean bean = (prodottoBean) it.next();
+			 List <prodottoBean> cart=pcart.getProdotti();
+			 Iterator<?> it = cart.iterator();
+			 while (it.hasNext()) {
+				 prodottoBean bean = (prodottoBean) it.next();
 	%>
 
 
