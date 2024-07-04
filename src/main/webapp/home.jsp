@@ -14,10 +14,8 @@
     <script src="script/slider.js" defer></script>
 </head>
 <body>
-
 	<%@ include file="./fragments/header.jsp" %>   
-
-
+  
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
