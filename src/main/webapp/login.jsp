@@ -10,12 +10,11 @@
 	<body>   
 	
 		<%@ include file="./fragments/header.jsp" %>   
-		
 		<div class="corpo">
 			<div class="contenitore">
 				<div class="login-box">
 					<h2> Login </h2>
-					<form action="">
+					<form action="<%= request.getContextPath() %>/loginServlet">
 						<div class="input-box">
 							<input type="email" required name="txtEmail">
 							<label id="Email"> Email </label>
@@ -29,7 +28,6 @@
 							<a href="signin.jsp">Registrati</a>
 						</div>
 					</form>
-						
 				</div>
 					<span style="--i:0;">	</span>
 					<span style="--i:1;">	</span>
