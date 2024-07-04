@@ -40,7 +40,7 @@
                 <h2>Esaurito</h2>
                 <%
                     }
-                %>
+                %> 
             </div>
             <div class="item-grid">
                 <h2><%=bean.getPrezzo()%>&euro;</h2>
