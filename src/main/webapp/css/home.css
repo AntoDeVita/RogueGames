@@ -4,7 +4,7 @@
 		    font-family: Arial, sans-serif;
 		    margin: 0;
 		    padding: 0;
-		    background-color: #white;
+		    background-color: white;
 		}
 		
 		.divider {
@@ -265,27 +265,6 @@
         	background: #444;
         }
         
-        /*Stile per dispositivi mobile dei mini slider 
-        @media(max-width: 1023px){
-        	.slider-wrapper .slide-button {
-        		display: none!important;
-        	}
-        	
-        	.slider-wrapper .image-list {
-        		gap: 10px;
-        		margin-bottom: 15px;
-        	}
-        	
-        	.slider-wrapper .image-list .image-item	{
-        		width: 280px;
-        		height: 380px;
-        	}
-        	
-        	.slider-scrollbar .scrollbar-thumb {
-        		width: 20%;
-        	}
-        }
-        */
         
         .contenitoreFooter {
         	width: 100%;
@@ -300,3 +279,6 @@
         	color: black;
         	font-family: "Copperplate", Fantasy;
         }
+
+        
+        

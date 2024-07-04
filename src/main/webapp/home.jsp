@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RogueGames.it</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">	
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/home.css" type="text/css">
+    <script src="script/slider.js" defer></script>
 </head>
 <body>
 
@@ -108,11 +111,7 @@
         </main>
         
         
-<footer class="footer bg-dark text-light text-center py-3">
-    <div class="contenitoreFooter">
-        <span>@2024 RogueGames.it</span>
-    </div>
-</footer>
+<%@ include file="./fragments/Footer.jsp" %>  
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 

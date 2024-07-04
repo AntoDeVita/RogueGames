@@ -145,57 +145,57 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 	@Override
 	public List<prodottoBean> doRetrieveAll(String where) throws SQLException {
-		Connection connection = null;
-		
-		PreparedStatement preparedStatement = null;
-		
+        Connection connection = null;
+        
+        PreparedStatement preparedStatement = null;
+        
 
-		List<prodottoBean> products = new ArrayList<prodottoBean>();
+        List<prodottoBean> products = new ArrayList<prodottoBean>();
 
-		String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME ;
+        String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME ;
 
-		if (where != null && !where.equals("")) {
-			selectSQL += " ORDER BY " + where;
-		}
+        if (where != null && !where.equals("")) {
+            selectSQL += " ORDER BY " + where;
+        }
 
-		
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
+        
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
 
-			ResultSet rs = preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.executeQuery();
 
-			while (rs.next()) {
-				prodottoBean bean = new prodottoBean();
-				
-				int codiceProdotto = rs.getInt("idProdotti");
-				bean.setIdProdotti(codiceProdotto);
-				bean.setNome(rs.getString("nome"));
-				bean.setDescrizione(rs.getString("descrizione"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
-				bean.setCoV(rs.getBoolean("CoV"));
-				bean.setCasaProduttrice(rs.getString("CasaProd"));
-				bean.setPiattaforma(rs.getString("Piattaforma"));
-				bean.setGenere(rs.getString("Genere"));
-				bean.setTipo(rs.getString("Tipo"));
-				bean.setDataRilascio(rs.getString("DataRilascio"));
-				bean.setQuantita(rs.getInt("Quantita"));
-				bean.setImmagine(rs.getString("Immagine"));
-				products.add(bean);
-			}
-			
+            while (rs.next()) {
+                prodottoBean bean = new prodottoBean();
+                
+                int codiceProdotto = rs.getInt("idProdotti");
+                bean.setIdProdotti(codiceProdotto);
+                bean.setNome(rs.getString("nome"));
+                bean.setDescrizione(rs.getString("descrizione"));
+                bean.setPrezzo(rs.getDouble("prezzo"));
+                bean.setCoV(rs.getBoolean("CoV"));
+                bean.setCasaProduttrice(rs.getString("CasaProd"));
+                bean.setPiattaforma(rs.getString("Piattaforma"));
+                bean.setGenere(rs.getString("Genere"));
+                bean.setTipo(rs.getString("Tipo"));
+                bean.setDataRilascio(rs.getString("DataRilascio"));
+                bean.setQuantita(rs.getInt("Quantita"));
+                bean.setImmagine(rs.getString("Immagine"));
+                products.add(bean);
+            }
+            
 
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return products;
-	}
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        return products;
+    }
 
 	@Override
 	public void doUpdate(prodottoBean product) throws SQLException {
