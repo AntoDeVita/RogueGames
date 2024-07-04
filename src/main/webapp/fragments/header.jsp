@@ -10,7 +10,9 @@
 	<body>
 		<header>
 			<div class="logo-container">
+			<a href="home.jsp">
 	            <img src="images/RogueGameLogo.png" alt="RogueGames Logo" class="logo">
+	            </a>
 	            <h1 class="company-name">Rogue<span class="highlight">Games</span></h1>
         	</div>
 <nav>
