@@ -14,7 +14,7 @@
 </head>
 <body>
     <%@ include file="./fragments/header.jsp" %>
-    <h1 class="company-name">Catalogo<span class="highlight">Prodotti</span></h1>
+    <h1 class="company-name">Catalogo<span class="highlight"> Prodotti</span></h1>
 
     <div class="catalogo">
         <%
@@ -32,7 +32,7 @@
                 %>
                 <form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
                     <input type="hidden" name="param" value="<%=bean.getIdProdotti() %>" />
-                    <input type="submit" value="Carrello">
+                    <input id="carrello" type="submit" value="Add to cart">
                 </form>
                 <%
                     } else {
@@ -42,10 +42,10 @@
                     }
                 %> 
             </div>
-            <div class="item-grid">
-                <h2><%=bean.getPrezzo()%>&euro;</h2>
-            </div>
-        </div>
+            	<div class="item-grid">
+                
+            	</div>
+        	</div>
         <%
                 }
             } else {

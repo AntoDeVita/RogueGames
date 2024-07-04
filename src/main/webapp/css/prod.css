@@ -11,7 +11,10 @@ body {
     font-weight: bold;
     color: #ff007f;
 }
-
+#carrello{
+	background: #00bfff;
+	color: white;
+}
 .company-name .highlight {
     color: #00bfff;
 }

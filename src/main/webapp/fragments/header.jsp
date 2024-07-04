@@ -22,7 +22,7 @@
                           </form>
                     </li>
                     <li>
-                        <form action="" method="POST">
+                        <form action="login.jsp" method="POST">
                             <input type="hidden" name="param" value="idProdotti" />
                             <input class="dec btn" type="submit" value="Account">
                           </form>
