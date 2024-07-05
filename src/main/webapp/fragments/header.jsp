@@ -10,7 +10,9 @@
 	<body>
 		<header>
 			<div class="logo-container">
+			<a href="home.jsp">
 	            <img src="images/RogueGameLogo.png" alt="RogueGames Logo" class="logo">
+	            </a>
 	            <h1 class="company-name">Rogue<span class="highlight">Games</span></h1>
         	</div>
 <nav>
@@ -22,8 +24,9 @@
                           </form>
                     </li>
                     <li>
-                        <form action="<%= request.getContextPath() %>/genreServlet" method="POST">
-                            <input type="hidden" name="param" value="Fantasy" />
+
+                        <form action="login.jsp" method="POST">
+                            <input type="hidden" name="param" value="idProdotti" />
                             <input class="dec btn" type="submit" value="Account">
                           </form>
                        </li>
