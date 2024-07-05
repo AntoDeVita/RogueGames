@@ -5,7 +5,7 @@
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
-  
+
   <resource-ref>
   <description>Riferimwnto alla JNDI</description>
   <res-ref-name>jdbc/gamerogue</res-ref-name>
@@ -51,6 +51,16 @@
   <servlet-mapping>
     <servlet-name>carrelloServlet</servlet-name>
     <url-pattern>/carrelloServlet</url-pattern>
-  </servlet-mapping>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    <servlet-name>genreServlet</servlet-name>
+    <servlet-class>control.genreServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  	</servlet>
   
+  	<servlet-mapping>
+    <servlet-name>genreServlet</servlet-name>
+    <url-pattern>/genreServlet</url-pattern>
+  	</servlet-mapping>
 </web-app>
