@@ -24,18 +24,18 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="product" items="${products}">
+            <c:forEach var="product" items="${genre}">
                 <tr>
-                    <td>${product.idProdotti}</td>
-                    <td>${product.nome}</td>
-                    <td>${product.descrizione}</td>
-                    <td>${product.prezzo}</td>
-                    <td>${product.casaProduttrice}</td>
-                    <td>${product.piattaforma}</td>
-                    <td>${product.genere}</td>
-                    <td>${product.tipo}</td>
-                    <td>${product.dataRilascio}</td>
-                    <td>${product.quantita}</td>
+                    <td>${genre.idProdotti}</td>
+                    <td>${genre.nome}</td>
+                    <td>${genre.descrizione}</td>
+                    <td>${genre.prezzo}</td>
+                    <td>${genre.casaProduttrice}</td>
+                    <td>${genre.piattaforma}</td>
+                    <td>${genre.genere}</td>
+                    <td>${genre.tipo}</td>
+                    <td>${genre.dataRilascio}</td>
+                    <td>${genre.quantita}</td>
                 </tr>
             </c:forEach>
         </tbody>

@@ -22,8 +22,8 @@
                           </form>
                     </li>
                     <li>
-                        <form action="" method="POST">
-                            <input type="hidden" name="param" value="idProdotti" />
+                        <form action="<%= request.getContextPath() %>/genreServlet" method="POST">
+                            <input type="hidden" name="param" value="Fantasy" />
                             <input class="dec btn" type="submit" value="Account">
                           </form>
                        </li>

@@ -1,4 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.*, java.util.*"%>
+
+<%
+		List<prodottoBean> products = (List<prodottoBean>) request.getAttribute("products");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +15,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/home.css" type="text/css">
     <script src="script/slider.js" defer></script>
+
+	
 </head>
 <body>
 	<%@ include file="./fragments/header.jsp" %>   
-  
+  	
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
@@ -24,7 +32,7 @@
             <li data-target="#carouselExampleControls" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" id="fant">
                 <img src="images/XboxBanner.jpg" class="d-block w-100" alt="First slide">
             </div>
             <div class="carousel-item">
@@ -46,21 +54,26 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+		  <hr class="divider">
 
-        <hr class="divider">
-
- 		<div class="container">
+ 		<<div class="container">
  			<h1 class="miniTitle">Fantasy</h1>
  			<div class="slider-wrapper">
- 				<button id="prev-slide" class="slide-button material-symbols-rounded">chevron_left</button>
- 				<div class="image-list">
- 					<img src="images/EldenRing.jpg" alt="Product 1" class="image-item">
- 					<img src="images/Happy.jpg" alt="Product 2" class="image-item">
- 					<img src="images/LinkAF.jpg" alt="Product 3" class="image-item">
- 					<img src="images/PS5.png" alt="Product 4" class="image-item">
- 					<img src="images/Xbox.jpg" alt="Product 5" class="image-item">
- 					<img src="images/R6S.jpg" alt="Product 6" class="image-item">
- 					<img src="images/R6S.jpg" alt="Product 7" class="image-item">
+ 			<button id="prev-slide" class="slide-button material-symbols-rounded">chevron_left</button
+ 			><div class="image-list">
+ 			<%
+			if (products != null && products.size() != 0) {
+				Iterator<?> it = products.iterator();
+				while (it.hasNext()) {
+					prodottoBean bean = (prodottoBean) it.next();
+		%>
+ 				
+ 				
+ 					<img src=<%=bean.getImmagine()%> alt="Product 1" class="image-item">
+		      		<%	}
+			}
+		
+			%>
  				</div>
  				<button id="next-slide" class="slide-button material-symbols-rounded">chevron_right</button>
  			</div>
@@ -70,7 +83,6 @@
  				</div>
  			</div>
  		</div>
-        
         <hr class="divider">
         
         <main>
