@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,7 +108,13 @@
             </section>
         </main>
         
-        
+        <%
+        	clienteRegBean cl= (clienteRegBean) request.getSession().getAttribute("cl");
+        	if(cl!=null){
+				%>
+				<p><%=cl.getNome()%><p>
+				 
+        <%} %>
 <%@ include file="./fragments/Footer.jsp" %>  
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>

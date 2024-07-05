@@ -33,6 +33,16 @@
     <url-pattern>/loginServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>signinServlet</servlet-name>
+    <servlet-class>control.signinServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>signinServlet</servlet-name>
+    <url-pattern>/signinServlet</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
     <servlet-name>carrelloServlet</servlet-name>
     <servlet-class>control.carrelloServlet</servlet-class>

@@ -14,7 +14,7 @@
 				<div class="contenitore">
 					<div class="login-box">
 						<h2> Sign In </h2>
-						<form action="">
+						<form action="<%= request.getContextPath() %>/signinServlet"  method="Post">
 							<div class="input-box">
 								<input type="email" required name="txtEmail">
 								<label> Email </label>

@@ -4,6 +4,8 @@
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="css/login.css" type="text/css">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
 	</head>
 	
 	
@@ -14,7 +16,7 @@
 			<div class="contenitore">
 				<div class="login-box">
 					<h2> Login </h2>
-					<form action="<%= request.getContextPath() %>/loginServlet">
+					<form action="<%= request.getContextPath() %>/loginServlet" method="Post">
 						<div class="input-box">
 							<input type="email" required name="txtEmail">
 							<label id="Email"> Email </label>
@@ -82,5 +84,7 @@
 					<span style="--i:49;">	</span>
 			</div>
 		</div>
+		
+		<%@ include file="./fragments/Footer.jsp" %>  
 	</body>
 </html>
