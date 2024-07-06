@@ -168,7 +168,7 @@
         	width: 95%;
         }
         
-        .slider-wrapper .image-list {
+  /*      .slider-wrapper .image-list {
         	display: grid;
         	gap: 18px;
         	font-size: 0;
@@ -265,20 +265,67 @@
         	background: #444;
         }
         
-        
-        .contenitoreFooter {
-        	width: 100%;
-   			padding-right: 15px;
-   			padding-left: 15px;
-    		margin-right: auto;
-    		margin-left: auto;
-        }
-        
-        .miniTitle {
-        	padding-top: 10px;
-        	color: black;
-        	font-family: "Copperplate", Fantasy;
-        }
+        */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px; /* Aggiunge spazio tra i due slider */
+}
 
-        
-        
+.slider-wrapper .slide-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1; /* Assicura che i pulsanti siano sopra gli elementi interni */
+}
+
+#prev-slide-fantasy {
+    left: 10;
+}
+
+#next-slide-fantasy {
+    right: 10;
+}
+
+#prev-slide-Console {
+    left: 10;
+}
+
+#next-slide-Console {
+    right: 10;
+}
+
+.image-list {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.slider-content {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.product-item {
+    flex: 0 0 auto;
+    width: 300px; /* Imposta la larghezza desiderata per ciascun elemento */
+    margin-right: 20px; /* Spazio tra gli elementi */
+}
+.slider-scrollbar {
+    		position: relative;
+    height: 5px;
+    background-color: #ccc;
+    margin-top: 10px;
+}
+
+.scrollbar-track {
+    position: relative;
+    height: 100%;
+}
+
+.scrollbar-thumb {
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background-color: #333;
+} 

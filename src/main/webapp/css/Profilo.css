@@ -1,0 +1,72 @@
+/* CSS per la pagina del profilo utente */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile-header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.profile-content {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-details {
+    text-align: left;
+    width: 100%;
+}
+
+.profile-details h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #343a40;
+    font-weight: 700;
+}
+
+.profile-details p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #6c757d;
+}
+
+.profile-details strong {
+    color: #495057;
+}
+
+.no-profile {
+    text-align: center;
+    padding: 50px;
+    color: #dc3545;
+}
+
+.no-profile h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+

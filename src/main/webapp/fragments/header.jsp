@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link href="css/head.css" rel="stylesheet" type="text/css">
 	</head>
-	
 	<body>
 		<header>
 			<div class="logo-container">
-				<a href="home.jsp">
+			<a href="home.jsp">
 	            <img src="images/RogueGameLogo.png" alt="RogueGames Logo" class="logo">
 	            </a>
 	            <h1 class="company-name">Rogue<span class="highlight">Games</span></h1>
@@ -24,28 +24,38 @@
                           </form>
                     </li>
                     <li>
-
+                    <c:if test="${empty sessionScope.cl}">
                         <form action="login.jsp" method="POST">
-                            <input type="hidden" name="param" value="idProdotti" />
-                            <input class="dec btn" type="submit" value="Account">
+                            <input class="dec btn" type="submit" value="Login">
                           </form>
-                       </li>
-                    <li>
+                    </c:if>
+                    </li>
+                     <li>
                       	<form action="<%= request.getContextPath() %>/carrello.jsp" method="POST">
-    				<input type="hidden" />
-    				<input class="dec btn" type="submit" value="Carrello">
-				</form>
-                       </li>
+    						<input type="hidden" />
+    						<input class="dec btn" type="submit" value="Carrello">
+						</form>
+                    </li>
                 </ul>
+                <c:if test="${not empty sessionScope.cl}">
+                <ul class="nav-links">
+                <li>
+                    	<form action="Profilo.jsp" method="POST">
+                            <input class="dec btn" type="submit" value="profilo">
+                          </form>
+                    </li>
+                    <li>
+                    	<form action="logout.jsp" method="POST">
+                            <input class="dec btn" type="submit" value="Logout">
+                          </form>
+                    </li>
+                 </ul>
+                 </c:if>
                 <div class="search-container">
                     <input type="text" placeholder="Search for products">
                     <button type="button">Cerca</button>
                 </div>
                </nav>
 		</header>
-		
 	</body>
-	
-	
-	
 </html>

@@ -74,4 +74,13 @@
     	<servlet-name>genreServlet</servlet-name>
     	<url-pattern>/genreServlet</url-pattern>
   	</servlet-mapping>
+  	<servlet>
+    	<servlet-name>logoutServlet</servlet-name>
+    	<servlet-class>control.logoutServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>logoutServlet</servlet-name>
+    	<url-pattern>/logoutServlet</url-pattern>
+  	</servlet-mapping>
 </web-app>
