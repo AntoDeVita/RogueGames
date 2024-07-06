@@ -24,32 +24,8 @@
 <body>
 	<%@ include file="./fragments/header.jsp" %>   
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <img src="images\RogueGameLogo.png	" class="logo" alt="Logo">
-        	<p class="navbar2">Rogue</p>
-        	<p class="navbar1">Games</p>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= request.getContextPath() %>/prodottiServlet?"><i class="fas fa-heart "></i> Prodotti</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.jsp"><i class="fas fa-user"></i> Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= request.getContextPath() %>/prodottiServlet?"><i class="fas fa-shopping-cart"></i> Carrello</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search for products" aria-label="Search">
-                <button class="btn my-2 my-sm-0" type="submit">Cerca</button>
-            </form>
-        </div>
-    </nav> 
-    
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators"> 
             <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleControls" data-slide-to="1"></li>
             <li data-target="#carouselExampleControls" data-slide-to="2"></li>
