@@ -30,9 +30,67 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 
 	private static final String TABLE_NAME = "clientereg";
 	
-	@Override
-	public synchronized void doSave(clienteRegBean user) throws SQLException {
+	private boolean controllo(String email) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String selectSQL = "SELECT * FROM " + clienteDAO.TABLE_NAME + " WHERE Email=?;";
+		boolean result= false;
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+				while (rs.next()) {
+					if(email.equals(rs.getString("Email"))) {
+						result= true;
+					}
+				}
+			
+			
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
 		
+		return result;
+	}
+	
+	@Override
+	public synchronized boolean doSave(String email, String password, String nome, String cognome, int eta, String indirizzo, int telefono) throws SQLException {//true- registrato false- non registrato
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		boolean c= controllo(email);
+		if(c==true) {
+			return c;
+		}
+		String insertSQL ="INSERT INTO " + clienteDAO.TABLE_NAME +" VALUES(?, sha2(?, 256), ?, ?, ?, ?, ?, default)";		
+		try {
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(insertSQL);
+				preparedStatement.setString(1, email);
+				preparedStatement.setString(2, password);
+				preparedStatement.setString(3, nome);
+				preparedStatement.setString(4, cognome);
+				preparedStatement.setInt(5, eta);
+				preparedStatement.setString(6, indirizzo);
+				preparedStatement.setInt(7, telefono);
+				preparedStatement.executeUpdate();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return c;
 	}
 
 	@Override

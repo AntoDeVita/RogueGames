@@ -11,6 +11,8 @@
     <meta charset="UTF-8">
     <title>Catalogo Prodotti</title>
     <link rel="stylesheet" href="css/prod.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
 </head>
 <body>
     <%@ include file="./fragments/header.jsp" %>
