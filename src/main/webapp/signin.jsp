@@ -1,11 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  import="model.*, java.util.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-
-<script type="text/javascript">
-function mostraMessaggi() {
-window.alert("L'email è già stata utilizzata");
-</script>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -41,7 +33,7 @@ window.alert("L'email è già stata utilizzata");
 							</div>
 							<div class="input-box">
 								<input type="number" required name="txtEta">
-								<label> Età </label>
+								<label> Et� </label>
 							</div>
 							<div class="input-box">
 								<input type="text" required name="txtIndirizzo">

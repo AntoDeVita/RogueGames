@@ -24,6 +24,7 @@
                 for (prodottoBean bean : products) {
         %>
         <div class="prodotto">
+        	<a href="<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotti() %>">
             <img src="<%=bean.getImmagine()%>" alt="<%=bean.getNome()%>">
             <h3><%=bean.getNome() %></h3>
             <p class="descrizione">Una breve descrizione del prodotto.</p>
@@ -59,5 +60,6 @@
     </div>
 
     <%@ include file="./fragments/Footer.jsp" %>
+    
 </body>
 </html>
