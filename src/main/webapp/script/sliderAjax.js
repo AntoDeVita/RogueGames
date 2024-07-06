@@ -1,17 +1,25 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetchProducts();
+    const genreFantasy = document.getElementById("genreParamFantasy").value;
+    const genreConsole = document.getElementById("genreParamConsole").value;
+
+    fetchProducts("genreServlet", "#productContainerFantasy", { genre: genreFantasy });
+    fetchProducts("genreServlet", "#productContainerConsole", { genre: genreConsole });
+
+    initializeSlider("#productContainerFantasy");
+    initializeSlider("#productContainerConsole");
 });
 
-function fetchProducts() {
-    console.log('Fetching products...');
+function fetchProducts(url, containerSelector, params) {
+    console.log('Fetching products with params:', params);
 
     $.ajax({
-        url: "genreServlet",
+        url: url,
         type: "GET",
+        data: params,
         dataType: "xml",
         success: function(data) {
             console.log('Data received:', data);
-            displayProducts(data);
+            displayProducts(data, containerSelector);
         },
         error: function(xhr, status, error) {
             console.error('Errore nella richiesta:', error);
@@ -19,54 +27,51 @@ function fetchProducts() {
     });
 }
 
-function displayProducts(xmlDoc) {
+function displayProducts(xmlDoc, containerSelector) {
     console.log('Displaying products:', xmlDoc);
     const products = $(xmlDoc).find('product');
-    const productContainer = $('#productContainer');
+    const productContainer = $(containerSelector);
 
     products.each(function(index) {
         const name = $(this).find('name').text();
         const price = $(this).find('price').text();
         const imgSrc = $(this).find('img').text();
 
-        const productHTML = 
-            '<div class="product-item">' +
-                '<img src="' + imgSrc + '" alt="' + name + '" class="product-image">' +
-                '<h5>' + name + '</h5>' +
-                '<h5>' + price + '€</h5>' +
-            '</div>';
+        const productHTML = 		'<div class="product-item">' +
+			    '<img src="' + imgSrc + '" alt="' + name + '" class="product-image">' +
+			    '<h5>' + name + '</h5>' +
+			    '<h5>' + price + '€</h5>' +
+			'</div>';
 
         productContainer.append(productHTML);
     });
-
-    initializeSlider();
 }
 
-function initializeSlider() {
+function initializeSlider(containerSelector) {
     let currentIndex = 0;
-    const items = $('.product-item');
+    const items = $(containerSelector).children('.product-item');
     const totalItems = items.length;
 
-    $('#next-slide').click(function() {
+    $(`${containerSelector}-next`).click(function() {
         if (currentIndex < totalItems - 1) {
             currentIndex++;
         } else {
             currentIndex = 0;
         }
-        updateSlider();
+        updateSlider(containerSelector);
     });
 
-    $('#prev-slide').click(function() {
+    $(`${containerSelector}-prev`).click(function() {
         if (currentIndex > 0) {
             currentIndex--;
         } else {
             currentIndex = totalItems - 1;
         }
-        updateSlider();
+        updateSlider(containerSelector);
     });
 
-    function updateSlider() {
+    function updateSlider(containerSelector) {
         const translateX = -currentIndex * (items.outerWidth(true));
-        $('#productContainer').css('transform', 'translateX(' + translateX + 'px)');
+        $(containerSelector).css('transform', 'translateX(' + translateX + 'px)');
     }
 }

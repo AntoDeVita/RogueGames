@@ -37,10 +37,11 @@ public class genreServlet extends HttpServlet {
 		// TODO Auto-generated method stub
     	
         prodottiDAO2 dao = new prodottiDAO2();
-         
+        String genre = request.getParameter("genre");
+        String f= "Fantasy";
         try {
             
-            List<prodottoBean> products = dao.doRetrieveByGen("Fantasy");
+            List<prodottoBean> products = dao.doRetrieveByGen(genre);
             request.setAttribute("products", products);
 
             // Imposta il tipo di contenuto della risposta

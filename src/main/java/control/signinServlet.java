@@ -34,6 +34,7 @@ public class signinServlet extends HttpServlet {
 	     boolean cl;
 	        try {
 	        	cl = userDAO.doSave(username, password, nome, cognome, eta, indirizzo, telefono);
+	        	request.setAttribute("cl", cl);
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	            request.setAttribute("error", "Errore di connessione al database: " + e.getMessage());
@@ -41,10 +42,10 @@ public class signinServlet extends HttpServlet {
 	            return ;
 	        }
 	        if (cl == false) {
-		         request.getRequestDispatcher("/login.jsp").forward(request, response);
+		         request.getRequestDispatcher("/login.jsp").forward(request, response); // Reindirizza alla page di login se la registrazione è avvenuta con successo
 	        }
 	        else {
-	            request.getRequestDispatcher("/home.jsp").forward(request, response); // Reindirizza a una pagina di errore generico
+	            request.getRequestDispatcher("/signin.jsp").forward(request, response); // Reindirizza alla page di registrazione se la registrazione è avvenuta con successo
 	        }
      }
 
