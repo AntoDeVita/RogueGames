@@ -22,7 +22,7 @@
 </head>
 <body>
 
-    <%--<script src="script/sliderAjax.js" defer></script> --%>
+    <script src="script/sliderAjax.js" defer></script> 
     
     <%@ include file="./fragments/header.jsp" %>   
 
