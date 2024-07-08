@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import model.prodottiDAO2;
 import model.prodottoBean;
 import model.carrello;
-
+import model.pCarrelloBean;
+import model.clienteRegBean;
 /**
  * Servlet implementation class carrelloServlet
  */
@@ -34,21 +35,32 @@ public class carrelloServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
 		 prodottiDAO2 dao = new prodottiDAO2();
 		 carrello pcart = (carrello) request.getSession().getAttribute("pcart");
+		 pCarrelloBean pc;
 			if(pcart == null) {
 				pcart = new carrello();
 				request.getSession().setAttribute("pcart", pcart);
 			}
-			int id = Integer.parseInt(request.getParameter("param"));
+			String act = request.getParameter("act");
+		    int id = Integer.parseInt(request.getParameter("param"));
+		    
+		    
+		    System.out.println("Valore di 'act': " + act);
+		    System.out.println("Valore di 'id': " + id);
+
 
 			try {
 	             
-	             prodottoBean p=dao.doRetrieveByKey(id);
-	             pcart.addCarr(p);
-	          
-
+				pc=new pCarrelloBean(dao.doRetrieveByKey(id));
+				if(act!=null) {
+	            if(act.equalsIgnoreCase("add")) 
+	            	pcart.addCarr(pc);
+	            else
+	            	if(act.equalsIgnoreCase("delete")) 
+		            	pcart.removeCarr(pc);
+			}
 
      } catch (SQLException e) {
          e.printStackTrace();

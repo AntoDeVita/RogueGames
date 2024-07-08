@@ -21,28 +21,33 @@
 		<%
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
 		if(pcart != null && !pcart.isEmpty()){
-			List <prodottoBean> cart=pcart.getProdotti();
+			List <pCarrelloBean> cart=pcart.getProdotti();
 			Iterator<?> it = cart.iterator();
 			while (it.hasNext()) {
-				prodottoBean bean = (prodottoBean) it.next();
+				pCarrelloBean bean = (pCarrelloBean) it.next();
 	%>
 
 
 				<div class="item-grid" data-name="immagine">
-	      		<img src=<%=bean.getImmagine()%> class="img" alt="prod">
+	      		<img src=<%=bean.getProdotto().getImmagine()%> class="img" alt="prod">
       		</div>
       		<div class="item-grid">
-				<h1><%=bean.getNome() %></h1>
+				<h1><%=bean.getProdotto().getNome() %></h1>
       		</div>
       		<div class="item-grid">	
-				<button onclick="decrementButton('myTextBox<%=bean.getIdProdotti()%>', 'myTextBx<%=bean.getIdProdotti()%>', '<%=bean.getPrezzo()%>')"><</button>
-			      	<input class="set-quantita" id="myTextBox<%=bean.getIdProdotti()%>" type="text" value="1" readonly="readonly">
-			      	<button onclick="incrementButton('myTextBox<%=bean.getIdProdotti()%>', 'myTextBx<%=bean.getIdProdotti()%>', '<%=bean.getPrezzo()%>')">></button>
+				<button onclick="decrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo()%>')"><</button>
+			      	<input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="1" readonly="readonly">
+			      	<button onclick="incrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo()%>')">></button>
 
 			    </div>
 			<div class="item-grid">
-		      	<h2><input class="set-prezzo" id="myTextBx<%=bean.getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>
+		      	<h2><input class="set-prezzo" id="myTextBx<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>
 	      	</div>
+	      	
+	      	<div class="item-grid">
+		      	<h2><a href="carrelloServlet?act=delete&param=<%=bean.getProdotto().getIdProdotti()%>"><button>X</button></a>></h2>
+	      	</div>
+	      	
 	      		<%	}
 		}
 		else{

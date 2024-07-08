@@ -7,7 +7,7 @@ function incrementButton(idCasellaTesto, idCasella, prezzo) {
       // Incrementa il valore solo se è un numero valido
       if (!isNaN(valoreAttuale)) {
         casellaTesto.value = valoreAttuale + 1;
-		casella.value = valore+p;
+		casella.value=valore
 		
       } else {
         casellaTesto.value = 1; // Imposta a 1 se non è un numero valido
@@ -24,7 +24,7 @@ function incrementButton(idCasellaTesto, idCasella, prezzo) {
       if (!isNaN(valoreAttuale)) {
 		if(valoreAttuale>1){
         	casellaTesto.value = valoreAttuale - 1;
-		    casella.value = valore-p;}
+		    casella.value = valore;}
       } else {
         casellaTesto.value = 1; // Imposta a 1 se non è un numero valido
 		asella.value = p;

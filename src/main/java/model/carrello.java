@@ -5,14 +5,14 @@ import java.util.List;
 
 public class carrello {
 	
-	private List<prodottoBean> cart;
+	private List<pCarrelloBean> cart;
 	public carrello(){
-	    cart = new ArrayList<prodottoBean>();
+	    cart = new ArrayList<pCarrelloBean>();
 	}
 	
-	public void addCarr(prodottoBean p) {
+	public void addCarr(pCarrelloBean p) {
 		int i=0;
-		for(prodottoBean prod : cart) {
+		for(pCarrelloBean prod : cart) {
 			if(prod.getIdProdotti()==p.getIdProdotti()) {
 				i=1;
 				break;
@@ -22,8 +22,8 @@ public class carrello {
 			cart.add(p);
 	}
 	
-	public void removeCarr(prodottoBean p) {
-		for(prodottoBean prod : cart) {
+	public void removeCarr(pCarrelloBean p) {
+		for(pCarrelloBean prod : cart) {
 			if(prod.getIdProdotti()==p.getIdProdotti()) {
 				cart.remove(prod);
 				break;
@@ -39,8 +39,8 @@ public class carrello {
 		return cart.isEmpty();
 	}
 	
-	public prodottoBean getProd(int id) {
-		for(prodottoBean prod : cart) {
+	public pCarrelloBean getProd(int id) {
+		for(pCarrelloBean prod : cart) {
 			if(prod.getIdProdotti()==id) {
 				return prod;
 			}
@@ -52,12 +52,14 @@ public class carrello {
 		return cart;
 	}
 	
+	
+	
 	public double prezzoTot() {
 		if(isEmpty()) {
 			return 0;
 		}
 		double som=0;
-		for(prodottoBean prod : cart) {
+		for(pCarrelloBean prod : cart) {
 				som+=prod.getPrezzo();
 			}
 		return som;

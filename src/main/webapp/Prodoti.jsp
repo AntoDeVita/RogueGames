@@ -77,7 +77,10 @@
     </a>
 </div>
 
-
-
+	<!--  <button onclick="decrementButton('myTextBox<%=//bean.getProdotto().getIdProdotti()--%>', 'myTextBx<%=//bean.getProdotto().getIdProdotti()%>', '<%=bean.decrementaQnt()%>')"><</button>
+			      	<input class="set-quantita" id="myTextBox<%=//bean.getProdotto().getIdProdotti()%>" type="text" value="1" readonly="readonly">
+			      	<button onclick="incrementButton('myTextBox<%=//bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=//bean.getProdotto().getIdProdotti()%>', '<%bean.incrementaQnt();%>')">></button>
+				-->
+<!--  <h2><input class="set-prezzo" id="myTextBx<%=//bean.getProdotto().getIdProdotti()%>" type="text" value="<%=//bean.getProdotto().getPrezzo() %>" readonly="readonly"></h2>-->
 </body>
 </html>

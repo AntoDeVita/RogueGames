@@ -38,11 +38,11 @@
 				%>
 
 	      			class="button">
-			      	 <form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
-    				<input type="hidden" name="param" value="<%=bean.getIdProdotti() %>" />
-    				<input type="submit" value="Carrello">
+		      	 <form action="<%= request.getContextPath() %>/carrelloServlet?act=addC&param=<%= bean.getIdProdotti() %>" method="GET">
+    				<input type="submit" /> <!-- Esempio di bottone per l'azione "add" -->
 				</form>
-				<%
+
+				<% 
 				} else { 
 				%>
 					<h2>Esaurito</h2>
