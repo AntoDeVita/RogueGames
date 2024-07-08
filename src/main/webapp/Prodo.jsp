@@ -34,6 +34,7 @@
                 %>
                 <form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
                     <input type="hidden" name="param" value="<%=bean.getIdProdotti() %>" />
+                    <input type="hidden" name="act" value="add"/>
                     <input id="carrello" type="submit" value="Add to cart">
                 </form>
                 <%

@@ -45,15 +45,12 @@ public class carrelloServlet extends HttpServlet {
 			}
 			String act = request.getParameter("act");
 		    int id = Integer.parseInt(request.getParameter("param"));
-		    
-		    
-		    System.out.println("Valore di 'act': " + act);
-		    System.out.println("Valore di 'id': " + id);
+		   
 
 
 			try {
 	             
-				pc=new pCarrelloBean(dao.doRetrieveByKey(id));
+				pc=new pCarrelloBean(dao.doRetrieveByKey(1));
 				if(act!=null) {
 	            if(act.equalsIgnoreCase("add")) 
 	            	pcart.addCarr(pc);
