@@ -62,7 +62,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 	}
 	
 	@Override
-	public synchronized boolean doSave(String email, String password, String nome, String cognome, int eta, String indirizzo, int telefono) throws SQLException {//true- registrato false- non registrato
+	public synchronized boolean doSave(String email, String password, String nome, String cognome, int eta, String indirizzo, String telefono) throws SQLException {//true- registrato false- non registrato
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		boolean c= controllo(email);
@@ -79,7 +79,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 				preparedStatement.setString(4, cognome);
 				preparedStatement.setInt(5, eta);
 				preparedStatement.setString(6, indirizzo);
-				preparedStatement.setInt(7, telefono);
+				preparedStatement.setString(7, telefono);
 				preparedStatement.executeUpdate();
 		} finally {
 			try {
@@ -114,7 +114,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 					bean.setCognome(rs.getString("Cognome"));
 					bean.setEta(rs.getInt("Eta"));
 					bean.setIndirizzo(rs.getString("Indirizzo"));
-					bean.setTelefono(rs.getInt("Tel"));
+					bean.setTelefono(rs.getString("Tel"));
 					bean.setRuolo(rs.getString("Ruolo"));
 				}
 			
