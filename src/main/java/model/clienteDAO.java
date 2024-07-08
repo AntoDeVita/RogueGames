@@ -132,10 +132,25 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 		return bean;
 	}
 
-	
-	
-	
-	
-	
+	public void aggiornaCampo(clienteRegBean cl, String campo, String nuovoValore) throws SQLException {
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+
+	    String updateSQL = "UPDATE " + TABLE_NAME + " SET " + campo + "=? WHERE Email=?";
+
+	    try {
+	        connection = ds.getConnection();
+	        preparedStatement = connection.prepareStatement(updateSQL);
+	        preparedStatement.setString(1, nuovoValore);
+	        preparedStatement.setString(2, cl.getEmail()); 
+	        preparedStatement.executeUpdate();
+	    } finally {
+	        try {
+	            if (preparedStatement != null) preparedStatement.close();
+	        } finally {
+	            if (connection != null) connection.close();
+	        }
+	    }
+	}
 	
 }
