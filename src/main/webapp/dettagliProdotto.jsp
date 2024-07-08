@@ -42,7 +42,7 @@
                     			<img src="images/imgCarrello.png" style="width:30px; height: 30px" alt="carrello">
                     		</button>
                		 	</form>
-               		 	<%}else{
+               		 	<%}else{ 
 							%>
                     		<button id="carrello" type="submit">Non Disponibile</button>
                		 	<%} %>
