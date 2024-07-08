@@ -10,7 +10,7 @@ public class clienteRegBean implements Serializable {
 	private String cognome;
 	private int eta;
 	private String indirizzo;
-	private int telefono;
+	private String telefono;
 	private String ruolo;
 	
 	public clienteRegBean() {
@@ -65,11 +65,11 @@ public class clienteRegBean implements Serializable {
 		this.indirizzo = indirizzo;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 

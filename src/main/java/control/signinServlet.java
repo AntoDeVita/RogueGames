@@ -28,7 +28,7 @@ public class signinServlet extends HttpServlet {
 	     String cognome = request.getParameter("txtCognome");
 	     int eta = Integer.parseInt(request.getParameter("txtEta"));
 	     String indirizzo = request.getParameter("txtIndirizzo");
-	     int telefono = Integer.parseInt(request.getParameter("txtTelefono"));
+	     String telefono = request.getParameter("txtTelefono");
 	     
 	     clienteDAO userDAO = new clienteDAO();
 	     boolean cl;

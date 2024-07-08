@@ -40,9 +40,11 @@
 				      	<form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
                     		<button id="carrello" type="submit">Aggiungi 
                     			<img src="images/imgCarrello.png" style="width:30px; height: 30px" alt="carrello">
+								<input type="hidden" name="param" value="<%=p.getIdProdotti() %>"/>
+                    			<input type="hidden" name="act" value="add"/>
                     		</button>
                		 	</form>
-               		 	<%}else{
+               		 	<%}else{ 
 							%>
                     		<button id="carrello" type="submit">Non Disponibile</button>
                		 	<%} %>

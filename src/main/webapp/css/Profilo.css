@@ -1,72 +1,96 @@
-/* CSS per la pagina del profilo utente */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
 .profile-container {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 20px auto;
+    padding: 20px;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-header {
-    background-color: #343a40;
-    color: #fff;
-    padding: 20px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .profile-header h1 {
     margin: 0;
-    font-size: 2em;
-    font-weight: 700;
 }
 
 .profile-content {
-    padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.profile-image {
+    flex: 1 200px;
+    text-align: center;
+}
+
+.profile-pic {
+    max-width: 150px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
 }
 
 .profile-details {
-    text-align: left;
-    width: 100%;
+    flex: 1 400px;
+    padding-left: 20px;
 }
 
-.profile-details h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #343a40;
-    font-weight: 700;
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-.profile-details p {
+.detail-item h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.detail-item p {
+    margin: 0;
     font-size: 1em;
-    line-height: 1.6;
-    color: #6c757d;
+    color: #555;
 }
 
-.profile-details strong {
-    color: #495057;
+.modify-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.modify-btn:hover {
+    background-color: #0056b3;
 }
 
 .no-profile {
     text-align: center;
-    padding: 50px;
-    color: #dc3545;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .no-profile h2 {
-    font-size: 1.5em;
     margin: 0;
+    color: #333;
 }
+
+
+
 
 
