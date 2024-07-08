@@ -50,7 +50,7 @@ public class carrelloServlet extends HttpServlet {
 
 			try {
 	             
-				pc=new pCarrelloBean(dao.doRetrieveByKey(1));
+				pc=new pCarrelloBean(dao.doRetrieveByKey(id));
 				if(act!=null) {
 	            if(act.equalsIgnoreCase("add")) 
 	            	pcart.addCarr(pc);

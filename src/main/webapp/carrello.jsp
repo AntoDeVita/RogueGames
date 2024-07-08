@@ -35,17 +35,18 @@
 				<h1><%=bean.getProdotto().getNome() %></h1>
       		</div>
       		<div class="item-grid">	
-				<button onclick="decrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo()%>')"><</button>
-			      	<input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="1" readonly="readonly">
-			      	<button onclick="incrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo()%>')">></button>
+				<button onclick="decrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo() %>', 'dec')"><</button>
+			      	<input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getIdQuantita() %>" readonly="readonly">
+			      	<button onclick="incrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo() %>', 'inc')">></button>
 
 			    </div>
 			<div class="item-grid">
-		      	<h2><input class="set-prezzo" id="myTextBx<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>
+		      	<h2><input class="set-prezzo" id="myTextBx<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>-->
+		      	<!--  --><h2><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>-->
 	      	</div>
 	      	
 	      	<div class="item-grid">
-		      	<h2><a href="carrelloServlet?act=delete&param=<%=bean.getProdotto().getIdProdotti()%>"><button>X</button></a>></h2>
+		      	<h2><a href="carrelloServlet?act=delete&param=<%=bean.getProdotto().getIdProdotti()%>"><button>X</button></a></h2>
 	      	</div>
 	      	
 	      		<%	}

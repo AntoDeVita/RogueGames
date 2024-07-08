@@ -27,6 +27,6 @@ function incrementButton(idCasellaTesto, idCasella, prezzo) {
 		    casella.value = valore;}
       } else {
         casellaTesto.value = 1; // Imposta a 1 se non è un numero valido
-		asella.value = p;
+		casella.value = p;
       }
     }
