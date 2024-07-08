@@ -18,10 +18,10 @@
         </div>
         <div class="profile-content">
             <div class="profile-details">
-                <h2><%= cl.getNome() %></h2>
-                <p class="email"><strong>Email:</strong> <%= cl.getEmail() %></p>
-                <p class="address"><strong>Indirizzo:</strong> <%= cl.getIndirizzo() %></p>
-                <p class="phone"><strong>Telefono:</strong> <%= cl.getTelefono() %></p>
+                <h2><%= cl.getNome() != null ? cl.getNome() : "Nome non disponibile" %></h2>
+                <p class="email"><strong>Email:</strong> <%= cl.getEmail() != null ? cl.getEmail() : "Email non disponibile" %></p>
+                <p class="address"><strong>Indirizzo:</strong> <%= cl.getIndirizzo() != null ? cl.getIndirizzo() : "Indirizzo non disponibile" %></p>
+                <p class="phone"><strong>Telefono:</strong> <%=  cl.getTelefono() %></p>
             </div>
         </div>
     </div>

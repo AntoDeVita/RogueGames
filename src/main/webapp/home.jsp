@@ -1,9 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.*, java.util.*"%>
-
-<%
-	clienteRegBean cl= (clienteRegBean) request.getSession().getAttribute("cl");
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +17,7 @@
 </head>
 <body>
 
-    <%--<script src="script/sliderAjax.js" defer></script> --%>
+    <script src="script/sliderAjax.js" defer></script>
     
     <%@ include file="./fragments/header.jsp" %>   
 
@@ -124,7 +119,7 @@
                 <h3>XBOX SX</h3>
                 <p>$50.00</p>
             </div>
-            <div class="product">
+            <div class="product">	
                 <img src="images/R6S.jpg" alt="Product 6">
                 <h3>R6S</h3>
                 <p>$60.00</p>

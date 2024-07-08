@@ -98,7 +98,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String selectSQL = "SELECT * FROM " + clienteDAO.TABLE_NAME + " WHERE Email=? && Password=sha2(?, 256);";
-		clienteRegBean bean = new clienteRegBean();
+		clienteRegBean bean = null;
 		
 		try {
 			connection = ds.getConnection();
@@ -108,7 +108,8 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 			ResultSet rs = preparedStatement.executeQuery();
 			
 				while (rs.next()) {
-					bean.setEmail(rs.getString("email"));
+					bean = new clienteRegBean();
+					bean.setEmail(rs.getString("Email"));
 					bean.setNome(rs.getString("Nome"));
 					bean.setCognome(rs.getString("Cognome"));
 					bean.setEta(rs.getInt("Eta"));
