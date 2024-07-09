@@ -34,8 +34,6 @@ public class carrelloServlet extends HttpServlet {
            String act = request.getParameter("act");
            int id = Integer.parseInt(request.getParameter("param"));
 
-
-
            try {
 
                pc=new pCarrelloBean(dao.doRetrieveByKey(id));
