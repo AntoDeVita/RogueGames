@@ -17,9 +17,9 @@
 </head>
 <body>
 
-    <script src="script/sliderAjax.js" defer></script>
-    
-    <%@ include file="./fragments/header.jsp" %>
+    <script src="script/sliderAjax.js" defer></script> 
+
+
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

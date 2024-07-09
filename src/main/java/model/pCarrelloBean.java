@@ -25,12 +25,9 @@ public class pCarrelloBean implements  Serializable{
 	}
 	
 	public int getIdProdotti() {
-		return idProdotti;
+		return p.getIdProdotti();
 	}
 	
-	public void setIdProdotti(int idProdotti) {
-		this.idProdotti= idProdotti;
-	}
 	
 	public String email() {
 		return email;

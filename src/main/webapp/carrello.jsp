@@ -25,6 +25,7 @@
 	Iterator<?> it = cart.iterator();
 	while (it.hasNext()) {
 	pCarrelloBean bean = (pCarrelloBean) it.next();
+	 System.out.println("id "+ bean.getIdProdotti());
 	%>
 	
 	
