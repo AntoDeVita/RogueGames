@@ -8,7 +8,7 @@ public class prodottoBean implements  Serializable{
 	private String nome;
 	private String immagine;
 	private String descrizione;
-	private boolean CoV; //True=Vendita False=Cancellato
+	private boolean CoV; //True0=Vendita False1=Cancellato
 	private double prezzo;
 	private String casaProduttrice;
 	private String piattaforma;

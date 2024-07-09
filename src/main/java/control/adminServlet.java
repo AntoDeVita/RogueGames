@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,11 +24,18 @@ public class adminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		List<prodottoBean> pSession= (List<prodottoBean>) request.getSession().getAttribute("pSession");
+		if(pSession==null) {
+			pSession= new <prodottoBean> ArrayList();
+			request.getSession().setAttribute("pSession", pSession);
+		}
 		prodottiDAO2 dao = new prodottiDAO2();
 	    try {
-	    	String id = request.getParameter("param");
+	    	 String id = request.getParameter("param");
 	         List<prodottoBean> products = dao.doRetrieveAll(id);
-	         request.setAttribute("products", products);
+	         pSession.addAll(products);
+	         request.setAttribute("pSession", pSession);
+	         request.getSession().setAttribute("pSession", pSession);
 	         request.getRequestDispatcher("/admin.jsp").forward(request, response);
 	    }   
 	    catch (SQLException e) {

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.*, java.util.*"%>
 <!DOCTYPE html>
 <%
-    List<prodottoBean> products = (List<prodottoBean>) request.getAttribute("products");
+    List<prodottoBean> products = (List<prodottoBean>) request.getSession().getAttribute("pSession");
 %>
 <html lang="en">
 	<head>
@@ -99,9 +99,10 @@
 		    <h2 id="prodTit">Elimina Prodotto</h2>
 	        
 		        
-		        <form action="<%= request.getContextPath() %>/adminOperationServlet?act=1" method="POST"><%--Bottone Conferma Eliminazione act= 1 --%>
-		        	<p>Inserisci l'id del prodotto: <input type="text" id="idProdotto" placeholder="Id Prodotto"></input></p>
+		        <form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST"><%--Bottone Conferma Eliminazione act= 1 --%>
+		        	<p>Inserisci l'id del prodotto: <input type="text" name="idProdotto" placeholder="Id Prodotto"></input></p>
 		        	<div class="btnCont">
+		        		<input type="hidden" name="act" value="1">
 			       		<a class="adminBtn" onclick="hidePopupElimina()">Chiudi</a>
 			       		<input type="submit" class="adminBtn" value="Conferma"></input>
 					</div>

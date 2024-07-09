@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.prodottiDAO2;
+import model.prodottoBean;
 
 @WebServlet("/adminOperationServlet")
 public class adminOperationServlet extends HttpServlet {
@@ -20,18 +22,24 @@ public class adminOperationServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		prodottiDAO2 dao = new prodottiDAO2();
-		int act= Integer.parseInt(request.getParameter("act"));
+	    List<prodottoBean> pSession = (List<prodottoBean>) request.getSession().getAttribute("pSession");
+		String act= request.getParameter("act");
 		try {
 			switch (act) {
-				case 1://Chiamata pulsante Elimina in admin.jsp
+				case "1"://Chiamata pulsante Elimina in admin.jsp
 					int id = Integer.parseInt(request.getParameter("idProdotto"));
+					for(prodottoBean p:pSession) {
+						if(p.getIdProdotti()==id) {
+							pSession.remove(p);
+						}
+					}
 			        dao.doDelete(id);
+			        
 			        break;
-				case 2://Chiamata pulsante Aggiungi in admin.jsp
+				case "2"://Chiamata pulsante Aggiungi in admin.jsp
 					break;
-				case 3://Chiamata pulsante Modifica in admin.jsp
+				case "3"://Chiamata pulsante Modifica in admin.jsp
 					break;
 			}
 		}catch (SQLException e) {
@@ -40,6 +48,9 @@ public class adminOperationServlet extends HttpServlet {
             request.getRequestDispatcher("/error.jsp").forward(request, response);
             return;
         }
+		request.getSession().setAttribute("pSession", pSession);
+		request.setAttribute("pSession", pSession);
+		request.getRequestDispatcher("/admin.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
