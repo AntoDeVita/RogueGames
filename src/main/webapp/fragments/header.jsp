@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.clienteRegBean"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -39,7 +39,7 @@
                 </ul>
                 <c:if test="${not empty sessionScope.cl}">
                 <ul class="nav-links">
-                <li>
+               		<li>
                     	<form action="Profilo.jsp" method="POST">
                             <input class="dec btn" type="submit" value="profilo">
                           </form>
@@ -49,6 +49,19 @@
                             <input class="dec btn" type="submit" value="Logout">
                           </form>
                     </li>
+                    <%-- 
+                    <%
+                    clienteRegBean cl= (clienteRegBean) request.getAttribute("cl");
+                    if((cl.getRuolo()).equals("admin")){ %>
+                    --%> 
+	                    <li>
+	                    	<form action="<%= request.getContextPath() %>/adminServlet" method="POST">
+	                            <input class="dec btn" type="submit" value="Admin">
+	                          </form>
+	                    </li>
+	                    <%--
+	                 <%} %>
+	                 --%>   
                  </ul>
                  </c:if>
                 <div class="search-container">
