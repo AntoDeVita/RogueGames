@@ -14,7 +14,7 @@ function fetchProducts(url, containerSelector, params) {
 
     $.ajax({
         url: url,
-        type: "GET",
+        type: "POST",
         data: params,
         dataType: "xml",
         success: function(data) {

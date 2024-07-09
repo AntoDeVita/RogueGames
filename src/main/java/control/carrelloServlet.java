@@ -44,20 +44,59 @@ public class carrelloServlet extends HttpServlet {
 				request.getSession().setAttribute("pcart", pcart);
 			}
 			String act = request.getParameter("act");
-		    int id = Integer.parseInt(request.getParameter("param"));
-		   
-
+		    String i = request.getParameter("param");
+		    int id=0;
+		    if(i!=null)
+		    	id=Integer.parseInt(i);
+		    System.out.println("act "+act);
+		    System.out.println("id "+id);
 
 			try {
 	             
-				pc=new pCarrelloBean(dao.doRetrieveByKey(id));
 				if(act!=null) {
-	            if(act.equalsIgnoreCase("add")) 
-	            	pcart.addCarr(pc);
-	            else
-	            	if(act.equalsIgnoreCase("delete")) 
-		            	pcart.removeCarr(pc);
-			}
+					/*if(act.equalsIgnoreCase("add")||act.equalsIgnoreCase("delete")) {
+						pc=new pCarrelloBean(dao.doRetrieveByKey(id));
+
+			            if(act.equalsIgnoreCase("add")) 
+			            	pcart.addCarr(pc);
+			            else
+			            	if(act.equalsIgnoreCase("delete")) 
+				            	pcart.removeCarr(pc);
+	         
+					}else {
+	            		if(act.equalsIgnoreCase("dec")) {
+	            			pcart.getProd(id).decrementaQnt();
+	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
+	            		}
+	            		else
+	            			if(act.equalsIgnoreCase("inc")) {
+	            				pcart.getProd(id).incrementaQnt();
+		            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
+	            			}
+					}
+			*/
+					switch (act) {
+				      case "add":
+				    	  pc=new pCarrelloBean(dao.doRetrieveByKey(id));
+				    	  pcart.addCarr(pc);
+				        break;
+				      case "delete":
+				    	  pc=new pCarrelloBean(dao.doRetrieveByKey(id));
+				    	  pcart.removeCarr(pc);
+				        break;
+				      case "dec":
+				    	  pcart.getProd(id).decrementaQnt();
+	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
+				        break;
+				      case "inc":
+				    	  pcart.getProd(id).incrementaQnt();
+	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
+				        break;
+				      case "deleteAll":
+				    	  pcart.svuota();
+				        break;
+				    }
+				}
 
      } catch (SQLException e) {
          e.printStackTrace();

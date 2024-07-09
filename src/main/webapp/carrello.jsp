@@ -17,17 +17,20 @@
 
 <body>
 		<%@ include file="./fragments/header.jsp" %>   
-		<div class="contenitore-grid">
+		
 		<%
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
-		if(pcart != null && !pcart.isEmpty()){
-			List <pCarrelloBean> cart=pcart.getProdotti();
-			Iterator<?> it = cart.iterator();
-			while (it.hasNext()) {
-				pCarrelloBean bean = (pCarrelloBean) it.next();
+		if(pcart != null && !pcart.isEmpty()){%>
+	
+		<h3><button class="deleteAll" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
+		
+		<% 	List <pCarrelloBean> cart=pcart.getProdotti();
+		Iterator<?> it = cart.iterator();
+		while (it.hasNext()) {
+			pCarrelloBean bean = (pCarrelloBean) it.next();
 	%>
 
-
+		<div class="contenitore-grid">
 				<div class="item-grid" data-name="immagine">
 	      		<img src=<%=bean.getProdotto().getImmagine()%> class="img" alt="prod">
       		</div>
@@ -35,30 +38,35 @@
 				<h1><%=bean.getProdotto().getNome() %></h1>
       		</div>
       		<div class="item-grid">	
-				<button onclick="decrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo() %>', 'dec')"><</button>
+				<!--<button onclick="decrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getIdProdotti() %>', 'dec')"><</button>
 			      	<input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getIdQuantita() %>" readonly="readonly">
-			      	<button onclick="incrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getPrezzo() %>', 'inc')">></button>
-
-			    </div>
+			      	<button onclick="incrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getIdProdotti() %>', 'inc')">></button>-->
+				
+				    <button onclick="decrementButton('<%=bean.getIdProdotti() %>')"><</button>
+				    <input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getIdQuantita() %>" readonly="readonly">
+				    <button onclick="incrementButton('<%=bean.getIdProdotti() %>')">></button>
+				
+		    </div>
 			<div class="item-grid">
-		      	<h2><input class="set-prezzo" id="myTextBx<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>-->
-		      	<!--  --><h2><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>-->
+		      	<!--<h2><input class="set-prezzo" id="myTextBx<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>-->
+		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>
 	      	</div>
 	      	
 	      	<div class="item-grid">
-		      	<h2><a href="carrelloServlet?act=delete&param=<%=bean.getProdotto().getIdProdotti()%>"><button>X</button></a></h2>
+		      	<h5><button class="delete" onclick="deleteButton('<%=bean.getIdProdotti() %>')">Rimuovi</button></h2>
 	      	</div>
-	      	
+	      	</div>
 	      		<%	}
 		}
 		else{
 		%>
-	
-		<h2>No products available</h2>
+		<div class="contenitore-grid">
+			<h2>No products available</h2>
+			</div>
+		</div>	
 		<% 
 			}
 		%>
-		</div>
 		<%@ include file="./fragments/Footer.jsp" %>  
 		
 </body>
