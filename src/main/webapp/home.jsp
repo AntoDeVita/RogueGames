@@ -19,7 +19,7 @@
 
     <script src="script/sliderAjax.js" defer></script>
     
-    <%@ include file="./fragments/header.jsp" %>   
+    <%@ include file="./fragments/header.jsp" %>
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
