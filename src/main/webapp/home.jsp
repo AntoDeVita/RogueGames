@@ -1,9 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.*, java.util.*"%>
-
-<%
-		List<prodottoBean> products = (List<prodottoBean>) request.getAttribute("products");
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +17,9 @@
 </head>
 <body>
 
-    <script src="script/sliderAjax.js" defer></script>
-    
-    <%@ include file="./fragments/header.jsp" %>   
+    <script src="script/sliderAjax.js" defer></script> 
+
+    <%@ include file="./fragments/header.jsp" %>  
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -59,38 +54,37 @@
 
     <hr class="divider">
 
-<div class="container">
-    <h1 class="miniTitle">Fantasy</h1>
-    <div class="slider-wrapper">
-        <button id="prev-slide-fantasy" class="slide-button material-symbols-rounded">chevron_left</button>
-        <div class="image-list">
-            <div id="productContainerFantasy" class="slider-content"></div>
+        <div class="container">
+        <h1 class="miniTitle">Fantasy</h1>
+        <div class="slider-wrapper">
+            <button id="prev-slide-fantasy" class="slide-button material-symbols-rounded">chevron_left</button>
+            <div class="image-list">
+                <div id="productContainerFantasy" class="slider-content"></div>
+            </div>
+            <button id="next-slide-fantasy" class="slide-button material-symbols-rounded">chevron_right</button>
         </div>
-        <button id="next-slide-fantasy" class="slide-button material-symbols-rounded">chevron_right</button>
-    </div>
-    <div class="slider-scrollbar">
-        <div class="scrollbar-track">
-            <div class="scrollbar-thumb"></div>
-        </div>
-    </div>
-</div>
-	 <hr class="divider">
-	 
-<div class="container">
-    <h1 class="miniTitle">Console</h1>
-    <div class="slider-wrapper">
-        <button id="prev-slide-Console" class="slide-button material-symbols-rounded">chevron_left</button>
-        <div class="image-list">
-            <div id="productContainerConsole" class="slider-content"></div>
-        </div>
-        <button id="next-slide-Console" class="slide-button material-symbols-rounded">chevron_right</button>
-    </div>
-    <div class="slider-scrollbar">
-        <div class="scrollbar-track">
-            <div class="scrollbar-thumb"></div>
+        <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
         </div>
     </div>
-</div>
+    <hr class="divider">
+    <div class="container">
+        <h1 class="miniTitle">Console</h1>
+        <div class="slider-wrapper">
+            <button id="prev-slide-Console" class="slide-button material-symbols-rounded">chevron_left</button>
+            <div class="image-list">
+                <div id="productContainerConsole" class="slider-content"></div>
+            </div>
+            <button id="next-slide-Console" class="slide-button material-symbols-rounded">chevron_right</button>
+        </div>
+        <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
+        </div>
+    </div>
 
 <input type="hidden" id="genreParamFantasy" value="fantasy">
 <input type="hidden" id="genreParamConsole" value="Console">  
@@ -100,34 +94,40 @@
     <main>
         <section class="catalog">
             <div class="product">
+            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=5">
                 <img src="images/EldenRing.jpg" alt="Product 1">
                 <h3>EldenRing</h3>
-                <p>$10.00</p>
+                <p>39.99&euro;</p>
             </div>
             <div class="product">
+            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=8">
                 <img src="images/Happy.jpg" alt="Product 2">
-                <h3>Happy</h3>
-                <p>$20.00</p>
+                <h3>Fairytail Happy Peluche</h3>
+                <p>10.97&euro;</p>
             </div>
             <div class="product">
+            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=2">            
                 <img src="images/LinkAF.jpg" alt="Product 3">
-                <h3>Link</h3>
-                <p>$30.00</p>
+                <h3>The legend of Zelda Action figure Link</h3>
+                <p>651.57&euro;</p>
             </div>
             <div class="product">
+            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=3">  
                 <img src="images/PS5.png" alt="Product 4">
-                <h3>PS5</h3>
-                <p>$40.00</p>
+                <h3>PlayStation 5 Digital Edition</h3>
+                <p>399.99&euro;</p>
             </div>
             <div class="product">
+            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=9">  
                 <img src="images/Xbox.jpg" alt="Product 5">
-                <h3>XBOX SX</h3>
-                <p>$50.00</p>
+                <h3>Xbox Series X</h3>
+                <p>479.99&euro;</p>
             </div>
             <div class="product">
+            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=7">  	
                 <img src="images/R6S.jpg" alt="Product 6">
-                <h3>R6S</h3>
-                <p>$60.00</p>
+                <h3>Tom Clancy's Rainbow Six Siege</h3>
+                <p>19.99&euro;</p>
             </div>
         </section>
     </main>

@@ -266,90 +266,70 @@
         }
         
         */
-.slider-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    margin: auto;
-}
-
-.slider-content {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.product-item {
-    min-width: 200px; /* Adjust the width according to your needs */
-    margin-right: 10px; /* Space between products */
-}
-
-.product-image {
-    width: 100%;
-    height: auto;
-}
-
-.slide-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-#prev-slide {
-    left: 10px;
-}
-
-#next-slide {
-    right: 10px;
-}
-
-.image-list {
-    display: flex;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-        
-        .slider-scrollbar {
-    		position: relative;
-    height: 5px;
-    background-color: #ccc;
-    margin-top: 10px;
-}
-
-.scrollbar-track {
-    position: relative;
-    height: 100%;
-}
-
-.scrollbar-thumb {
-    position: absolute;
-    height: 100%;
-    width: 0;
-    background-color: #333;
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .slider-content {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-item {
+            min-width: 200px;
+            margin-right: 10px;
+        }
+        .slide-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            display: block; /* Ensure buttons are displayed */
+        }
+        .slide-button.material-symbols-rounded {
+            font-size: 2rem;
+        }
+        #prev-slide-fantasy, #prev-slide-Console {
+            left: 0;
+        }
+        #next-slide-fantasy, #next-slide-Console {
+            right: 0;
+        }
+		
+		.image-list {
+		    display: flex;
+		    overflow-x: hidden;
+		}
+		
+		.slider-content {
+		    display: flex;
+		    transition: transform 0.5s ease;
+		}
+		
+		.product-item {
+		    flex: 0 0 auto;
+		    width: 300px; /* Imposta la larghezza desiderata per ciascun elemento */
+		    margin-right: 20px; /* Spazio tra gli elementi */
+		}
+		.slider-scrollbar {
+		    		position: relative;
+		    height: 5px;
+		    background-color: #ccc;
+		    margin-top: 10px;
+		}
+		
+		.scrollbar-track {
+		    position: relative;
+		    height: 100%;
+		}
+		
+		.scrollbar-thumb {
+		    position: absolute;
+		    height: 100%;
+		    width: 0;
+		    background-color: #333;
+		} 

@@ -73,17 +73,15 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		int result = 0;
-
-		String deleteSQL = "DELETE FROM " + prodottiDAO2.TABLE_NAME + " WHERE CODE = ?";
-
+		String deleteSQL = "DELETE FROM " + prodottiDAO2.TABLE_NAME + " WHERE idProdotti=?";
+		
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, id);
 
-			result = preparedStatement.executeUpdate();
+			preparedStatement.executeUpdate();
 
 		} finally {
 			try {
@@ -94,7 +92,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 					connection.close();
 			}
 		}
-		return (result != 0);
+		return true;
 	}
 
 	@Override

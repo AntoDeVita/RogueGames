@@ -62,7 +62,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 	}
 	
 	@Override
-	public synchronized boolean doSave(String email, String password, String nome, String cognome, int eta, String indirizzo, int telefono) throws SQLException {//true- registrato false- non registrato
+	public synchronized boolean doSave(String email, String password, String nome, String cognome, int eta, String indirizzo, String telefono) throws SQLException {//true- registrato false- non registrato
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		boolean c= controllo(email);
@@ -79,7 +79,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 				preparedStatement.setString(4, cognome);
 				preparedStatement.setInt(5, eta);
 				preparedStatement.setString(6, indirizzo);
-				preparedStatement.setInt(7, telefono);
+				preparedStatement.setString(7, telefono);
 				preparedStatement.executeUpdate();
 		} finally {
 			try {
@@ -98,7 +98,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String selectSQL = "SELECT * FROM " + clienteDAO.TABLE_NAME + " WHERE Email=? && Password=sha2(?, 256);";
-		clienteRegBean bean = new clienteRegBean();
+		clienteRegBean bean = null;
 		
 		try {
 			connection = ds.getConnection();
@@ -108,12 +108,13 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 			ResultSet rs = preparedStatement.executeQuery();
 			
 				while (rs.next()) {
-					bean.setEmail(rs.getString("email"));
+					bean = new clienteRegBean();
+					bean.setEmail(rs.getString("Email"));
 					bean.setNome(rs.getString("Nome"));
 					bean.setCognome(rs.getString("Cognome"));
 					bean.setEta(rs.getInt("Eta"));
 					bean.setIndirizzo(rs.getString("Indirizzo"));
-					bean.setTelefono(rs.getInt("Tel"));
+					bean.setTelefono(rs.getString("Tel"));
 					bean.setRuolo(rs.getString("Ruolo"));
 				}
 			
@@ -131,10 +132,25 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 		return bean;
 	}
 
-	
-	
-	
-	
-	
+	public void aggiornaCampo(clienteRegBean cl, String campo, String nuovoValore) throws SQLException {
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+
+	    String updateSQL = "UPDATE " + TABLE_NAME + " SET " + campo + "=? WHERE Email=?";
+
+	    try {
+	        connection = ds.getConnection();
+	        preparedStatement = connection.prepareStatement(updateSQL);
+	        preparedStatement.setString(1, nuovoValore);
+	        preparedStatement.setString(2, cl.getEmail()); 
+	        preparedStatement.executeUpdate();
+	    } finally {
+	        try {
+	            if (preparedStatement != null) preparedStatement.close();
+	        } finally {
+	            if (connection != null) connection.close();
+	        }
+	    }
+	}
 	
 }
