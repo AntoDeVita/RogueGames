@@ -54,38 +54,37 @@
 
     <hr class="divider">
 
-<div class="container">
-    <h1 class="miniTitle">Fantasy</h1>
-    <div class="slider-wrapper">
-        <button id="prev-slide-fantasy" class="slide-button material-symbols-rounded">chevron_left</button>
-        <div class="image-list">
-            <div id="productContainerFantasy" class="slider-content"></div>
+        <div class="container">
+        <h1 class="miniTitle">Fantasy</h1>
+        <div class="slider-wrapper">
+            <button id="prev-slide-fantasy" class="slide-button material-symbols-rounded">chevron_left</button>
+            <div class="image-list">
+                <div id="productContainerFantasy" class="slider-content"></div>
+            </div>
+            <button id="next-slide-fantasy" class="slide-button material-symbols-rounded">chevron_right</button>
         </div>
-        <button id="next-slide-fantasy" class="slide-button material-symbols-rounded">chevron_right</button>
-    </div>
-    <div class="slider-scrollbar">
-        <div class="scrollbar-track">
-            <div class="scrollbar-thumb"></div>
-        </div>
-    </div>
-</div>
-	 <hr class="divider">
-	 
-<div class="container">
-    <h1 class="miniTitle">Console</h1>
-    <div class="slider-wrapper">
-        <button id="prev-slide-Console" class="slide-button material-symbols-rounded">chevron_left</button>
-        <div class="image-list">
-            <div id="productContainerConsole" class="slider-content"></div>
-        </div>
-        <button id="next-slide-Console" class="slide-button material-symbols-rounded">chevron_right</button>
-    </div>
-    <div class="slider-scrollbar">
-        <div class="scrollbar-track">
-            <div class="scrollbar-thumb"></div>
+        <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
         </div>
     </div>
-</div>
+    <hr class="divider">
+    <div class="container">
+        <h1 class="miniTitle">Console</h1>
+        <div class="slider-wrapper">
+            <button id="prev-slide-Console" class="slide-button material-symbols-rounded">chevron_left</button>
+            <div class="image-list">
+                <div id="productContainerConsole" class="slider-content"></div>
+            </div>
+            <button id="next-slide-Console" class="slide-button material-symbols-rounded">chevron_right</button>
+        </div>
+        <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
+        </div>
+    </div>
 
 <input type="hidden" id="genreParamFantasy" value="fantasy">
 <input type="hidden" id="genreParamConsole" value="Console">  

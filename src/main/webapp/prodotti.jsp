@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
-    List<prodottoBean> products = (List<prodottoBean>) request.getAttribute("products");
+    List<prodottoBean> products = (List<prodottoBean>) request.getSession().getAttribute("pSession");
 %>
 
 <!DOCTYPE html>
