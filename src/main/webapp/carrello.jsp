@@ -12,10 +12,11 @@
 	<link rel="stylesheet" href="css/carrello.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
-	<script src="script/btnQuantita.js"></script>
+	
 </head>
 
 <body>
+		<script src="script/btnQuantita.js"></script>
 		<%@ include file="./fragments/header.jsp" %>   
 		
 		<%
@@ -38,17 +39,14 @@
 				<h1><%=bean.getProdotto().getNome() %></h1>
       		</div>
       		<div class="item-grid">	
-				<!--<button onclick="decrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getIdProdotti() %>', 'dec')"><</button>
-			      	<input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getIdQuantita() %>" readonly="readonly">
-			      	<button onclick="incrementButton('myTextBox<%=bean.getProdotto().getIdProdotti()%>', 'myTextBx<%=bean.getProdotto().getIdProdotti()%>', '<%=bean.getIdProdotti() %>', 'inc')">></button>-->
-				
+
 				    <button onclick="decrementButton('<%=bean.getIdProdotti() %>')"><</button>
 				    <input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getIdQuantita() %>" readonly="readonly">
 				    <button onclick="incrementButton('<%=bean.getIdProdotti() %>')">></button>
 				
 		    </div>
 			<div class="item-grid">
-		      	<!--<h2><input class="set-prezzo" id="myTextBx<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>-->
+		      	
 		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>
 	      	</div>
 	      	
