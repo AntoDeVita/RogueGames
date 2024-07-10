@@ -13,12 +13,9 @@
 		<script src="script/Popup.js" defer></script>
 	</head>
 	<body>
-	    <%@ include file="./fragments/header.jsp" %>  
-	    <div class="btnCont" id="top"> 
-			<button style="margin-top: 25px" class="adminBtn" onclick="showPopupElimina()">Elimina Un Prodotto</button>
-			<button style="margin-top: 25px" class="adminBtn" onclick="showPopupAggiungi()">Aggiungi Un Prodotto</button>
-		    <p id="cat">Catalogo</p>
-	    </div>
+	    <%@ include file="./fragments/header.jsp" %>
+	    <p class="cat">Catalogo<span class="cat" id="cat2"> Prodotti</span></p>
+		<button class="adminBtn" style="margin-left: 10px" onclick="showPopupAggiungi()">Aggiungi Un Prodotto</button>
 			<table border="1">
 			    <thead>
 			        <tr>
@@ -55,7 +52,8 @@
 			            <td><%=bean.getTipo() %></td>
 			            <td><%=bean.getDataRilascio() %></td>
 			            <td><%=bean.getQuantita() %></td>
-			            <td><button class="adminBtn" onclick="showPopupModifica('<%=bean.getIdProdotti() %>','<%=bean.getNome() %>','<%=bean.getImmagine() %>','<%=bean.getDescrizione() %>','<%=bean.getCoV() %>','<%=bean.getPrezzo() %>','<%=bean.getCasaProduttrice() %>','<%=bean.getPiattaforma() %>','<%=bean.getGenere() %>','<%=bean.getTipo() %>','<%=bean.getDataRilascio() %>','<%=bean.getQuantita() %>')">Modifica</button></td>
+			            <td><button class="adminBtn" onclick="showPopupModifica('<%=bean.getIdProdotti() %>','<%=bean.getNome() %>','<%=bean.getImmagine() %>','<%=bean.getDescrizione() %>','<%=bean.getCoV() %>','<%=bean.getPrezzo() %>','<%=bean.getCasaProduttrice() %>','<%=bean.getPiattaforma() %>','<%=bean.getGenere() %>','<%=bean.getTipo() %>','<%=bean.getDataRilascio() %>','<%=bean.getQuantita() %>')">Modifica</button>
+			        	<button style="margin-top:10px" class="adminBtn" onclick="showPopupElimina('<%=bean.getNome() %>')">Elimina</button></td> 
 			        </tr>
 			    <%
                 	}
@@ -97,10 +95,8 @@
 		<div id="overlayElimina" onclick="hidePopupElimina()"></div>
 		<div id="popupElimina">
 		    <h2 id="prodTit">Elimina Prodotto</h2>
-	        
-		        
 		        <form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST"><%--Bottone Conferma Eliminazione act= 1 --%>
-		        	<p>Inserisci l'id del prodotto: <input type="text" name="idProdotto" placeholder="Id Prodotto"></input></p>
+	        		<p>Vuoi eliminare il prodotto: <span id="Nome"></span> ?</p>
 		        	<div class="btnCont">
 		        		<input type="hidden" name="act" value="1">
 			       		<a class="adminBtn" onclick="hidePopupElimina()">Chiudi</a>

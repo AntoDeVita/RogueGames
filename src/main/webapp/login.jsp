@@ -18,7 +18,7 @@
 					<h2> Login </h2>
 					<form action="<%= request.getContextPath() %>/loginServlet" method="Post">
 						<div class="input-box">
-							<input type="email" required name="txtEmail">
+							<input type="email" required name="txtEmail" autofocus>
 							<label id="Email"> Email </label>
 						</div>
 						<div class="input-box">

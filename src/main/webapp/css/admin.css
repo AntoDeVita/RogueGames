@@ -1,7 +1,23 @@
-p#cat {
-	text-align: center;
-	font-size: 30px;
-	font-style: bold;
+.cat {
+	margin-top: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff007f;
+}
+
+.cat#cat2 {
+    color: #00bfff;
+}
+.company-name {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff007f;
+}
+
+.company-name .highlight {
+    color: #00bfff;
 }
 
 h2#prodTit {
@@ -121,15 +137,7 @@ tr:hover {
 	display: flex;
 	gap:15px;
 }  
-     
-.btnCont#top{
-	margin: 20px;
-}    
 
-.btnCont#top p#cat{
-	margin-left: 430px;
-}
-  
 .adminBtn {
 	background-color: #007bff;
     color: white;

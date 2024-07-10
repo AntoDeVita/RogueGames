@@ -1,6 +1,7 @@
-function showPopupElimina() {
+function showPopupElimina(nome) {
             document.getElementById('popupElimina').style.display = 'block';
             document.getElementById('overlayElimina').style.display = 'block';
+            document.getElementById('Nome').innerText = nome;
 	    }
 	    
 	    function hidePopupElimina() {
@@ -8,7 +9,7 @@ function showPopupElimina() {
             document.getElementById('overlayElimina').style.display = 'none';
         }
 	    
-	    function showPopupAggiungi(idProdotto) {
+	    function showPopupAggiungi() {
             document.getElementById('popupAggiungi').style.display = 'block';
             document.getElementById('overlayAggiungi').style.display = 'block';
 	    	
