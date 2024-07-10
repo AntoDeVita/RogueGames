@@ -40,8 +40,8 @@
                 <c:if test="${not empty sessionScope.cl}">
                 <ul class="nav-links">
                		<li>
-                    	<form action="Profilo.jsp" method="POST">
-                            <input class="dec btn" type="submit" value="profilo">
+                    	<form action="Profilo2.jsp" method="POST">
+                            <input class="dec btn" type="submit" value="Profilo">
                           </form>
                     </li>
                     <li>

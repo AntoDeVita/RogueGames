@@ -83,4 +83,14 @@
     	<servlet-name>logoutServlet</servlet-name>
     	<url-pattern>/logoutServlet</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+        <servlet-name>creditCardServlet</servlet-name>
+        <servlet-class>control.creditCardServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>creditCardServlet</servlet-name>
+        <url-pattern>/creditCardServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
