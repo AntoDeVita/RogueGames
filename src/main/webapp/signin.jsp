@@ -41,7 +41,7 @@
 							</div>
 							<div class="input-box">
 								<input type="tel" required name="txtTelefono">
-								<label> telefono </label>
+								<label> telefono </label> 
 							</div>
 							<button type="submit" class="btn">Sign in</button>
 						</form>
