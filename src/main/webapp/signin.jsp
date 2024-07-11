@@ -4,7 +4,7 @@
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="css/signin.css" type="text/css">
-	    
+	    <script src="script/checktext.js" defer></script>
 	</head>
 	
 	
@@ -16,27 +16,27 @@
 						<h2> Sign In </h2>
 						<form action="<%= request.getContextPath() %>/signinServlet"  method="Post">
 							<div class="input-box">
-								<input type="email" required name="txtEmail">
+								<input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required name="txtEmail">
 								<label> Email </label>
 							</div>
 							<div class="input-box">
-								<input type="password" required name="txtPass">
+								<input type="password" minlength="5" maxlength="15" required name="txtPass">
 								<label> Password </label>
 							</div>
 							<div class="input-box">
-								<input type="text" required name="txtNome">
+								<input type="text" minlength="1" maxlength="45" required name="txtNome">
 								<label> Nome </label>
 							</div>
 							<div class="input-box">
-								<input type="text" required name="txtCognome">
+								<input type="text" minlength="1" maxlength="45" required name="txtCognome">
 								<label> Cognome </label>
 							</div>
 							<div class="input-box">
-								<input type="number" required name="txtEta">
+								<input type="number" id="eta" onBlur="controllaEta(this)" required name="txtEta">
 								<label> Età </label>
 							</div>
 							<div class="input-box">
-								<input type="text" required name="txtIndirizzo">
+								<input type="text" maxlength="45" required name="txtIndirizzo">
 								<label> Indirizzo </label>
 							</div>
 							<div class="input-box">

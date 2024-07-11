@@ -47,27 +47,6 @@ public class carrelloServlet extends HttpServlet {
 			try {
 	             
 				if(act!=null) {
-					/*if(act.equalsIgnoreCase("add")||act.equalsIgnoreCase("delete")) {
-						pc=new pCarrelloBean(dao.doRetrieveByKey(id));
-
-			            if(act.equalsIgnoreCase("add")) 
-			            	pcart.addCarr(pc);
-			            else
-			            	if(act.equalsIgnoreCase("delete")) 
-				            	pcart.removeCarr(pc);
-	         
-					}else {
-	            		if(act.equalsIgnoreCase("dec")) {
-	            			pcart.getProd(id).decrementaQnt();
-	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
-	            		}
-	            		else
-	            			if(act.equalsIgnoreCase("inc")) {
-	            				pcart.getProd(id).incrementaQnt();
-		            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
-	            			}
-					}
-			*/
 					switch (act) {
 				      case "add":
 				    	  pc=new pCarrelloBean(dao.doRetrieveByKey(id));

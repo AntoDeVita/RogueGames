@@ -74,6 +74,7 @@
     	<servlet-name>genreServlet</servlet-name>
     	<url-pattern>/genreServlet</url-pattern>
   	</servlet-mapping>
+  	
   	<servlet>
     	<servlet-name>logoutServlet</servlet-name>
     	<servlet-class>control.logoutServlet</servlet-class>
@@ -83,4 +84,15 @@
     	<servlet-name>logoutServlet</servlet-name>
     	<url-pattern>/logoutServlet</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>piattaformaServlet</servlet-name>
+    	<servlet-class>control.piattaformaServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>piattaformaServlet</servlet-name>
+    	<url-pattern>/Piattaforma</url-pattern>
+  	</servlet-mapping>
+  	
 </web-app>
