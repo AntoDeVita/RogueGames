@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
 	<script src="script/btnQuantita.js"></script>
+	<script src="script/Popup.js"></script>
 </head>
 
 <body>
@@ -24,6 +25,7 @@
 		if(pcart != null && !pcart.isEmpty()){%>
 	
 		<h3><button class="deleteAll" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
+		<h3><button class="deleteAll" onclick="showPopupOrdine()">Conferma Ordine</button></h3>
 		
 		<% 	List <pCarrelloBean> cart=pcart.getProdotti();
 		Iterator<?> it = cart.iterator();
@@ -65,6 +67,13 @@
 		<% 
 			}
 		%>
+		
+		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
+		<div id="popupOrdine">
+			<h2 id="prodTit">Prodotto</h2>
+			
+		</div>
+		
 		<%@ include file="./fragments/Footer.jsp" %>  
 		
 </body>
