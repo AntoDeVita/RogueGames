@@ -46,14 +46,12 @@ public class pCarrelloBean implements  Serializable{
 		return this.quantita;
 	}
 	
-	public void setQuantita(int quantita) {
-		this.quantita= quantita;
-	}
-
 	public void incrementaQnt(){
-		this.quantita++;
+		if(this.quantita< p.getQuantita())
+		this.quantita=this.quantita+1;
 	}
 	public void decrementaQnt(){
-		this.quantita--;
+		if(this.quantita>1)
+		this.quantita=this.quantita-1;
 	}
 }

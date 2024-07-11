@@ -15,38 +15,24 @@ import model.prodottiDAO2;
 import model.prodottoBean;
 
 
-public class prodottiServlet extends HttpServlet {
+public class piattaformaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public prodottiServlet() {
+    public piattaformaServlet() {
         super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            String i = request.getParameter("param");
+            String plat = request.getParameter("piattaforma");
             prodottiDAO2 dao = new prodottiDAO2();
             
             
-            List<prodottoBean> products = (List<prodottoBean>) request.getSession().getAttribute("pSession");
-            if(products==null) {
-            
-            	products= new  ArrayList<prodottoBean>();
-    			request.getSession().setAttribute("pSession", products);
-            
-            
-
+            List<prodottoBean> products = new ArrayList <prodottoBean>();
             try {
 
-                products = dao.doRetrieveAll(i);
-
-
-                request.getSession().setAttribute("pSession", products);
-                request.setAttribute("pSession", products);
-                request.getRequestDispatcher("/prodotti.jsp").forward(request, response);
-                return;
-            
+                products = dao.doRetrieveByPlat(plat);       
 
             }   
             catch (SQLException e) {
@@ -54,12 +40,9 @@ public class prodottiServlet extends HttpServlet {
             request.setAttribute("error", "Database connection failed: " + e.getMessage());
             request.getRequestDispatcher("/error.jsp").forward(request, response);
            
-            	}
-            }	     
-           
-            request.getSession().setAttribute("pSession", products);
-            request.setAttribute("pSession", products);
-            request.getRequestDispatcher("/prodotti.jsp").forward(request, response);
+            	}   
+                request.setAttribute("products", products);
+                request.getRequestDispatcher("/piattaforma.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

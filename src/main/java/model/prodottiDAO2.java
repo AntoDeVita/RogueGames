@@ -77,7 +77,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
+
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, id);
 
@@ -205,7 +205,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
+
 			preparedStatement = connection.prepareStatement(updateQntSQL);
 
 
@@ -320,21 +320,20 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 	
 	@Override
 	public List<prodottoBean> doRetrieveByPlat(String plat) throws SQLException {
-		// TODO Auto-generated method stub
-		Connection connection = null;
+Connection connection = null;
 		
 		PreparedStatement preparedStatement = null;
 		
 
 		List<prodottoBean> products = new ArrayList<prodottoBean>();
 
-		String selectSQL = "SELECT * FROM prodotti WHERE Genere = \"Fantasy\"";
-
-
+		String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME + " WHERE Piattaforma = ?";
+		
+		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-
+			preparedStatement.setString(1, plat);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
@@ -368,5 +367,4 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		}
 		return products;
 	}
-	
 }

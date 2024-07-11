@@ -266,66 +266,114 @@
         }
         
         */
-.slider-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 20px; /* Aggiunge spazio tra i due slider */
-}
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .slider-content {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-item {
+            min-width: 200px;
+            margin-right: 10px;
+        }
+        .slide-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            display: block; /* Ensure buttons are displayed */
+        }
+        .slide-button.material-symbols-rounded {
+            font-size: 2rem;
+        }
+        #prev-slide-fantasy, #prev-slide-Console {
+            left: 0;
+        }
+        #next-slide-fantasy, #next-slide-Console {
+            right: 0;
+        }
+		
+		.image-list {
+		    display: flex;
+		    overflow-x: hidden;
+		}
+		
+		.slider-content {
+		    display: flex;
+		    transition: transform 0.5s ease;
+		}
+		
+		.product-item {
+		    flex: 0 0 auto;
+		    width: 300px; /* Imposta la larghezza desiderata per ciascun elemento */
+		    margin-right: 20px; /* Spazio tra gli elementi */
+		}
+		.slider-scrollbar {
+		    		position: relative;
+		    height: 5px;
+		    background-color: #ccc;
+		    margin-top: 10px;
+		}
+		
+		.scrollbar-track {
+		    position: relative;
+		    height: 100%;
+		}
+		
+		.scrollbar-thumb {
+		    position: absolute;
+		    height: 100%;
+		    width: 0;
+		    background-color: #333;
+		} 
+		
+		contenitore-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		background: white;
+		margin-top: 30px;
+		margin-left: 60px;
+		margin-right: 60px;
+		border-radius: 20px;
+		border-color: black;
+		border: 2px solid #2c4766;
+		align-items: center;
+		}
 
-.slider-wrapper .slide-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1; /* Assicura che i pulsanti siano sopra gli elementi interni */
-}
+		.item-grid {
+			padding: 20px;
+			background-size: 20px;
+		}
+		
+		.item-grid[data-name="Xbox"] {
+		    width: 10px;
+		    margin-right: 20px;
+		}
+		
+		.item-grid[data-name="Ps5"] {
+		    width: 10px;
+		    margin-right: 20px;
+		}
 
-#prev-slide-fantasy {
-    left: 10;
-}
-
-#next-slide-fantasy {
-    right: 10;
-}
-
-#prev-slide-Console {
-    left: 10;
-}
-
-#next-slide-Console {
-    right: 10;
-}
-
-.image-list {
-    display: flex;
-    overflow-x: hidden;
-}
-
-.slider-content {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.product-item {
-    flex: 0 0 auto;
-    width: 300px; /* Imposta la larghezza desiderata per ciascun elemento */
-    margin-right: 20px; /* Spazio tra gli elementi */
-}
-.slider-scrollbar {
-    		position: relative;
-    height: 5px;
-    background-color: #ccc;
-    margin-top: 10px;
-}
-
-.scrollbar-track {
-    position: relative;
-    height: 100%;
-}
-
-.scrollbar-thumb {
-    position: absolute;
-    height: 100%;
-    width: 0;
-    background-color: #333;
-} 
+		.item-grid[data-name="Switch"] {
+		    width: 45px;
+		    margin-right: 20px;
+		}
+		
+		.item-grid[data-name="Pc"] {
+		    width: 45px;
+		    margin-right: 20px;
+		}
+		.item-grid {
+		    width: 20px;
+		    margin-right: 20px;
+			padding: 20px;
+		}
+		

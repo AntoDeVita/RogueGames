@@ -5,6 +5,7 @@ import java.util.List;
 
 public class carrello {
 
+
     private List<pCarrelloBean> cart;
     public carrello(){
         cart = new ArrayList<pCarrelloBean>();
@@ -52,8 +53,6 @@ public class carrello {
         return cart;
     }
 
-
-
     public double prezzoTot() {
         if(isEmpty()) {
             return 0;
@@ -65,3 +64,4 @@ public class carrello {
         return som;
     }
 }
+
