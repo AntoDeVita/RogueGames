@@ -68,6 +68,17 @@
                     <input type="text" placeholder="Search for products">
                     <button type="button">Cerca</button>
                 </div>
+                <div class="tendina">
+                	<ul>
+                		<li><a href="#">Prodotto 1</a>
+                			<ul>
+                				<li><a href="#">Prodotto 1</a></li>
+                				<li><a href="#">Prodotto 1</a></li>
+                			</ul>
+                		</li>
+                	
+                	</ul>
+                </div>
                </nav>
 		</header>
 	</body>

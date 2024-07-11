@@ -66,7 +66,7 @@ public class modificaProfiloServlet extends HttpServlet {
             }
 
             session.setAttribute("cl", cl);
-            response.sendRedirect("Profilo.jsp");
+            response.sendRedirect("Profilo2.jsp");
         } else {
             request.setAttribute("error", "Utente non autenticato.");
             request.getRequestDispatcher("/login.jsp").forward(request, response);

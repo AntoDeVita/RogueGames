@@ -27,12 +27,12 @@
                 <div class="detail-item">
                     <h2>Nome:</h2>
                     <p><%= cl.getNome() %></p>
-                    <a href="modificaCampo.jsp?field=nome" type="button" class="btn btn-primary" data-toggle="modal" data-target="#creditCardModal">Modifica</a>
+                    <a href="modificaCampo.jsp?field=nome" type="button"  class="modify-btn">Modifica</a>
                 </div>
                 <div class="detail-item">
                     <h2>Cognome:</h2>
                     <p><%= cl.getCognome() %></p>
-                    <a href="modificaCampo.jsp?field=cognome" type="button" class="btn btn-primary" data-toggle="modal" data-target="#creditCardModal">Modifica</a>
+                    <a href="modificaCampo.jsp?field=cognome" type="button" class="modify-btn">Modifica</a>
                 </div>
                 <div class="detail-item">
                     <h2>Email:</h2>
@@ -41,19 +41,20 @@
                 <div class="detail-item">
                     <h2>Telefono:</h2>
                     <p><%= cl.getTelefono() %></p>
-                    <a href="modificaCampo.jsp?field=telefono" type="button" class="btn btn-primary" data-toggle="modal" data-target="#creditCardModal">Modifica</a>
+                    <a href="modificaCampo.jsp?field=telefono" type="button" class="modify-btn">Modifica</a>
                 </div>
                 <div class="detail-item">
                     <h2>Password:</h2>
                     <p>********</p>
-                    <a href="modificaCampo.jsp?field=password" type="button" class="btn btn-primary" data-toggle="modal" data-target="#creditCardModal">Modifica</a>
+                    <a href="modificaCampo.jsp?field=password" type="button" class="modify-btn">Modifica</a>
                 </div>
                 <div class="detail-item">
                     <h2>Carta di Credito:</h2>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#creditCardModal">Aggiungi Carta di Credito</button>
+                    <button type="button" class="modify-btn" data-toggle="modal" data-target="#creditCardModal">Aggiungi Carta di Credito</button>
                 </div>
             </div>
         </div>
+        
     </div>
 
     

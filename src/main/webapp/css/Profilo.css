@@ -49,6 +49,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+    margin-right: 10px;
 }
 
 .detail-item h2 {
@@ -75,6 +76,8 @@ body {
 
 .modify-btn:hover {
     background-color: #0056b3;
+    color: white;
+    text-decoration: nome;
 }
 
 .no-profile {
