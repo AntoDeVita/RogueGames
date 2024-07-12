@@ -24,19 +24,18 @@ public class adminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		List<prodottoBean> pSession= (List<prodottoBean>) request.getSession().getAttribute("pSession");
+		/*List<prodottoBean> pSession= (List<prodottoBean>) request.getSession().getAttribute("pSession");
 		if(pSession==null) {
 			pSession= new  ArrayList<prodottoBean>();
 			request.getSession().setAttribute("pSession", pSession);
 		}
-		if(pSession.isEmpty()){
+		if(pSession.isEmpty()){*/
 		prodottiDAO2 dao = new prodottiDAO2();
 	    try {
-	    	 String id = request.getParameter("param");
-	         List<prodottoBean> products = dao.doRetrieveAll(id);
-	         pSession.addAll(products);
-	         request.setAttribute("pSession", pSession);
-	         request.getSession().setAttribute("pSession", pSession);
+	         List<prodottoBean> products = dao.doRetrieveAll("idProdotti");
+	         //pSession.addAll(products);
+	         request.setAttribute("products", products);
+	         //request.getSession().setAttribute("pSession", pSession);
 	         request.getRequestDispatcher("/admin.jsp").forward(request, response);
 	    }   
 	    catch (SQLException e) {
@@ -45,9 +44,9 @@ public class adminServlet extends HttpServlet {
 	        request.getRequestDispatcher("/error.jsp").forward(request, response);
 	       
 	     }
-		}else
+	    /*}else
 			request.getRequestDispatcher("/admin.jsp").forward(request, response);
-		
+		*/
 }
 
 

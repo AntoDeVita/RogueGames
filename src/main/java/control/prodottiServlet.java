@@ -29,21 +29,18 @@ public class prodottiServlet extends HttpServlet {
             prodottiDAO2 dao = new prodottiDAO2();
             
             
-            List<prodottoBean> products = (List<prodottoBean>) request.getSession().getAttribute("pSession");
-            if(products==null) {
+            //List<prodottoBean> products = (List<prodottoBean>) request.getSession().getAttribute("pSession");
+            /*if(products==null) {
             
             	products= new  ArrayList<prodottoBean>();
-    			request.getSession().setAttribute("pSession", products);
-            
-            
-
+    			request.getSession().setAttribute("pSession", products);*/
             try {
 
-                products = dao.doRetrieveAll(i);
+            	List<prodottoBean>products = dao.doRetrieveAll(i);
 
 
-                request.getSession().setAttribute("pSession", products);
-                request.setAttribute("pSession", products);
+                //request.getSession().setAttribute("pSession", products);
+                request.setAttribute("products", products);
                 request.getRequestDispatcher("/prodotti.jsp").forward(request, response);
                 return;
             
@@ -55,11 +52,11 @@ public class prodottiServlet extends HttpServlet {
             request.getRequestDispatcher("/error.jsp").forward(request, response);
            
             	}
-            }	     
+            //}	     
            
-            request.getSession().setAttribute("pSession", products);
+            /*request.getSession().setAttribute("pSession", products);
             request.setAttribute("pSession", products);
-            request.getRequestDispatcher("/prodotti.jsp").forward(request, response);
+            request.getRequestDispatcher("/prodotti.jsp").forward(request, response);*/
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
