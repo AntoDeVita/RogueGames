@@ -54,3 +54,14 @@ function showPopupElimina(id, nome) {
             document.getElementById('popupOrdine').style.display = 'none';
             document.getElementById('overlayOrdine').style.display = 'none';
         }
+        
+        function showPopupDescrizione(descr){
+			document.getElementById('popupDescrizione').style.display = 'block';
+            document.getElementById('overlayDescrizione').style.display = 'block';
+            document.getElementById('descrizione').innerText = descr;
+		}
+		
+		function hidePopupDescrizione() {
+            document.getElementById('popupDescrizione').style.display = 'none';
+            document.getElementById('overlayDescrizione').style.display = 'none';
+        }

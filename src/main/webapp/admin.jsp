@@ -17,14 +17,13 @@
 	    <%@ include file="./fragments/header.jsp" %>
 	    <p class="cat">Catalogo<span class="cat" id="cat2"> Prodotti</span></p>
 		<button class="adminBtn" style="margin-left: 10px" onclick="showPopupAggiungi()">Aggiungi Un Prodotto</button>
-			<table border="1">
+			<table id="tb1" border="1">
 			    <thead>
 			        <tr>
 			            <th id="a">Id</th>
 			            <th id="b">Nome</th>
 			            <th id="a">Immagine</th>
 			            <th id="b">Descrizione</th>
-			            <th id="a">CoV</th>
 			            <th id="b">Prezzo</th>
 			            <th id="a">Casa Produttrice</th>
 			            <th id="b">Piattaforma</th>
@@ -44,8 +43,7 @@
 			            <td><%=bean.getIdProdotti() %></td>
 			            <td><%=bean.getNome() %></td>
 			            <td><%=bean.getImmagine() %></td>
-			            <td class="description"><textarea readonly style="border: none"><%=bean.getDescrizione() %></textarea></td>
-			            <td><%=bean.getCoV() %></td>
+			            <td><button class="adminBtn"  id="descr" onclick="showPopupDescrizione('<%=bean.getDescrizione() %>')">Visualizza Descrizione</button></td>
 			            <td><%=bean.getPrezzo() %></td>
 			            <td><%=bean.getCasaProduttrice() %></td>
 			            <td><%=bean.getPiattaforma() %></td>
@@ -163,6 +161,15 @@
 		    </form>
 			</div>
 		
+		<div id="overlayDescrizione" onclick="hidePopupDescrizione()"></div>
+		<div id="popupDescrizione">
+		    <h2 id="prodTit">Descrizione Prodotto</h2>
+		        <p id="descrizione"></p>
+		        <div class="btnCont">
+					<a class="adminBtn" onclick="hidePopupDescrizione()">Chiudi</a>
+				</div>
+	    </div>
+			
 	    <%@ include file="./fragments/Footer.jsp" %>   
 	</body>
 </html>
