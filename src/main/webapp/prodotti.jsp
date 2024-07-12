@@ -24,10 +24,15 @@
                 for (prodottoBean bean : products) {
         %>
         <div class="prodotto">
-        	<a href="<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotti() %>">
+        	<a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotti() %>">
             <img src="<%=bean.getImmagine()%>" alt="<%=bean.getNome()%>">
             <h3><%=bean.getNome() %></h3>
-            <p class="descrizione">Una breve descrizione del prodotto.</p>
+            <p class="descrizione"><%if(bean.getPiattaforma()==null){%>
+            	<%=bean.getGenere()%>
+            	<%}else{ %>
+            	<%=bean.getPiattaforma()%>
+            	<%} %>
+            </p>
             <p class="prezzo"><%=bean.getPrezzo()%>&euro;</p>
             <div class="button">
                 <%

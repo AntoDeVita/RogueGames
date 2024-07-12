@@ -44,7 +44,7 @@
 			            <td><%=bean.getIdProdotti() %></td>
 			            <td><%=bean.getNome() %></td>
 			            <td><%=bean.getImmagine() %></td>
-			            <td><%=bean.getDescrizione() %></td>
+			            <td><textarea readonly style="border: none"><%=bean.getDescrizione() %></textarea></td>
 			            <td><%=bean.getCoV() %></td>
 			            <td><%=bean.getPrezzo() %></td>
 			            <td><%=bean.getCasaProduttrice() %></td>
