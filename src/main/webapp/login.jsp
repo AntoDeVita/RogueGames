@@ -18,11 +18,12 @@
 					<h2> Login </h2>
 					<form action="<%= request.getContextPath() %>/loginServlet" method="Post">
 						<div class="input-box">
-							<input type="email" required name="txtEmail" autofocus>
+							<input type="email" required name="txtEmail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
 							<label id="Email"> Email </label>
 						</div>
 						<div class="input-box">
-							<input type="password" required name="txtPass">
+							<input type="password" required name="txtPass" minlength="5" maxlenght="15" title="Password must be at least 5 characters long">
+
 							<label> Password </label>
 						</div>
 						<button type="submit" class="btn">Login</button>

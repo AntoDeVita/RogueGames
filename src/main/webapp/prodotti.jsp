@@ -52,9 +52,7 @@
                     }
                 %> 
             </div>
-            	<div class="item-grid">
                 
-            	</div>
         	</div>
         <%
                 }

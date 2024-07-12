@@ -334,46 +334,25 @@
 		    background-color: #333;
 		} 
 		
-		contenitore-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		background: white;
-		margin-top: 30px;
-		margin-left: 60px;
-		margin-right: 60px;
-		border-radius: 20px;
-		border-color: black;
-		border: 2px solid #2c4766;
-		align-items: center;
-		}
+.contenitore-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: white;
+    margin-top: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 20px;
+    border-color: black;
+    border: 2px solid #2c4766;
+    justify-content: space-around;
+    align-items: center;
+}
 
-		.item-grid {
-			padding: 20px;
-			background-size: 20px;
-		}
-		
-		.item-grid[data-name="Xbox"] {
-		    width: 10px;
-		    margin-right: 20px;
-		}
-		
-		.item-grid[data-name="Ps5"] {
-		    width: 10px;
-		    margin-right: 20px;
-		}
-
-		.item-grid[data-name="Switch"] {
-		    width: 45px;
-		    margin-right: 20px;
-		}
-		
-		.item-grid[data-name="Pc"] {
-		    width: 45px;
-		    margin-right: 20px;
-		}
-		.item-grid {
-		    width: 20px;
-		    margin-right: 20px;
-			padding: 20px;
-		}
+.item-grid {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 		
