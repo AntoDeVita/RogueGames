@@ -41,6 +41,9 @@ public class loginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("cl", cl); // Salva l'utente autenticato nella sessione
 	         request.getRequestDispatcher("/home.jsp").forward(request, response);
+        }else {
+            request.setAttribute("error", "Credenziali errate. Riprova.");
+            request.getRequestDispatcher("/login.jsp").forward(request, response); // Reindirizza alla pagina di login
         }
     }
 

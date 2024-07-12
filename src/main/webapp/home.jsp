@@ -53,22 +53,26 @@
 	    
 	    <hr class="divider">
 	    
-	    <div class="contenitore-grid">
+			    <div class="contenitore-grid">
 		    <div class="item-grid" data-name="Xbox">
-		    	<a href="Piattaforma?piattaforma=Xbox">
-		        <img src="images/xboxLogo.png" class="img" alt="Xbox">
+		        <a href="Piattaforma?piattaforma=Xbox">
+		            <img src="images/xboxLogo.png" class="img" alt="Xbox">
+		        </a>
 		    </div>
 		    <div class="item-grid" data-name="Ps5">
-		    	<a href="Piattaforma?piattaforma=PlayStation">
-		        <img src="images/ps5Logo.png" class="img" alt="Ps5">
+		        <a href="Piattaforma?piattaforma=PlayStation">
+		            <img src="images/ps5Logo.png" class="img" alt="Ps5">
+		        </a>
 		    </div>
 		    <div class="item-grid" data-name="Switch">
-		    	<a href="Piattaforma?piattaforma=Nintendo Switch">
-		        <img src="images/switchLogo.jpg" class="img" alt="Switch">
+		        <a href="Piattaforma?piattaforma=Nintendo Switch">
+		            <img src="images/switchLogo.jpg" class="img" alt="Switch">
+		        </a>
 		    </div>
 		    <div class="item-grid" data-name="Pc">
-		    	<a href="Piattaforma?piattaforma=Pc">
-		        <img src="images/pcLogo.jpg" class="img" alt="Pc">
+		        <a href="Piattaforma?piattaforma=Pc">
+		            <img src="images/pcLogo.jpg" class="img" alt="Pc">
+		        </a>
 		    </div>
 		</div>
 
