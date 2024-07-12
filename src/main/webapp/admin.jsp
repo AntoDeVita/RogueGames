@@ -20,7 +20,7 @@
 			<table border="1">
 			    <thead>
 			        <tr>
-			            <th id="a">Id Prodotto</th>
+			            <th id="a">Id</th>
 			            <th id="b">Nome</th>
 			            <th id="a">Immagine</th>
 			            <th id="b">Descrizione</th>
@@ -44,7 +44,7 @@
 			            <td><%=bean.getIdProdotti() %></td>
 			            <td><%=bean.getNome() %></td>
 			            <td><%=bean.getImmagine() %></td>
-			            <td><textarea readonly style="border: none"><%=bean.getDescrizione() %></textarea></td>
+			            <td class="description"><textarea readonly style="border: none"><%=bean.getDescrizione() %></textarea></td>
 			            <td><%=bean.getCoV() %></td>
 			            <td><%=bean.getPrezzo() %></td>
 			            <td><%=bean.getCasaProduttrice() %></td>

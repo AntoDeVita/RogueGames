@@ -19,13 +19,14 @@
 <body>
 
 		<%@ include file="./fragments/header.jsp" %>   
-		
+		<p class="cat">Carrello</p>
 		<%
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
 		if(pcart != null && !pcart.isEmpty()){%>
-	
-		<h3><button class="deleteAll" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
-		<h3><button class="deleteAll" onclick="showPopupOrdine()">Conferma Ordine</button></h3>
+		<div class="carrelloBtnContainer">
+			<h3><button class="carrelloBtn" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
+			<h3><button style="margin-left: 10px" class="carrelloBtn" onclick="showPopupOrdine()">Conferma Ordine</button></h3>
+		</div>
 		
 		<% 	List <pCarrelloBean> cart=pcart.getProdotti();
 		Iterator<?> it = cart.iterator();
@@ -42,18 +43,17 @@
       		</div>
       		<div class="item-grid">	
 
-				    <button onclick="decrementButton('<%=bean.getIdProdotti() %>')"><</button>
+				    <button class="functionButton" onclick="decrementButton('<%=bean.getIdProdotti() %>')"><</button>
 				    <input class="set-quantita" id="myTextBox<%=bean.getProdotto().getIdProdotti()%>" type="text" value="<%=bean.getIdQuantita() %>" readonly="readonly">
-				    <button onclick="incrementButton('<%=bean.getIdProdotti() %>')">></button>
+				    <button class="functionButton" onclick="incrementButton('<%=bean.getIdProdotti() %>')">></button>
 				
 		    </div>
 			<div class="item-grid">
-		      	
-		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly="readonly"></h2>
+		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly></h2>
 	      	</div>
 	      	
 	      	<div class="item-grid">
-		      	<h5><button class="delete" onclick="deleteButton('<%=bean.getIdProdotti() %>')">Rimuovi</button></h2>
+		      	<h5><button class="functionButton" onclick="deleteButton('<%=bean.getIdProdotti() %>')">Rimuovi</button></h2>
 	      	</div>
 	      	</div>
 	      		<%	}
@@ -61,8 +61,7 @@
 		else{
 		%>
 		<div class="contenitore-grid">
-			<h2>No products available</h2>
-			</div>
+			<h2 style="margin: 20px">No products available</h2>
 		</div>	
 		<% 
 			}

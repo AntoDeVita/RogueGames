@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import model.prodottiDAO2;
 import model.prodottoBean;
 
-@WebServlet("/adminOperationServlet")
 public class adminOperationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     

@@ -6,6 +6,7 @@
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link href="css/head.css" rel="stylesheet" type="text/css">
+	    <script src="script/menuTendina.js"></script>
 	</head>
 	<body>
 		<header>
@@ -54,10 +55,12 @@
                     clienteRegBean cl= (clienteRegBean) request.getAttribute("cl");
                     if((cl.getRuolo()).equals("admin")){ %>
                     --%> 
-	                    <li>
-	                    	<form action="<%= request.getContextPath() %>/adminServlet" method="POST">
-	                            <input class="dec btn" type="submit" value="Admin">
-	                          </form>
+	                    <li style="margin-top: 5px">
+						    <button onclick="toggleDropdown()" class="menuTendina">Admin</button>
+						     <div id="dropdown-content" class="dropdown-content">
+	                          	<a href="<%= request.getContextPath() %>/adminServlet">Prodotti</a>
+	                          	<a href="<%= request.getContextPath() %>/adminOrdiniServlet">Ordini</a>
+							</div>
 	                    </li>
 	                    <%--
 	                 <%} %>

@@ -9,30 +9,21 @@
 .cat#cat2 {
     color: #00bfff;
 }
-.company-name {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: #ff007f;
-}
-
-.company-name .highlight {
-    color: #00bfff;
-}
 
 h2#prodTit {
 	text-align: center;
 }
 
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 18px;
-    text-align: left;
+    text-align: center;
+    table-layout: auto;
 }
 
-th, td {
+th,td {
     padding: 12px 15px;
     border: 1px solid #dddddd;
 }
@@ -153,3 +144,8 @@ tr:hover {
 	color: white;
 	text-decoration: none;
 }
+
+td.description {
+            width: 200px; /* Larghezza fissa per la descrizione */
+            word-wrap: break-word; /* Permette la divisione delle parole lunghe */
+        }

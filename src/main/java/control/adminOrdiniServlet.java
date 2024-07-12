@@ -11,31 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.prodottiDAO2;
-import model.prodottoBean;
+import model.ordineDAO;
+import model.ordineBean;
 
-public class adminServlet extends HttpServlet {
+public class adminOrdiniServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public adminServlet() {
+    public adminOrdiniServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		/*List<prodottoBean> pSession= (List<prodottoBean>) request.getSession().getAttribute("pSession");
-		if(pSession==null) {
-			pSession= new  ArrayList<prodottoBean>();
-			request.getSession().setAttribute("pSession", pSession);
-		}
-		if(pSession.isEmpty()){*/
-		prodottiDAO2 dao = new prodottiDAO2();
+		ordineDAO dao = new ordineDAO();
 	    try {
-	         List<prodottoBean> products = dao.doRetrieveAll("idProdotti");
-	         //pSession.addAll(products);
-	         request.setAttribute("products", products);
-	         //request.getSession().setAttribute("pSession", pSession);
-	         request.getRequestDispatcher("/admin.jsp").forward(request, response);
+	         List<ordineBean> ordini = dao.doRetrieveAll();
+	         request.setAttribute("ordini", ordini);
+	         request.getRequestDispatcher("/ordine.jsp").forward(request, response);
 	    }   
 	    catch (SQLException e) {
 	    	e.printStackTrace();
@@ -43,9 +35,6 @@ public class adminServlet extends HttpServlet {
 	        request.getRequestDispatcher("/error.jsp").forward(request, response);
 	       
 	     }
-	    /*}else
-			request.getRequestDispatcher("/admin.jsp").forward(request, response);
-		*/
 }
 
 
