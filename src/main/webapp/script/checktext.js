@@ -7,3 +7,20 @@ function controllaEta(eta){
 	  }
 }
 
+function controllaQuantita(quantita){
+	  if (isNaN(quantita.value) || parseInt(quantita.value)<0)
+	  {
+	    alert('La quantità inserita non è corretta');
+	    quantita.value="";
+	    quantita.focus();
+	  }
+}
+
+function controllaPrezzo(prezzo){
+	  if (isNaN(prezzo.value) || prezzo.value<0)
+	  {
+	    alert('Il prezzo inserito non è corretto');
+	    prezzo.value="";
+	    prezzo.focus();
+	  }
+}
