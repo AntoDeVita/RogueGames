@@ -74,4 +74,4 @@ function showPopupElimina(id, nome) {
 		function hidePopupOrdinaData() {
             document.getElementById('popupOrdinaData').style.display = 'none';
             document.getElementById('overlayOrdinaData').style.display = 'none';
-        }}
+        }

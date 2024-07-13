@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
+
 <!DOCTYPE html>
 <html>
 
@@ -66,12 +67,23 @@
 		<% 
 			}
 		%>
-		
+		<%clienteRegBean cl=(clienteRegBean) request.getSession().getAttribute("cl");
+		if(cl!=null){
+		%>
 		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
 		<div id="popupOrdine">
 			<h2 id="prodTit">Prodotto</h2>
 			
 		</div>
+		<%}else{%>
+		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
+		<div id="popupOrdine">
+			<h2 id="prodTit">Devi effettuare la login per poter acquistare i prodotti</h2>
+			
+		</div>
+				<% 
+			}
+		%>
 		
 		<%@ include file="./fragments/Footer.jsp" %>  
 		
