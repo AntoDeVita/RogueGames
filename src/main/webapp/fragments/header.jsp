@@ -24,25 +24,23 @@
                             <input class="dec btn" type="submit" value="Prodotti">
                           </form>
                     </li>
-                    <li>
                     <c:if test="${empty sessionScope.cl}">
+                    <li>
                         <form action="login.jsp" method="POST">
                             <input class="dec btn" type="submit" value="Login">
                           </form>
-                    </c:if>
                     </li>
-                     <li>
+                    </c:if>
+                    <li>
                       	<form action="<%= request.getContextPath() %>/carrello.jsp" method="POST">
     						<input type="hidden" />
     						<input class="dec btn" type="submit" value="Carrello">
 						</form>
                     </li>
-                </ul>
                 <c:if test="${not empty sessionScope.cl}">
-                <ul class="nav-links">
-               		<li>
+                    <li>
                     	<form action="Profilo.jsp" method="POST">
-                            <input class="dec btn" type="submit" value="profilo">
+                            <input class="dec btn" type="submit" value="Profilo">
                           </form>
                     </li>
                     <li>
@@ -59,8 +57,14 @@
 								</div>
 		                </li>
 		         	</c:if>
-                 </ul>
                  </c:if>
+                 	<li>
+                        <form action="<%= request.getContextPath() %>/prodottiServlet" method="POST">
+                            <input type="hidden" name="param" value="idProdotti" />
+                            <input class="dec btn" type="submit" value="Preferiti">
+                    	</form>
+                    </li>
+                 </ul>
                 <div class="search-container">
                     <input type="text" placeholder="Search for products">
                     <button type="button">Cerca</button>

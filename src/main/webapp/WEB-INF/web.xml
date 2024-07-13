@@ -124,4 +124,24 @@
     	<servlet-name>adminOrdiniServlet</servlet-name>
     	<url-pattern>/adminOrdiniServlet</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>creditCardServlet</servlet-name>
+    	<servlet-class>control.creditCardServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>creditCardServlet</servlet-name>
+    	<url-pattern>/creditCardServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>AJXCreditservlet</servlet-name>
+    	<servlet-class>control.AJXCreditservlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>AJXCreditservlet</servlet-name>
+    	<url-pattern>/AJXCreditservlet</url-pattern>
+  	</servlet-mapping>
 </web-app>

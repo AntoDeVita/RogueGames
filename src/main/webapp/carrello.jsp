@@ -25,7 +25,9 @@
 		if(pcart != null && !pcart.isEmpty()){%>
 		<div class="carrelloBtnContainer">
 			<h3><button class="carrelloBtn" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
-			<h3><button style="margin-left: 10px" class="carrelloBtn" onclick="showPopupOrdine()">Conferma Ordine</button></h3>
+			<form action="confermaAcquisto.jsp" method="post">
+                <h3><button style="margin-left: 10px" type="submit" class="carrelloBtn">Procedi all'acquisto</button></h3>
+            </form>
 		</div>
 		
 		<% 	List <pCarrelloBean> cart=pcart.getProdotti();
@@ -66,13 +68,6 @@
 		<% 
 			}
 		%>
-		
-		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
-		<div id="popupOrdine">
-			<h2 id="prodTit">Prodotto</h2>
-			
-		</div>
-		
 		<%@ include file="./fragments/Footer.jsp" %>  
 		
 </body>
