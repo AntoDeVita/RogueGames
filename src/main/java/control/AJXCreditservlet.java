@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AJXCreditservlet
  */
-@WebServlet("/AJXCreditservlet")
 public class AJXCreditservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

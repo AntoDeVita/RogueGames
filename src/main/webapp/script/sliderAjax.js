@@ -1,5 +1,4 @@
-//document.addEventListener("DOMContentLoaded", function() {
-window.onload = function() {
+	document.addEventListener("DOMContentLoaded", function() {
             const genreFantasy = document.getElementById("genreParamFantasy")?.value || "fantasy";
             const genreConsole = document.getElementById("genreParamConsole")?.value || "console";
 
@@ -8,7 +7,7 @@ window.onload = function() {
 
             initializeSlider("#productContainerFantasy", "#prev-slide-fantasy", "#next-slide-fantasy");
             initializeSlider("#productContainerConsole", "#prev-slide-Console", "#next-slide-Console");
-        };
+        });
 
         function fetchProducts(url, containerSelector, params) {
             console.log('Fetching products with params:', params);

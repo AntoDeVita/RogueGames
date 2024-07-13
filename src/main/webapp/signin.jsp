@@ -16,7 +16,7 @@
 						<h2> Sign In </h2>
 						<form action="<%= request.getContextPath() %>/signinServlet"  method="Post">
 							<div class="input-box">
-								<input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required name="txtEmail">
+								<input type="email" required name="txtEmail" autofocus>
 								<label> Email </label>
 							</div>
 							<div class="input-box">
@@ -41,7 +41,7 @@
 							</div>
 							<div class="input-box">
 								<input type="tel" required name="txtTelefono">
-								<label> telefono </label>
+								<label> telefono </label> 
 							</div>
 							<button type="submit" class="btn">Sign in</button>
 						</form>

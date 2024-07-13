@@ -6,7 +6,6 @@
 	    <link rel="stylesheet" href="css/login.css" type="text/css">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
-	    
 	</head>
 	
 	
@@ -24,6 +23,7 @@
 						</div>
 						<div class="input-box">
 							<input type="password" required name="txtPass" minlength="5" maxlenght="15" title="Password must be at least 5 characters long">
+
 							<label> Password </label>
 						</div>
 						<button type="submit" class="btn">Login</button>
