@@ -65,3 +65,13 @@ function showPopupElimina(id, nome) {
             document.getElementById('popupDescrizione').style.display = 'none';
             document.getElementById('overlayDescrizione').style.display = 'none';
         }
+        
+        function showPopupOrdinaData(){
+			document.getElementById('popupOrdinaData').style.display = 'block';
+            document.getElementById('overlayOrdinaData').style.display = 'block';
+		}
+		
+		function hidePopupOrdinaData() {
+            document.getElementById('popupOrdinaData').style.display = 'none';
+            document.getElementById('overlayOrdinaData').style.display = 'none';
+        }

@@ -59,7 +59,7 @@
 						    <button onclick="toggleDropdown()" class="menuTendina">Admin</button>
 						     <div id="dropdown-content" class="dropdown-content">
 	                          	<a href="<%= request.getContextPath() %>/adminServlet">Prodotti</a>
-	                          	<a href="<%= request.getContextPath() %>/adminOrdiniServlet">Ordini</a>
+	                          	<a href="<%= request.getContextPath() %>/adminOrdiniServlet?num=0">Ordini</a>
 							</div>
 	                    </li>
 	                    <%--

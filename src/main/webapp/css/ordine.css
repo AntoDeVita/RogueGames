@@ -46,3 +46,49 @@ tr:nth-child(odd) {
 tr:hover {
     background-color: #f1f1f1;
 }
+
+#popupOrdinaData {
+	display: none; /* Nasconde la finestra per impostazione predefinita */
+	position: fixed; /* Posiziona la finestra in modo fisso */
+	left: 50%; /* Centra la finestra orizzontalmente */
+	top: 50%; /* Centra la finestra verticalmente */
+	transform: translate(-50%, -50%); /* Effettua una traslazione per centrare */
+	border: 2px solid #444; /* Bordo della finestra */
+	background-color: #fff; /* Colore di sfondo della finestra */
+	padding: 20px; /* Padding interno della finestra */
+	z-index: 1000; /* Posiziona la finestra sopra altri elementi */
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Aggiunge un'ombra */
+	}
+		
+#overlayOrdinaData {
+	display: none; /* Nasconde lo sfondo per impostazione predefinita */
+	position: fixed; /* Posiziona lo sfondo in modo fisso */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* Colore e opacità dello sfondo */
+	z-index: 999; /* Posiziona lo sfondo sotto la finestra pop-up ma sopra altri elementi */
+	}
+		
+.btnCont{
+	display: flex;
+	gap:15px;
+}  		
+		
+.adminBtn {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 0.9em;
+	transition: background-color 0.3s;
+	text-decoration: none;
+}
+
+.adminBtn:hover {
+	color: white;
+	text-decoration: none;
+}

@@ -67,4 +67,80 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
         return ordini;
 	}
 
+	@Override
+	public List<ordineBean> doRetrieveAllFromDateXToDateY(String dateX, String dateY) throws SQLException {//stampa tutti gli ordini effettuati dalla dataX fino alla DataY
+			Connection connection = null;
+	        PreparedStatement preparedStatement = null;
+	        List<ordineBean> ordini = new ArrayList<ordineBean>();
+	        String selectSQL = "SELECT * FROM " + ordineDAO.TABLE_NAME + " WHERE Data BETWEEN ? AND ?";
+	        
+	        try {
+	            connection = ds.getConnection();
+	            preparedStatement = connection.prepareStatement(selectSQL);
+	            preparedStatement.setString(1, dateX);
+	            preparedStatement.setString(2, dateY);
+	            
+	            ResultSet rs = preparedStatement.executeQuery();
+
+	            while (rs.next()) {
+	                ordineBean bean = new ordineBean();
+	                
+	                bean.setIdOrdine(rs.getInt("idOrdine"));
+	                bean.setIdProdotto(rs.getInt("idProdotto"));
+	                bean.setEmail(rs.getString("Email"));
+	                bean.setPrezzoTot(rs.getInt("PrezzoTot"));
+	                bean.setQuantita(rs.getInt("Quantita"));
+	                bean.setData(rs.getString("Data"));
+	                ordini.add(bean);
+	            }
+	            
+
+	        } finally {
+	            try {
+	                if (preparedStatement != null)
+	                    preparedStatement.close();
+	            } finally {
+	                if (connection != null)
+	                    connection.close();
+	            }
+	        }
+	        return ordini;
+	}
+
+	@Override
+	public List<ordineBean> doRetrieveAllOrderedByEmail() throws SQLException{//stampa tutti gli ordini ordinati per Email
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        List<ordineBean> ordini = new ArrayList<ordineBean>();
+        String selectSQL = "SELECT * FROM " + ordineDAO.TABLE_NAME + " ORDER BY Email";
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                ordineBean bean = new ordineBean();
+                
+                bean.setIdOrdine(rs.getInt("idOrdine"));
+                bean.setIdProdotto(rs.getInt("idProdotto"));
+                bean.setEmail(rs.getString("Email"));
+                bean.setPrezzoTot(rs.getInt("PrezzoTot"));
+                bean.setQuantita(rs.getInt("Quantita"));
+                bean.setData(rs.getString("Data"));
+                ordini.add(bean);
+            }
+            
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        return ordini;
+	}
 }

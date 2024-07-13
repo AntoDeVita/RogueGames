@@ -25,9 +25,22 @@ public class adminOrdiniServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		ordineDAO dao = new ordineDAO();
 	    try {
-	         List<ordineBean> ordini = dao.doRetrieveAll();
-	         request.setAttribute("ordini", ordini);
-	         request.getRequestDispatcher("/ordine.jsp").forward(request, response);
+	    	int num= Integer.parseInt(request.getParameter("num"));
+	    	if(num==0) {//0- Stampa tutti non ordinati
+		        List<ordineBean> ordini = dao.doRetrieveAll();
+		        request.setAttribute("ordini", ordini);
+		        request.getRequestDispatcher("/ordine.jsp").forward(request, response);
+	    	}else if(num==1) {//1- Stampa tutti ordinati da data x a data y
+	    		String dataX = request.getParameter("dataX");
+	    		String dataY = request.getParameter("dataY");
+	    		List<ordineBean> ordini= dao.doRetrieveAllFromDateXToDateY(dataX, dataY);
+	    		request.setAttribute("ordini", ordini);
+		        request.getRequestDispatcher("/ordine.jsp").forward(request, response);
+	    	}else if(num==2){//2- Stampa tutti ordinati per utente
+	    		List<ordineBean> ordini= dao.doRetrieveAllOrderedByEmail();
+	    		request.setAttribute("ordini", ordini);
+		        request.getRequestDispatcher("/ordine.jsp").forward(request, response);
+	    	}
 	    }   
 	    catch (SQLException e) {
 	    	e.printStackTrace();

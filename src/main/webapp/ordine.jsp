@@ -16,6 +16,8 @@
 	<body>
 		<%@ include file="./fragments/header.jsp" %>
 		<p class="cat">Catalogo<span class="cat" id="cat2"> Ordini</span></p>
+		<a class="adminBtn" style="margin-left: 10px" onclick="showPopupOrdinaData()">Ordina da DataX a DataY</a>
+		<a class="adminBtn" href="<%= request.getContextPath() %>/adminOrdiniServlet?num=2">Ordina Per Utente</a>
 			<table border="1">
 			    <thead>
 			        <tr>
@@ -50,6 +52,21 @@
        	 		%>
 			    </tbody>
 			</table>
+			
+			<div id="overlayOrdinaData" onclick="hidePopupOrdinaData()"></div>
+			<div id="popupOrdinaData">
+				<form action="<%= request.getContextPath() %>/adminOrdiniServlet?num=1" method="POST">
+				    <h2 id="prodTit">Ordina Da DataX a DataY</h2>
+			        <p>DataX: <input type="date" name="dataX"></input></p>
+			        <p>DataY: <input type="date" name="dataY"></input></p>
+			        <div class="btnCont">
+				        <a class="adminBtn" onclick="hidePopupOrdinaData()">Chiudi</a>
+						<input type="hidden" name="act" value="1">
+				       	<input type="submit" class="adminBtn" value="Conferma"></input>
+			        </div>
+		        </form>
+			</div>
+			
 		<%@ include file="./fragments/Footer.jsp" %>   
 	</body>
 </html>
