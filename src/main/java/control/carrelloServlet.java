@@ -41,8 +41,7 @@ public class carrelloServlet extends HttpServlet {
 		    int id=0;
 		    if(i!=null)
 		    	id=Integer.parseInt(i);
-		    System.out.println("act "+act);
-		    System.out.println("id "+id);
+
 
 			try {
 	             
@@ -58,11 +57,9 @@ public class carrelloServlet extends HttpServlet {
 				        break;
 				      case "dec":
 				    	  pcart.getProd(id).decrementaQnt();
-	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
 				        break;
 				      case "inc":
 				    	  pcart.getProd(id).incrementaQnt();
-	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
 				        break;
 				      case "deleteAll":
 				    	  pcart.svuota();

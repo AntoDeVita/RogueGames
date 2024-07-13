@@ -22,6 +22,9 @@
 		<%@ include file="./fragments/header.jsp" %>   
 		<p class="cat">Carrello</p>
 		<%
+	    String sessionToken = UUID.randomUUID().toString();
+	    session.setAttribute("sessionToken", sessionToken);
+	    
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
 		if(pcart != null && !pcart.isEmpty()){%>
 		<div class="carrelloBtnContainer">
@@ -72,9 +75,24 @@
 		%>
 		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
 		<div id="popupOrdine">
-			<h2 id="prodTit">Prodotto</h2>
-			
-		</div>
+			<h2 id="prodTit">Vuoi confermare l'ordine</h2>
+			 <a id="confirmOrderLink" class="cartBtn" href="#" onclick="confirmOrder()">Conferma</a>
+		</div>	 
+		<script>
+		    function confirmOrder() {
+		        // Ottieni il token di sessione dalla pagina
+		        var sessionToken = '<%= session.getAttribute("sessionToken") %>';
+		        
+		        // Costruisci l'URL della servlet con il token di sessione come parametro
+		        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken);
+		        
+		        // Modifica dinamicamente l'attributo href del link per puntare all'URL costruito
+		        document.getElementById('confirmOrderLink').href = servletUrl;
+		        
+		        // Nascondi il popup o esegui altre azioni necessarie
+		        hidePopupOrdine();
+		    }
+		</script>
 		<%}else{%>
 		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
 		<div id="popupOrdine">

@@ -135,7 +135,7 @@
     	<url-pattern>/AJXCreditservlet</url-pattern>
   	</servlet-mapping>
   	
-  	  	<servlet>
+  	<servlet>
     	<servlet-name>modificaProfiloServlet</servlet-name>
     	<servlet-class>control.modificaProfiloServlet</servlet-class>
   	</servlet>
@@ -143,6 +143,16 @@
   	<servlet-mapping>
     	<servlet-name>modificaProfiloServlet</servlet-name>
     	<url-pattern>/modificaProfiloServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>OrdineServlet</servlet-name>
+    	<servlet-class>control.OrdineServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>OrdineServlet</servlet-name>
+    	<url-pattern>/Ordine</url-pattern>
   	</servlet-mapping>
   	
 </web-app>

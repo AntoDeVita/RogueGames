@@ -240,16 +240,15 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
+		prodottoBean bean=doRetrieveByKey(id);
 
-
-		String updateQntSQL = "UPDATE" + prodottiDAO2.TABLE_NAME + "SET Quantita= ? WHERE CODE = ?";
+		String updateQntSQL = "UPDATE " + prodottiDAO2.TABLE_NAME + " SET Quantita= ? WHERE idProdotti = ?";
 
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateQntSQL);
 			
-			preparedStatement.setInt(1, qnt);
+			preparedStatement.setInt(1, bean.getQuantita()-qnt);
 			preparedStatement.setInt(2, id);
 
 			preparedStatement.executeUpdate();
