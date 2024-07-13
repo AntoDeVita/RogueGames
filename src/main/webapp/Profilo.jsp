@@ -3,11 +3,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+	<link rel="shortcut icon" href="#">
     <meta charset="UTF-8">
     <title>Profilo Utente</title>
     <link rel="stylesheet" href="css/Profilo.css" type="text/css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0.min.js"></script>
+	
 </head>
 <body>
 <%@ include file="./fragments/header.jsp" %> 
@@ -51,12 +54,15 @@
                 <div class="detail-item">
                     <h2>Carta di Credito:</h2>
                     <button type="button" class="modify-btn" data-toggle="modal" data-target="#creditCardModal">Aggiungi Carta di Credito</button>
+                    <button type="button" class="modify-btn" id="showCardsBtn">Mostra Carte</button>
+                    <div id="card-container" style="display:none;"></div> <!-- Hide initially -->
                 </div>
-            </div>
+                </div>
+           
         </div>
         
     </div>
-
+<script src="script/AJXCredit.js"></script>
     
     <div class="modal fade" id="creditCardModal" tabindex="-1" role="dialog" aria-labelledby="creditCardModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -69,6 +75,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="<%= request.getContextPath() %>/creditCardServlet" method="post">
+                    <input type="hidden" name="field" value="1">
                         <div class="form-group">
                             <label for="cardNumber">Numero Carta</label>
                             <input type="text" class="form-control" id="cardNumber" name="Cif" required pattern="\d{16}" title="Inserisci un numero di carta valido di 16 cifre">

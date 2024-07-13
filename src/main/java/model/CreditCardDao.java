@@ -2,7 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -25,8 +29,8 @@ public class CreditCardDao implements CreditCardBeanDAO {
         }
 
     private static final String INSERT_CREDIT_CARD_SQL = "INSERT INTO CartaDiCredito (EmailUT, cif, CVV, Scadenza) VALUES (?, ?, ?, ?)";
-	
-    	 
+    private static final String DELATE_CREDIT_CARD_SQL = "DELETE FROM CartaDiCredito  WHERE cif=? && EmailUT=?";
+    private static final String SELECT_CREDIT_CARD_SQL = "SELECT cif FROM CartaDiCredito  WHERE  EmailUT=?";
 
 @Override
     public boolean insertCreditCard(String EmailUT,String Cif,String CVV,String Scadenza) throws SQLException  {
@@ -56,6 +60,76 @@ public class CreditCardDao implements CreditCardBeanDAO {
     private void printSQLException(SQLException ex) {
         ex.printStackTrace();
     }
+    @Override
+    public synchronized void DeleteCard(String EmailUT,String Cif) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(DELATE_CREDIT_CARD_SQL);
+			preparedStatement.setString(1, Cif);
+            preparedStatement.setString(2, EmailUT);
+
+			preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		
+	}
+    
+    @Override
+	public List<String> doRetrieveAll(String Email) throws SQLException {
+        Connection connection = null;
+        
+        PreparedStatement preparedStatement = null;
+
+        List<String> ciffino = new ArrayList<String>();
+        
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(SELECT_CREDIT_CARD_SQL);
+            preparedStatement.setString(1, Email);
+            ResultSet rs = preparedStatement.executeQuery();
+           
+            while (rs.next()) {
+                ciffino.add(rs.getString("cif"));
+               
+            }
+            
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        return ciffino;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 
