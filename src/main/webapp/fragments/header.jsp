@@ -62,22 +62,36 @@
 	                    <%--
 	                 <%} %>
 	                 --%>   
+	                 
                  </ul>
                  </c:if>
+                 <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a href="<%= request.getContextPath() %>/prodottiServlet">Prodotti</a>
+            <c:if test="${empty sessionScope.cl}">
+                <a href="login.jsp">Login</a>
+            </c:if>
+            <a href="<%= request.getContextPath() %>/carrello.jsp">Carrello</a>
+            <c:if test="${not empty sessionScope.cl}">
+                <a href="Profilo2.jsp">Profilo</a>
+                <a href="logout.jsp">Logout</a>
+                <%-- 
+                <%
+                clienteRegBean cl= (clienteRegBean) request.getAttribute("cl");
+                if((cl.getRuolo()).equals("admin")){ %>
+                --%> 
+                <a href="<%= request.getContextPath() %>/adminServlet">Admin</a>
+                <%--
+                <%} %>
+                --%>   
+            </c:if>
+        </div>
+    </div>
+                 
                 <div class="search-container">
                     <input type="text" placeholder="Search for products">
                     <button type="button">Cerca</button>
-                </div>
-                <div class="tendina">
-                	<ul>
-                		<li><a href="#">Prodotto 1</a>
-                			<ul>
-                				<li><a href="#">Prodotto 1</a></li>
-                				<li><a href="#">Prodotto 1</a></li>
-                			</ul>
-                		</li>
-                	
-                	</ul>
                 </div>
                </nav>
 		</header>

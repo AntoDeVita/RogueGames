@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -37,19 +38,23 @@ public class creditCardServlet extends HttpServlet {
 			clienteRegBean cl = (clienteRegBean) session.getAttribute("cl");
     
 			if (cl != null) {
+				int field = Integer.parseInt(request.getParameter("field"));
 				String cif = request.getParameter("Cif");
 				String CVV = request.getParameter("cvv");
 				String Scadenza = request.getParameter("Scadenza");
 				
-        try {
-
-        	
-            boolean success = creditCardDao.insertCreditCard(cl.getEmail(), cif, CVV, Scadenza);
-            
-            if (success==true) 
-            	request.getRequestDispatcher("/Profilo2.jsp").forward(request, response);
-        
-
+				 try {
+		                switch (field) {
+		                	case 1:
+		                		boolean success = creditCardDao.insertCreditCard(cl.getEmail(), cif, CVV, Scadenza);
+		                		if (success==true) 
+		                			request.getRequestDispatcher("/Profilo2.jsp").forward(request, response); 
+		                		break;
+		                	case 2:
+		                		creditCardDao.DeleteCard(cl.getEmail(), cif);
+		                		request.getRequestDispatcher("/Profilo2.jsp").forward(request, response);
+		                		break;
+		                }
     }   
         catch (SQLException e) {
         e.printStackTrace();
