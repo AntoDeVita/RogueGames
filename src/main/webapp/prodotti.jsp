@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/prod.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <script src="script/btnQuantita.js"></script>
 </head>
 <body>
     <%@ include file="./fragments/header.jsp" %>
@@ -26,9 +27,7 @@
         %>
         <div class="prodotto">
         	<div style="text-align: right">
-                <form action="<%= request.getContextPath() %>/preferitiServlet" method="POST">
-					<input type="hidden" name="param" value="<%=bean.getIdProdotti() %>"/>
-                    <input type="hidden" name="act" value="add"/>
+                <form id="preferitiForm">
                     <%
                     boolean isFav= false;
                     if(ppref!=null){
@@ -42,9 +41,9 @@
                     	}
                     }
                     if((ppref!=null) && (isFav==true)){%>
-        				<input type="submit" id="star-button" class="starActive" value="&#9733;">
+                    	<button type="button" class="star active" onclick="deleteButtonPref('<%=bean.getIdProdotti() %>')">&#9733;</button>
         			<%}else{%>
-        				<input type="submit" id="star-button" class="star" value="&#9733;">
+                    	<button type="button" id="btn<%=bean.getIdProdotti()%>" class="star" onclick="addPref(<%=bean.getIdProdotti()%>); changeColor(<%=bean.getIdProdotti()%>);">&#9733;</button>
         			<%}%>
         		</form>
         	</div>
