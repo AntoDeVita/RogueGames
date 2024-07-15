@@ -1,0 +1,106 @@
+		body{
+			background: #0ef;
+		}
+		
+		.cat {
+			margin-top: 20px;
+		    text-align: center;
+		    font-size: 30px;
+		    font-weight: bold;
+		    color: #ff007f;
+		}
+		
+		.contenitore-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			background: white;
+			margin-top: 30px;
+			margin-left: 60px;
+			margin-right: 60px;
+			border-radius: 20px;
+			border-color: black;
+			border: 2px solid #2c4766;
+			align-items: center;
+			}
+		
+		.item-grid {
+			padding: 20px;
+		}
+		
+		.item-grid[data-name="immagine"] {
+			text-align: center;
+		}
+		
+		.item-grid[data-name="quantita"] {
+			text-align: center;
+		}
+		
+		.img {
+			width: 120px;
+			height: 150px;
+			border-radius: 5px;
+			align-self: center;
+		}
+		
+		h1 {
+			font-size: 25px;
+			color: #2c4766;
+		}
+		
+		h2 {
+			font-size: 25px;
+			color: #2c4766;
+		}
+		
+		.set-quantita {
+			width: 30px;
+			height: 25px;
+			text-align: center;
+		}
+		
+		.set-prezzo {
+			width: 100px;
+			height: 55px;
+			text-align: center;
+			border: none;
+		}
+		
+		.divider {
+			margin-top: 30px;
+			margin-right: 50px;
+			margin-left: 50px;
+			border-top: 8px solid #bbb;
+			border-radius: 5px;
+		}
+
+		h2#prodTit {
+			text-align: center;
+		}
+		
+		.carrelloBtnContainer{
+			display: flex;
+			margin-left: 90px;
+		}
+		
+		.carrelloBtnContainer .carrelloBtn {
+			background-color: #007bff;
+		    color: white;
+		    border: none;
+		    padding: 5px 10px;
+		    text-decoration: none;
+		    border-radius: 5px;
+		    font-size: 0.9em;
+		    transition: background-color 0.3s;
+		}
+		
+		.functionButton {
+			background-color: #007bff;
+		    color: white;
+		    border: none;
+		    padding: 5px 10px;
+		    text-decoration: none;
+		    border-radius: 5px;
+		    font-size: 0.9em;
+		    transition: background-color 0.3s;
+		}
+		

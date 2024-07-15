@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,24 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.prodottiDAO2;
 import model.prodottoBean;
-import model.carrello;
-import model.pCarrelloBean;
+import model.preferiti;
+import model.pPreferitiBean;
 import model.clienteRegBean;
 
-public class carrelloServlet extends HttpServlet {
+public class preferitiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public carrelloServlet() {
+    public preferitiServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		 prodottiDAO2 dao = new prodottiDAO2();
-		 carrello pcart = (carrello) request.getSession().getAttribute("pcart");
-		 pCarrelloBean pc;
-			if(pcart == null) {
-				pcart = new carrello();
-				request.getSession().setAttribute("pcart", pcart);
+		 preferiti ppref = (preferiti) request.getSession().getAttribute("ppref");
+		 pPreferitiBean pc;
+			if(ppref == null) {
+				ppref = new preferiti();
+				request.getSession().setAttribute("ppref", ppref);
 			}
 			String act = request.getParameter("act");
 		    String i = request.getParameter("param");
@@ -42,37 +43,30 @@ public class carrelloServlet extends HttpServlet {
 				if(act!=null) {
 					switch (act) {
 				      case "add":
-				    	  pc=new pCarrelloBean(dao.doRetrieveByKey(id));
-				    	  pcart.addCarr(pc);
+				    	  pc=new pPreferitiBean(dao.doRetrieveByKey(id));
+				    	  ppref.addPref(pc);
 				        break;
 				      case "delete":
-				    	  pc=new pCarrelloBean(dao.doRetrieveByKey(id));
-				    	  pcart.removeCarr(pc);
-				        break;
-				      case "dec":
-				    	  pcart.getProd(id).decrementaQnt();
-	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
-				        break;
-				      case "inc":
-				    	  pcart.getProd(id).incrementaQnt();
-	            			System.out.println("Qnt "+pcart.getProd(id).getIdQuantita());
+				    	  pc=new pPreferitiBean(dao.doRetrieveByKey(id));
+				    	  ppref.removePref(pc);
 				        break;
 				      case "deleteAll":
-				    	  pcart.svuota();
+				    	  ppref.svuota();
 				        break;
 				    }
 				}
-
+	            
+				
      } catch (SQLException e) {
          e.printStackTrace();
          request.setAttribute("error", "Database connection failed: " + e.getMessage());
          request.getRequestDispatcher("/error.jsp").forward(request, response);
          return;
-     }	            
-			 request.getSession().setAttribute("pcart", pcart);
-	         request.setAttribute("pcart", pcart);
-
-	         request.getRequestDispatcher("/carrello.jsp").forward(request, response);
+     }
+		    
+			 request.getSession().setAttribute("ppref", ppref);
+	         request.setAttribute("ppref", ppref);
+	         request.getRequestDispatcher("/preferiti.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

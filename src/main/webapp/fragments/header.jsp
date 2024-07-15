@@ -59,7 +59,7 @@
 		         	</c:if>
                  </c:if>
                  	<li>
-                        <form action="<%= request.getContextPath() %>/prodottiServlet" method="POST">
+                        <form action="<%= request.getContextPath() %>/preferiti.jsp" method="POST">
                             <input type="hidden" name="param" value="idProdotti" />
                             <input class="dec btn" type="submit" value="Preferiti">
                     	</form>

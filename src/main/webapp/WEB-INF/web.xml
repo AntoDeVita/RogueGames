@@ -144,4 +144,14 @@
     	<servlet-name>AJXCreditservlet</servlet-name>
     	<url-pattern>/AJXCreditservlet</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<servlet-class>control.preferitiServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<url-pattern>/preferitiServlet</url-pattern>
+  	</servlet-mapping>
 </web-app>

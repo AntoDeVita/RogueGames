@@ -34,7 +34,7 @@
 		Iterator<?> it = cart.iterator();
 		while (it.hasNext()) {
 			pCarrelloBean bean = (pCarrelloBean) it.next();
-	%>
+		%>
 
 		<div class="contenitore-grid">
 				<div class="item-grid" data-name="immagine">
@@ -51,11 +51,11 @@
 				
 		    </div>
 			<div class="item-grid">
-		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly></h2>
+		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly>&#8364;</h4>
 	      	</div>
 	      	
 	      	<div class="item-grid">
-		      	<h5><button class="functionButton" onclick="deleteButton('<%=bean.getIdProdotti() %>')">Rimuovi</button></h2>
+		      	<h5><button class="functionButton" onclick="deleteButton('<%=bean.getIdProdotti() %>')">Rimuovi</button></h5>
 	      	</div>
 	      	</div>
 	      		<%	}
