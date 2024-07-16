@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import model.ordineBean;
 import model.ordineDAO;
 
-@WebServlet("/profiloServlet")
 public class profiloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
