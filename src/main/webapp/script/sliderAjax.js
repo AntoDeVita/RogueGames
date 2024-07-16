@@ -33,16 +33,20 @@
             const productContainer = $(containerSelector);
 
             products.each(function(index) {
+				const id = $(this).find('name').text();
                 const name = $(this).find('name').text();
                 const price = $(this).find('price').text();
                 const imgSrc = $(this).find('img').text();
 
                 const productHTML = 
-                    '<div class="product-item">' +
-                        '<img src="' + imgSrc + '" alt="' + name + '" class="product-image">' +
-                        '<h5>' + name + '</h5>' +
-                        '<h5>' + price + '€</h5>' +
-                    '</div>';
+				    `<div class="product-item">
+				        <a style="text-decoration: none" href="dettagliServlet?param=${id}">
+				            <img src="${imgSrc}" alt="${name}" class="product-image">
+				            <h5>${name}</h5>
+				            <h5>${price}€</h5>
+				        </a>
+				    </div>
+				`;
 
                 productContainer.append(productHTML);
             });

@@ -11,7 +11,7 @@ public class carrello {
         cart = new ArrayList<pCarrelloBean>();
     }
 
-    public void addCarr(pCarrelloBean p) {
+    public int addCarr(pCarrelloBean p) {
         int i=0;
         for(pCarrelloBean prod : cart) {
             if(prod.getIdProdotti()==p.getIdProdotti()) {
@@ -21,15 +21,17 @@ public class carrello {
         }
         if(i==0)
             cart.add(p);
+       return i;
     }
 
-    public void removeCarr(pCarrelloBean p) {
+    public boolean removeCarr(pCarrelloBean p) {
         for(pCarrelloBean prod : cart) {
             if(prod.getIdProdotti()==p.getIdProdotti()) {
                 cart.remove(prod);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public void svuota() {

@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.PCarrelloDAO;
+import model.carrello;
 import model.clienteDAO;
 import model.clienteRegBean;
+import model.pCarrelloBean;
 
 public class loginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -32,15 +37,65 @@ public class loginServlet extends HttpServlet {
         	cl = userDAO.doLogin(username, password);
             
         } catch (SQLException e) {
-            e.printStackTrace();
-            request.setAttribute("error", "Errore di connessione al database: " + e.getMessage());
-            request.getRequestDispatcher("/error.jsp").forward(request, response); // Reindirizza a una pagina di errore generico
-            return ;
+			    e.printStackTrace();
+	            request.setAttribute("error", "Errore di connessione al database: " + e.getMessage());
+	            request.getRequestDispatcher("/error.jsp").forward(request, response); // Reindirizza a una pagina di errore generico
+	            return ;
         }
         if (cl != null) {
             HttpSession session = request.getSession();
             session.setAttribute("cl", cl); // Salva l'utente autenticato nella sessione
-	         request.getRequestDispatcher("/home.jsp").forward(request, response);
+            
+            PCarrelloDAO daoc=new PCarrelloDAO();
+            List <pCarrelloBean> pcarr=new ArrayList<pCarrelloBean>();
+            carrello pcart=(carrello) request.getSession().getAttribute("pcart");
+            
+            try {
+        		pcarr = daoc.doRetrieveAll(cl.getEmail());
+        		
+			} catch (SQLException e) {
+			    e.printStackTrace();
+	            request.setAttribute("error", "Errore di connessione al database: " + e.getMessage());
+	            request.getRequestDispatcher("/error.jsp").forward(request, response); // Reindirizza a una pagina di errore generico
+	            return ;
+			}
+            
+            if(pcart==null) {	
+				pcart = new carrello();
+            	for(pCarrelloBean p : pcarr) {
+            		pcart.addCarr(p);
+            	}
+				request.getSession().setAttribute("pcart", pcart);
+            }else {
+  	
+            	for(pCarrelloBean p : pcarr) {
+            		pcart.addCarr(p);
+            	}
+            	
+            	pcarr=pcart.getProdotti();
+            	
+            	for(pCarrelloBean p : pcarr) {
+            		pCarrelloBean d;
+					int id=p.getIdProdotti();
+					String email=cl.getEmail();
+            		try {
+						if(!daoc.doRetrieveByKey(id, email)) {
+						System.out.println("id "+ p.getIdProdotti());
+								daoc.doSave(p, email);
+						}
+						
+					} catch (SQLException e) {
+						e.printStackTrace();
+			            request.setAttribute("error", "Errore di connessione al database: " + e.getMessage());
+			            request.getRequestDispatcher("/error.jsp").forward(request, response); // Reindirizza a una pagina di errore generico
+			            return ;
+					}
+					
+            	}
+            	
+            	request.getSession().setAttribute("pcart", pcart);
+            }
+	        request.getRequestDispatcher("/home.jsp").forward(request, response);
         }else {
             request.setAttribute("error", "Credenziali errate. Riprova.");
             request.getRequestDispatcher("/login.jsp").forward(request, response); // Reindirizza alla pagina di login

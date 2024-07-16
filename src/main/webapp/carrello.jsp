@@ -80,16 +80,13 @@
 		</div>	 
 		<script>
 		    function confirmOrder() {
-		        // Ottieni il token di sessione dalla pagina
+		        
 		        var sessionToken = '<%= session.getAttribute("sessionToken") %>';
 		        
-		        // Costruisci l'URL della servlet con il token di sessione come parametro
 		        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken);
 		        
-		        // Modifica dinamicamente l'attributo href del link per puntare all'URL costruito
 		        document.getElementById('confirmOrderLink').href = servletUrl;
 		        
-		        // Nascondi il popup o esegui altre azioni necessarie
 		        hidePopupOrdine();
 		    }
 		</script>
