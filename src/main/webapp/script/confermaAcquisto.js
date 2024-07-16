@@ -1,59 +1,74 @@
-// confermaAcquisto.js
-
-// Aggiungi un elemento audio
-const audio = new Audio('Audio/Children.mp3');
-
 document.addEventListener("DOMContentLoaded", function() {
     const acquistaBtn = document.getElementById("acquistaBtn");
     const thankYouPopup = document.getElementById("thankYouPopup");
     const closePopupBtn = document.getElementById("closePopupBtn");
+    const existingAddressSelect = document.getElementById("existingAddressSelect");
+    const existingCardSelect = document.getElementById("existingCardSelect");
+
+    function updateAcquistaButtonState() {
+        acquistaBtn.disabled = !(existingAddressSelect.value && existingCardSelect.value);
+    }
+
+    existingAddressSelect.addEventListener("change", updateAcquistaButtonState);
+    existingCardSelect.addEventListener("change", updateAcquistaButtonState);
 
     acquistaBtn.addEventListener("click", function() {
-        // Mostra il popup di ringraziamento
-        thankYouPopup.style.display = "flex";
-        
-        // Riproduci il suono
-        audio.play();
-        
-        // Avvia i coriandoli
-        startConfetti();
+        if (existingAddressSelect.value && existingCardSelect.value) {
+            // Show the thank you popup
+            thankYouPopup.style.display = "flex";
+
+            // Create and submit the form
+            let numberOfProducts = document.querySelectorAll(".product-item").length; // Adjust selector as needed
+            let form = document.createElement("form");
+            form.method = "POST";
+            form.action = "aggiungiPuntiServlet";
+
+            let input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "numberOfProducts";
+            input.value = numberOfProducts;
+
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
     });
 
     closePopupBtn.addEventListener("click", function() {
-        // Nascondi il popup di ringraziamento
         thankYouPopup.style.display = "none";
-        
-        // Ferma i coriandoli
-        stopConfetti();
     });
 });
 
-// Funzioni per gestire i coriandoli
-const confetti = [];
+let cart = {};
 
-function startConfetti() {
-    for (let i = 0; i < 100; i++) {
-        createConfetti();
+// Funzione per aggiungere prodotti al carrello
+function addProductToCart(productId) {
+    if (cart[productId]) {
+        cart[productId].quantity += 1; // Incrementa la quantità se già presente
+    } else {
+        cart[productId] = { quantity: 1 }; // Aggiungi nuovo prodotto con quantità 1
     }
 }
 
-function stopConfetti() {
-    const confettiElements = document.querySelectorAll('.confetti');
-    confettiElements.forEach(element => element.remove());
+// Funzione per aggiornare il numero totale di prodotti
+function updateTotalProducts() {
+    let totalProducts = Object.values(cart).reduce((sum, product) => sum + product.quantity, 0);
+    
+    // Aggiorna il campo hidden nel form
+    document.getElementById("numberOfProducts").value = totalProducts;
 }
 
-function createConfetti() {
-    const confettiElement = document.createElement('div');
-    confettiElement.className = 'confetti';
-    document.body.appendChild(confettiElement);
+// Esempio di utilizzo della funzione al click di un prodotto
+document.querySelectorAll(".add-to-cart-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        const productId = this.dataset.productId; // Assicurati di avere un data attribute
+        addProductToCart(productId);
+        updateTotalProducts(); // Aggiorna il numero totale di prodotti
+    });
+});
 
-    const colors = ['#FFC107', '#FF5722', '#4CAF50', '#2196F3', '#9C27B0'];
-    confettiElement.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    confettiElement.style.left = Math.random() * 100 + 'vw';
-    confettiElement.style.animationDuration = (Math.random() * 3 + 2) + 's';
 
-    setTimeout(() => {
-        confettiElement.remove();
-        createConfetti();
-    }, Math.random() * 3000 + 2000);
-}
+
+
+
+

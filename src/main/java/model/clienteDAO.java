@@ -154,4 +154,18 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 	    }
 	}
 	
+	public boolean updateClientPoints(String email, int points) {
+        String sql = "UPDATE clientereg SET Punti = ? WHERE Email = ?";
+        try (Connection conn = ds.getConnection(); // Adjust for your connection method
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             
+            stmt.setInt(1, points);
+            stmt.setString(2, email);
+            return stmt.executeUpdate() > 0; // Return true if rows were updated
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // Return false on error
+        }
+    }
+	
 }

@@ -93,4 +93,54 @@
         <servlet-name>creditCardServlet</servlet-name>
         <url-pattern>/creditCardServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AJXCreditservlet</servlet-name>
+        <servlet-class>control.AJXCreditservlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AJXCreditservlet</servlet-name>
+        <url-pattern>/AJXCreditservlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>indirizzoSpedizioneServlet</servlet-name>
+        <servlet-class>control.indirizzoSpedizioneServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>indirizzoSpedizioneServlet</servlet-name>
+        <url-pattern>/indirizzoSpedizioneServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>indirizzoSpedizioneProfiloServlet</servlet-name>
+        <servlet-class>control.indirizzoSpedizioneProfiloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>indirizzoSpedizioneProfiloServlet</servlet-name>
+        <url-pattern>/indirizzoSpedizioneProfiloServlet</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>AJXAddressServlet</servlet-name>
+        <servlet-class>control.AJXAddressServlet</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>AJXAddressServlet</servlet-name>
+        <url-pattern>/AJXAddressServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OrdineServlet</servlet-name>
+        <servlet-class>control.OrdineServlet</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>OrdineServlet</servlet-name>
+        <url-pattern>/OrdineServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

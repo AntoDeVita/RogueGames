@@ -36,24 +36,22 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + prodottiDAO2.TABLE_NAME
-				+ "(idProdotti, Nome, Immagine, Descrizione, CoV, prezzo, CasaProd, Piattaforma, Genere, Tipo, DataRilascio, Quantita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "(Nome, Immagine, Descrizione, CoV, prezzo, CasaProd, Piattaforma, Genere, Tipo, DataRilascio, Quantita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, product.getIdProdotti());
-			preparedStatement.setString(2, product.getNome());
-			preparedStatement.setString(3, product.getImmagine());
-			preparedStatement.setString(4, product.getDescrizione());
-			preparedStatement.setBoolean(5, product.getCoV());
-			preparedStatement.setDouble(6, product.getPrezzo());
-			preparedStatement.setString(7, product.getCasaProduttrice());
-			preparedStatement.setString(8, product.getPiattaforma());
-			preparedStatement.setString(9, product.getGenere());
-			preparedStatement.setString(10, product.getTipo());
-			preparedStatement.setString(11, product.getDataRilascio());
-			preparedStatement.setInt(12, product.getQuantita());
+			preparedStatement.setString(1, product.getNome());
+			preparedStatement.setString(2, product.getImmagine());
+			preparedStatement.setString(3, product.getDescrizione());
+			preparedStatement.setBoolean(4, product.getCoV());
+			preparedStatement.setDouble(5, product.getPrezzo());
+			preparedStatement.setString(6, product.getCasaProduttrice());
+			preparedStatement.setString(7, product.getPiattaforma());
+			preparedStatement.setString(8, product.getGenere());
+			preparedStatement.setString(9, product.getTipo());
+			preparedStatement.setString(10, product.getDataRilascio());
+			preparedStatement.setInt(11, product.getQuantita());
 
 			preparedStatement.executeUpdate();
 
@@ -77,7 +75,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
+
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, id);
 
@@ -196,17 +194,17 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
     }
 
 	@Override
-	public void doUpdate(prodottoBean product) throws SQLException {
+	public void doUpdate(prodottoBean product, int id) throws SQLException {
 		Connection connection=null;
 		PreparedStatement preparedStatement = null;
 		
 		
-		String updateQntSQL = "UPDATE" + prodottiDAO2.TABLE_NAME + "SET Nome=?, Descrizione=?, CoV=?, prezzo=?, CasaProd=?, Piattaforma=?, Genere=?, Tipo=?, DataRilascio=?, Quantita=?, Immagine=? WHERE CODE = ?";
+		String updateSQL = "UPDATE " + prodottiDAO2.TABLE_NAME + " SET Nome=?, Descrizione=?, CoV=?, prezzo=?, CasaProd=?, Piattaforma=?, Genere=?, Tipo=?, DataRilascio=?, Quantita=?, Immagine=? WHERE idProdotti= ?";
 		
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(false);
-			preparedStatement = connection.prepareStatement(updateQntSQL);
+			preparedStatement = connection.prepareStatement(updateSQL);
 
 
 			preparedStatement.setString(1, product.getNome());
@@ -220,10 +218,10 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 			preparedStatement.setString(9, product.getDataRilascio());
 			preparedStatement.setInt(10, product.getQuantita());
 			preparedStatement.setString(11, product.getImmagine());
-			preparedStatement.setInt(12, product.getIdProdotti());
-			
+			preparedStatement.setInt(12, id);
 			preparedStatement.executeUpdate();
-
+			connection.commit();
+			
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -242,16 +240,15 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
+		prodottoBean bean=doRetrieveByKey(id);
 
-
-		String updateQntSQL = "UPDATE" + prodottiDAO2.TABLE_NAME + "SET Quantita= ? WHERE CODE = ?";
+		String updateQntSQL = "UPDATE " + prodottiDAO2.TABLE_NAME + " SET Quantita= ? WHERE idProdotti = ?";
 
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateQntSQL);
 			
-			preparedStatement.setInt(1, qnt);
+			preparedStatement.setInt(1, bean.getQuantita()-qnt);
 			preparedStatement.setInt(2, id);
 
 			preparedStatement.executeUpdate();
@@ -320,21 +317,20 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 	
 	@Override
 	public List<prodottoBean> doRetrieveByPlat(String plat) throws SQLException {
-		// TODO Auto-generated method stub
-		Connection connection = null;
+Connection connection = null;
 		
 		PreparedStatement preparedStatement = null;
 		
 
 		List<prodottoBean> products = new ArrayList<prodottoBean>();
 
-		String selectSQL = "SELECT * FROM prodotti WHERE Genere = \"Fantasy\"";
-
-
+		String selectSQL = "SELECT * FROM " + prodottiDAO2.TABLE_NAME + " WHERE Piattaforma = ?";
+		
+		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-
+			preparedStatement.setString(1, plat);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
@@ -368,5 +364,4 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		}
 		return products;
 	}
-	
 }
