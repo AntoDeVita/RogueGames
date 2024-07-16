@@ -143,4 +143,42 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
         }
         return ordini;
 	}
+	
+	@Override 
+	public List<ordineBean> doRetrieveForClient(String Email) throws SQLException{
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        List<ordineBean> ordiniUtente = new ArrayList<ordineBean>();
+        String selectSQL = "SELECT idOrdine, idProdotto, PrezzoTot, Quantita, Data FROM " + ordineDAO.TABLE_NAME + " WHERE Email=? ORDER BY Data";
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, Email);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                ordineBean bean = new ordineBean();
+                
+                bean.setIdOrdine(rs.getInt("idOrdine"));
+                bean.setIdProdotto(rs.getInt("idProdotto"));
+                bean.setPrezzoTot(rs.getInt("PrezzoTot"));
+                bean.setQuantita(rs.getInt("Quantita"));
+                bean.setData(rs.getString("Data"));
+                ordiniUtente.add(bean);
+            }
+            
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        return ordiniUtente;
+	}
+
 }

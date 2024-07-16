@@ -13,7 +13,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="script/AJXCredit.js"></script>
-	
+	<script src="script/Popup.js"></script>
 </head>
 <body>
 <%@ include file="./fragments/header.jsp" %> 
@@ -21,6 +21,13 @@
     clienteRegBean cl = (clienteRegBean) request.getSession().getAttribute("cl");
     if (cl != null) {
 %>
+	<div>
+		<form action="<%= request.getContextPath() %>/profiloServlet" method="POST">
+			<input type="hidden" name="param" value="<%=cl.getEmail()%>">
+			<input type="submit" class="adminBtn" value="Cronologia Ordini">
+		</form>
+	</div>
+	
     <div class="profile-container">
         <div class="profile-header">
             <h1>Profilo Utente</h1>

@@ -76,6 +76,10 @@ body {
     align-self: right;
 }
 
+.star:focus {
+	outline: none;
+}
+
 .active {
     color: #FDD017;
 }

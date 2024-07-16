@@ -75,3 +75,15 @@ function showPopupElimina(id, nome) {
             document.getElementById('popupConfermaOrdine').style.display = 'none';
             document.getElementById('overlayConfermaOrdine').style.display = 'none';
         }
+        
+        function showPopupCronologia(Email){
+			document.getElementById('popupCronologia').style.display = 'block';
+            document.getElementById('overlayCronologia').style.display = 'block';
+            
+		}
+		
+		function hidePopupCronologia() {
+            document.getElementById('popupCronologia').style.display = 'none';
+            document.getElementById('overlayCronologia').style.display = 'none';
+        }
+        
