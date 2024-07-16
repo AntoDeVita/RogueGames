@@ -27,7 +27,7 @@
                 fieldValue = cl.getTelefono();
                 break;
             case "password":
-                fieldValue = ""; // Non mostrare la password
+                fieldValue = "";
                 break;
             default:
                 fieldValue = "Campo non valido";

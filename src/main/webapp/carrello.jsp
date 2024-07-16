@@ -22,8 +22,8 @@
 		<%@ include file="./fragments/header.jsp" %>   
 		<p class="cat">Carrello</p>
 		<%
-	    String sessionToken = UUID.randomUUID().toString();
-	    session.setAttribute("sessionToken", sessionToken);
+	    //String sessionToken = UUID.randomUUID().toString();
+	    //session.setAttribute("sessionToken", sessionToken);
 	    
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
 		if(pcart != null && !pcart.isEmpty()){%>
@@ -81,13 +81,15 @@
 		<script>
 		    function confirmOrder() {
 		        
-		        var sessionToken = '<%= session.getAttribute("sessionToken") %>';
+		        <%--var sessionToken = '<%= session.getAttribute("sessionToken") %>';
 		        
 		        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken);
 		        
-		        document.getElementById('confirmOrderLink').href = servletUrl;
+		        document.getElementById('confirmOrderLink').href = servletUrl;--%>
 		        
+		        window.location.href='confermaAcquisto.jsp';
 		        hidePopupOrdine();
+		        
 		    }
 		</script>
 		<%}else{%>
@@ -104,3 +106,7 @@
 		
 </body>
 </html>
+
+
+
+
