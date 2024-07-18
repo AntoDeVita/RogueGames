@@ -49,7 +49,7 @@
                 </div>
                 <div class="detail-item">
                     <h2>Email:</h2>
-                    <p><%= cl.getEmail() %></p>
+                    <p id="single"><%= cl.getEmail() %></p>
                 </div>
                 <div class="detail-item">
                     <h2>Telefono:</h2>
@@ -68,7 +68,7 @@
 				</div>
 				<div class="detail-item">
                     <h2>Punti:</h2>
-                    <p><%= cl.getPunti() %></p>
+                    <p id="single"><%= cl.getPunti() %></p>
                 </div>
                 </div>
            <div id="deleteCardsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="deleteCardsModalLabel" aria-hidden="true">

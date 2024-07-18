@@ -25,6 +25,7 @@ public class dettagliServlet extends HttpServlet {
 
 		 prodottiDAO2 dao = new prodottiDAO2();
 		 int id= Integer.parseInt(request.getParameter("param"));
+		 System.out.println(id);
 			try {
 	             prodottoBean p=dao.doRetrieveByKey(id);
 		         request.setAttribute("p", p);

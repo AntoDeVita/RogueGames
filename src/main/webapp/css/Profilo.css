@@ -67,6 +67,11 @@ h2#prodTit {
     color: #555;
 }
 
+#single{
+	flex-grow: 1;
+	text-align: center;
+}
+
 .modify-btn {
     background-color: #007bff;
     color: white;
@@ -128,4 +133,3 @@ h2#prodTit {
     font-size: 0.9em;
     transition: background-color 0.3s;
 }
-
