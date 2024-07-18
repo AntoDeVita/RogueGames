@@ -123,6 +123,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 				bean.setDataRilascio(rs.getString("DataRilascio"));
 				bean.setQuantita(rs.getInt("Quantita"));
 				bean.setImmagine(rs.getString("Immagine"));
+				bean.setVideo(rs.getString("Video"));
 
 			}
 
