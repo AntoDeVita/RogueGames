@@ -11,10 +11,12 @@ body {
     font-weight: bold;
     color: #ff007f;
 }
-#carrello{
-	background: #00bfff;
-	color: white;
+
+#carrello {
+    background: #00bfff;
+    color: white;
 }
+
 .company-name .highlight {
     color: #00bfff;
 }
@@ -77,9 +79,28 @@ body {
 }
 
 .star:focus {
-	outline: none;
+    outline: none;
 }
 
 .active {
     color: #FDD017;
+}
+
+/* Media Queries per Schermi Mobili e Tablet */
+@media (max-width: 1200px) {
+    .prodotto {
+        width: calc(33.333% - 20px); /* 3 colonne */
+    }
+}
+
+@media (max-width: 768px) {
+    .prodotto {
+        width: calc(50% - 20px); /* 2 colonne */
+    }
+}
+
+@media (max-width: 480px) {
+    .prodotto {
+        width: 100%; /* 1 colonna */
+    }
 }

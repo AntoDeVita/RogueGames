@@ -131,4 +131,8 @@ h2#prodTit {
     font-size: 0.9em;
     transition: background-color 0.3s;
 }
+#single{
+    flex-grow: 1;
+    text-align: center;
+}
 

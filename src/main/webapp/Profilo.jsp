@@ -45,7 +45,7 @@
                 </div>
                 <div class="detail-item">
                     <h2>Email:</h2>
-                    <p><%= cl.getEmail() %></p>
+                    <p id="single"><%= cl.getEmail() %></p>
                 </div>
                 <div class="detail-item">
                     <h2>Telefono:</h2>

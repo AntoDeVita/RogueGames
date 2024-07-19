@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -10,23 +9,26 @@ body {
     height: 100vh;
 }
 
-/* Container Styles */
 .logout-container {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    max-width: 400px; /* Imposta una larghezza massima per evitare che il contenuto diventi troppo largo sui dispositivi più grandi */
+    width: 90%; /* La larghezza si adatta al 90% dello schermo */
 }
 
 .logout-container h1 {
     margin: 0 0 10px;
     color: #333;
+    font-size: 1.5em; /* Adatta la dimensione del font */
 }
 
 .logout-container p {
     margin: 0 0 20px;
     color: #666;
+    font-size: 1em; /* Adatta la dimensione del font */
 }
 
 .logout-container a {
@@ -36,8 +38,12 @@ body {
     background-color: #007bff;
     text-decoration: none;
     border-radius: 5px;
+    font-size: 1em; /* Adatta la dimensione del font */
 }
 
 .logout-container a:hover {
     background-color: #0056b3;
 }
+
+/* Media Queries per Tablet e Dispositivi più Piccoli */
+

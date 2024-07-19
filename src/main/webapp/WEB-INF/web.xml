@@ -3,7 +3,7 @@
   <display-name>RogueGame</display-name>
   
   <welcome-file-list>
-    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>NewFile.jsp</welcome-file>
   </welcome-file-list>
 
   <resource-ref>

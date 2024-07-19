@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/home.css" type="text/css">
+    <link rel="stylesheet" href="css/home2.css" type="text/css">
 	<script src="script/slider.js" defer></script> 
 	<script src="script/sliderAjax.js" defer></script>
 </head>
