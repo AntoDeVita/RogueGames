@@ -25,12 +25,12 @@ public class aggiungiPuntiServlet extends HttpServlet {
                 int numberOfProducts = Integer.parseInt(request.getParameter("numberOfProducts"));
                 int pointsToAdd = numberOfProducts * 5;
 
-                // Update points in the client object
+                
                 cliente.addPunti(pointsToAdd);
 
-                // Update the points in the database
-                clienteDAO clienteDAO = new clienteDAO(); // Ensure this DAO is properly implemented
-                boolean updated = clienteDAO.updateClientPoints(cliente.getEmail(), cliente.getPunti()); // Method to update points
+                      
+                clienteDAO clienteDAO = new clienteDAO(); 
+                boolean updated = clienteDAO.updateClientPoints(cliente.getEmail(), cliente.getPunti());     
 
                 if (updated) {
                     session.setAttribute("cl", cliente);

@@ -117,6 +117,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 					bean.setIndirizzo(rs.getString("Indirizzo"));
 					bean.setTelefono(rs.getString("Tel"));
 					bean.setRuolo(rs.getString("Ruolo"));
+					bean.setPunti(rs.getInt("Punti"));
 				}
 			
 			

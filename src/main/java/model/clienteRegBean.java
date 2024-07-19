@@ -15,7 +15,7 @@ public class clienteRegBean implements Serializable {
 	private String ruolo;
 	
 	public clienteRegBean() {
-		this.punti = 0;
+		
 	}
 
 	public String getEmail() {
@@ -82,12 +82,16 @@ public class clienteRegBean implements Serializable {
 		this.ruolo = ruolo;
 	}
 	
-	 public void addPunti(int punti) {
-	        this.punti += punti; 
-	    }
+	public void setPunti(int punti) {
+	    this.punti = punti; 
+	}
+	
+	public void addPunti(int punti) {
+		this.punti += punti; 
+    }
 	    
-	    public int getPunti() {
-	        return punti;
-	    }
+    public int getPunti() {
+    	return punti;
+	}
 	    
 }

@@ -195,4 +195,14 @@
         <url-pattern>/AJXAddressServlet</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+    	<servlet-name>profiloServlet</servlet-name>
+    	<servlet-class>control.profiloServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>profiloServlet</servlet-name>
+    	<url-pattern>/profiloServlet</url-pattern>
+  	</servlet-mapping>
+    
 </web-app>

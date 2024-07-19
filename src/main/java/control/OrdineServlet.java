@@ -23,17 +23,12 @@ import model.*;
 public class OrdineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public OrdineServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session = request.getSession(false);
 	        if (session == null) {
@@ -49,22 +44,24 @@ public class OrdineServlet extends HttpServlet {
 	            return;
 	        }
 
-	        // Genera un nuovo token per prevenire la riutilizzazione del token
 	        sessionToken = UUID.randomUUID().toString();
 	        session.setAttribute("sessionToken", sessionToken);
 
 	        clienteRegBean cl = (clienteRegBean) session.getAttribute("cl");
 	        carrello pcart = (carrello) session.getAttribute("pcart");
 			ordineDAO dao=new ordineDAO();
+			
+			String sc= request.getParameter("sc");
+			
 			List <pCarrelloBean> cart=pcart.getProdotti();
 			Iterator<?> it = cart.iterator();
-			
+			int i=0;
 			if(cl!=null) {
 				List <ordineBean> ordine= new ArrayList <ordineBean>();
-				
-				double prezzoTot=pcart.prezzoTot();
+				double prezzoTot=pcart.prezzoTot()-Double.parseDouble(sc);
 			   
 				while (it.hasNext()) {
+					i++;
 					pCarrelloBean bean = (pCarrelloBean) it.next();
 					ordineBean order=new ordineBean();
 					order.setIdProdotto(bean.getIdProdotti());
@@ -73,8 +70,19 @@ public class OrdineServlet extends HttpServlet {
 					order.setQuantita(bean.getIdQuantita());
 					ordine.add(order);
 				}
+				i=i*5;
+				cl.addPunti(i);
+				int s=Integer.parseInt(sc);
 				try {
+					
 					dao.doSave(ordine);
+					
+	                clienteDAO clienteDAO = new clienteDAO();
+	                boolean updated = clienteDAO.updateClientPoints(cl.getEmail(), (cl.getPunti()-(s*10))); 
+	                
+	                PCarrelloDAO daoc = new PCarrelloDAO();
+	                daoc.doDeleteAll(cl.getEmail());
+	                
 				}catch (SQLException e) {
 			    	e.printStackTrace();
 			        request.setAttribute("error", "Database connection failed: " + e.getMessage());
@@ -86,15 +94,13 @@ public class OrdineServlet extends HttpServlet {
 		        request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
 			
-	        request.getRequestDispatcher("/home.jsp").forward(request, response);
-	        pcart.svuota();
+			pcart.svuota();
+	        request.getRequestDispatcher("/carrello.jsp").forward(request, response);
+	  
 		}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

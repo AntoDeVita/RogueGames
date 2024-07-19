@@ -66,8 +66,30 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="total-price">Prezzo Totale: € <%=totalPrice %></div>
-                        <h5>Seleziona un Indirizzo Esistente</h5>
+                        <div class="total-price">Prezzo Totale: € <%=totalPrice%></div>
+                        <div class="form-punti">
+                        <select id="punti" name="Punti">
+                            <option value="0">Seleziona Sconto</option>
+                            <%if(cliente.getPunti()>=100){%>
+                                <option value="10">
+                                   10&euro;
+                                </option>
+                                <% } %>
+                            <%if(cliente.getPunti()>=200){%>
+                                <option value="20">
+                                   20&euro;
+                                </option>
+                                <% } %>
+                            <%if(cliente.getPunti()>=300){%>
+                                <option value="30">
+                                   30&euro;
+                              </option>
+                             <% } %>
+                                                    
+                        </select>
+                        </div>
+                        
+                       <h5>Seleziona un Indirizzo Esistente</h5>
                         <select class="form-control" id="existingAddressSelect" name="existingAddress">
                             <option value="">Seleziona Indirizzo</option>
                             <% for (IndirizzoSpedizioneBean indirizzo : indirizzi) { %>
@@ -85,25 +107,26 @@
                                 </option>
                             <% } %>
                         </select>
-                        <hr>
-                        
-                        <form action="" method="post">
-                            <!--  <input type="hidden" name="numberOfProducts" value="<%= pcart.getTotalQuantity() %>"> <!-- Total quantity -->
-                            <button type="submit" id="acquistaBtn" class="btn btn-purchase" onclick="confirmOrder()">Acquista</button>
-                        </form>
-			                       
-			            <script>
-					    function confirmOrder() {
-					        
-					        var sessionToken = '<%= session.getAttribute("sessionToken") %>';
-					        
-					        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken);
-					        
-					        document.getElementById('confirmOrderLink').href = servletUrl;
-					        
-					        hidePopupOrdine();
-					    }
-						</script>
+                       				
+						 <a id="confirmOrderLink" id="acquistaBtn" class="btn btn-purchase" text-align="center" href="#" onclick="confirmOrder()">Conferma</a>
+					</div>	 
+					<script>
+				    function confirmOrder() {
+				        
+				    	var sc= document.getElementById('punti').value;
+				    	console.log('Fetching:', sc);
+				    	
+				        var sessionToken = '<%= session.getAttribute("sessionToken") %>';
+				        
+				        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken)+'&sc='+sc;
+				        
+				        document.getElementById('confirmOrderLink').href = servletUrl;
+				        
+				        hidePopupOrdine();
+				    }
+					</script>
+
+                        <hr>                   		                       
                         
                     </div>
                 </div>

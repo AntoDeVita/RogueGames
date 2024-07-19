@@ -66,8 +66,10 @@
 					<button type="button" class="modify-btn" id="deleteAddressesBtn" data-toggle="modal" data-target="#addressModal">Elimina Indirizzi</button>
             	</div>
             	<div class="detail-item">
-    				<h2>Cronologia Acquisti:</h2>
-    				<a href="cronologiaAcquisti.jsp" class="modify-btn">Visualizza Cronologia</a>
+            		<form action="<%= request.getContextPath() %>/profiloServlet" method="POST">
+            			<input type="hidden" name="param" value="<%=cl.getEmail()%>">
+            			<input type="submit" class="adminBtn" value="Cronologia Ordini">
+        			</form>
 				</div>
 				<div class="detail-item">
     				<h2>Punti:</h2>

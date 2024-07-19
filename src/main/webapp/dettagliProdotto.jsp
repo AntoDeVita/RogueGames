@@ -18,7 +18,7 @@
 		<%@ include file="./fragments/header.jsp" %>   
 		
 		<%
-            if (p != null) {
+            if (p.getNome() != null) {
         %>
 		<div class="main">
 			<strong class="titoloProd"><%=p.getNome() %></strong>
@@ -57,8 +57,13 @@
 			</div>
 		</div>
 		<%
-			}
-        %>
+			}else {
+		     %>
+		    <h2>No product available</h2>
+		   <%
+		            }
+		   %>
+        
 		
 		<%@ include file="./fragments/Footer.jsp" %>
 	</body>

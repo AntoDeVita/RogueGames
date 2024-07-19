@@ -16,31 +16,35 @@
 	            </a>
 	            <h1 class="company-name">Rogue<span class="highlight">Games</span></h1>
         	</div>
-<nav>
+			<nav>
+			<div class="search-container">
+                <img src="images/lenteSymbol.png" alt="Search" class="search-icon" onclick="toggleSearchBar()">
+                <input type="search" name="search" id="searchbar" class="searchbar-hidden" placeholder="Cerca nel catalogo..." onkeyup="cercaProdotti(this.value)">
+                <div class="risultati-search" id="risultati-search"></div>
+            </div>
                 <ul class="nav-links">
                     <li>
                         <form action="<%= request.getContextPath() %>/prodottiServlet" method="POST">
                             <input type="hidden" name="param" value="idProdotti" />
                             <input class="dec btn" type="submit" value="Prodotti">
+                            <input type="hidden" name="stampa" value="tutto">
                           </form>
                     </li>
-                    <li>
                     <c:if test="${empty sessionScope.cl}">
+                    <li>
                         <form action="login.jsp" method="POST">
                             <input class="dec btn" type="submit" value="Login">
                           </form>
-                    </c:if>
                     </li>
-                     <li>
+                    </c:if>
+                    <li>
                       	<form action="<%= request.getContextPath() %>/carrello.jsp" method="POST">
     						<input type="hidden" />
     						<input class="dec btn" type="submit" value="Carrello">
 						</form>
                     </li>
-                </ul>
                 <c:if test="${not empty sessionScope.cl}">
-                <ul class="nav-links">
-               		<li>
+                    <li>
                     	<form action="Profilo.jsp" method="POST">
                             <input class="dec btn" type="submit" value="Profilo">
                           </form>
@@ -59,37 +63,71 @@
 								</div>
 		                </li>
 		         	</c:if>
-                 </ul>
                  </c:if>
-                 <div class="dropdown">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-            <a href="<%= request.getContextPath() %>/prodottiServlet">Prodotti</a>
-            <c:if test="${empty sessionScope.cl}">
-                <a href="login.jsp">Login</a>
-            </c:if>
-            <a href="<%= request.getContextPath() %>/carrello.jsp">Carrello</a>
-            <c:if test="${not empty sessionScope.cl}">
-                <a href="Profilo2.jsp">Profilo</a>
-                <a href="logout.jsp">Logout</a>
-                <%-- 
-                <%
-                clienteRegBean cl= (clienteRegBean) request.getAttribute("cl");
-                if((cl.getRuolo()).equals("admin")){ %>
-                --%> 
-                <a href="<%= request.getContextPath() %>/adminServlet">Admin</a>
-                <%--
-                <%} %>
-                --%>   
-            </c:if>
-        </div>
-    </div>
-                 
-                <div class="search-container">
-                    <input type="text" placeholder="Search for products">
-                    <button type="button">Cerca</button>
-                </div>
+                 	<li>
+                        <form action="<%= request.getContextPath() %>/preferiti.jsp" method="POST">
+                            <input type="hidden" name="param" value="idProdotti" />
+                            <input class="dec btn" type="submit" value="Preferiti">
+                    	</form>
+                    </li>
+                 </ul>
                </nav>
 		</header>
+		<script>
+		
+			function toggleSearchBar() {
+	            var searchBar = document.getElementById("searchbar");
+	            if (searchBar.classList.contains("searchbar-hidden")) {
+	                searchBar.classList.remove("searchbar-hidden");
+	                searchBar.classList.add("searchbar-visible");
+	            } else {
+	                searchBar.classList.remove("searchbar-visible");
+	                searchBar.classList.add("searchbar-hidden");
+	            }
+	        }
+		
+			function cercaProdotti(query) {
+				if (query.trim() !== "") {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							mostraProdotti(JSON.parse(this.responseText));
+						}
+					};
+					xhttp.open("GET", "<%=request.getContextPath()%>/ricercaAction?query=" + query, true);
+					xhttp.send();
+				} else {
+					mostraProdotti([]);
+				}
+			}
+			
+			function mostraProdotti(prodotti) {
+				var risultatiContainer = document.getElementById("risultati-search");
+				risultatiContainer.innerHTML = "";
+
+				if (prodotti.length === 0) {
+					risultatiContainer.style.display = 'none';
+					return;
+				}
+
+				prodotti.forEach(function(prodotto) {
+					var prodottoDiv = document.createElement("div");
+					prodottoDiv.classList.add("risultato-item");
+
+					var nomeLink = document.createElement("a");
+	                nomeLink.textContent = prodotto.nome;
+	                nomeLink.href = "<%=request.getContextPath()%>/dettagliServlet?param=" + prodotto.idProdotti;
+	                nomeLink.classList.add("risultato-link");
+	                prodottoDiv.appendChild(nomeLink);
+
+					// Puoi aggiungere ulteriori dettagli del prodotto qui, come immagini, descrizioni, ecc.
+
+					risultatiContainer.appendChild(prodottoDiv);
+				});
+
+				risultatiContainer.style.display = 'block';
+				}
+		</script>
+		
 	</body>
 </html>
