@@ -23,7 +23,8 @@
 			            <th id="a">Id</th>
 			            <th id="b">Nome</th>
 			            <th id="a">Immagine</th>
-			            <th id="b">Descrizione</th>
+			            <th id="b">Video</th>
+			            <th id="a">Descrizione</th>
 			            <th id="b">Prezzo</th>
 			            <th id="a">Casa Produttrice</th>
 			            <th id="b">Piattaforma</th>
@@ -43,6 +44,7 @@
 			            <td><%=bean.getIdProdotti() %></td>
 			            <td><%=bean.getNome() %></td>
 			            <td><%=bean.getImmagine() %></td>
+			            <td><%=bean.getVideo() %></td>
 			            <td><button class="adminBtn"  id="descr" onclick="showPopupDescrizione('<%=bean.getDescrizione() %>')">Visualizza Descrizione</button></td>
 			            <td><%=bean.getPrezzo() %></td>
 			            <td><%=bean.getCasaProduttrice() %></td>
@@ -51,7 +53,7 @@
 			            <td><%=bean.getTipo() %></td>
 			            <td><%=bean.getDataRilascio() %></td>
 			            <td><%=bean.getQuantita() %></td>
-			            <td><button class="adminBtn" onclick="showPopupModifica('<%=bean.getIdProdotti() %>','<%=bean.getNome() %>','<%=bean.getImmagine() %>','<%=bean.getDescrizione() %>','<%=bean.getCoV() %>','<%=bean.getPrezzo() %>','<%=bean.getCasaProduttrice() %>','<%=bean.getPiattaforma() %>','<%=bean.getGenere() %>','<%=bean.getTipo() %>','<%=bean.getDataRilascio() %>','<%=bean.getQuantita() %>')">Modifica</button>
+			            <td><button class="adminBtn" onclick="showPopupModifica('<%=bean.getIdProdotti() %>','<%=bean.getNome() %>','<%=bean.getDescrizione() %>','<%=bean.getCoV() %>','<%=bean.getPrezzo() %>','<%=bean.getCasaProduttrice() %>','<%=bean.getPiattaforma() %>','<%=bean.getGenere() %>','<%=bean.getTipo() %>','<%=bean.getDataRilascio() %>','<%=bean.getQuantita() %>')">Modifica</button>
 			        	<button style="margin-top:10px" class="adminBtn" onclick="showPopupElimina('<%=bean.getIdProdotti() %>','<%=bean.getNome() %>')">Elimina</button></td> 
 			        </tr>
 			    <%
@@ -71,7 +73,8 @@
 			    <h2 id="prodTit">Prodotto</h2>
 		        <p>Id Prodotto: <span id="idProdotto"></span></p>
 		        <p>Nome: <input type="text" id="nome" name="nome"></input></p>
-		        <p>Immagine: <input type="text" id="img" name="img"></input></p>
+		        <p>Immagine: <input type="file" id="img" name="img"></input></p>
+		        <p>Video: <input type="file" id="video" name="video"></input></p>
 		        	<div style="display:flex">
 						<p>Descrizione: </p>
 						<textarea style="margin-left:5px" id="dsc" name="dsc" placeholder="Descrizione"></textarea>
@@ -99,7 +102,7 @@
 		        <p>Data Rilascio: <input type="date" id="releaseDate" name="releaseDate"></input></p>
 		        <p>Quantità: <input type="number" id="qnt" name="qnt" onblur="controllaQuantita(this)"></input></p>
 		        <div class="btnCont">
-			        <button class="adminBtn" onclick="hidePopupModifica()">Chiudi</button>
+				    <a class="adminBtn" onclick="hidePopupModifica()">Chiudi</a>
 					<input type="hidden" name="act" value="3">
 					<input type="hidden" id="id2" name="idProdotto" value="">
 			       	<input type="submit" class="adminBtn" value="Conferma"></input>
@@ -126,7 +129,8 @@
 				<form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST"><%--Bottone Conferma Aggiunta act= 2 --%>
 				    <h2 id="prodTit">Aggiungi Prodotto</h2>
 			        <p>Nome: <input type="text" name="nome" placeholder="Nome"></input></p>
-			        <p>Immagine: <input type="file" name=img placeholder="Es.images/img.jpg"></input></p>
+			        <p>Immagine: <input type="file" name="img" placeholder="Es.images/img.jpg"></input></p>
+			        <p>Video: <input type="file" name="video" placeholder="Es. video/video.mp4"></input></p>
 			        <div style="display:flex">
 				        <p>Descrizione: </p>
 				        <textarea style="margin-left:5px" name="dsc" placeholder="Descrizione"></textarea>

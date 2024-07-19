@@ -19,7 +19,13 @@
 <body>
     <%@ include file="./fragments/header.jsp" %>
     <h1 class="company-name">Catalogo<span class="highlight"> Prodotti</span></h1>
-
+	
+	<form action="<%= request.getContextPath() %>/prodottiServlet" method="POST">
+		<input type="hidden" name="stampa" value="anno">
+		<input type="hidden" name="param" value="DataRilascio">
+		<input type="submit" style="margin-left: 60px" class="adminBtn" value="Ordina per Data Rilascio">
+	</form>
+	
     <div class="catalogo">
         <%
             if (products != null && !products.isEmpty()) {

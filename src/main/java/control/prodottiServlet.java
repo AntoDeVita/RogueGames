@@ -26,21 +26,24 @@ public class prodottiServlet extends HttpServlet {
             throws ServletException, IOException {
 
             String i = request.getParameter("param");
+            String stampa = request.getParameter("stampa");
             prodottiDAO2 dao = new prodottiDAO2();
-            
-            
-            //List<prodottoBean> products = (List<prodottoBean>) request.getSession().getAttribute("pSession");
-            /*if(products==null) {
-            
-            	products= new  ArrayList<prodottoBean>();
-    			request.getSession().setAttribute("pSession", products);*/
+            List<prodottoBean>products = new ArrayList<prodottoBean>();
             try {
-
-            	List<prodottoBean>products = dao.doRetrieveAll(i);
+            	switch(stampa) {
+            		case("tutto"):
+            			products = dao.doRetrieveAll(i);
+                        request.setAttribute("products", products);
+            			break;
+            		case("anno"):
+            			products = dao.doRetrieveAll(i);
+                        request.setAttribute("products", products);
+            			break;
+            	}
+            	
 
 
                 //request.getSession().setAttribute("pSession", products);
-                request.setAttribute("products", products);
                 request.getRequestDispatcher("/prodotti.jsp").forward(request, response);
                 return;
             

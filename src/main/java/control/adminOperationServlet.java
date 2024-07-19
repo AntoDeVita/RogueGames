@@ -59,6 +59,7 @@ public class adminOperationServlet extends HttpServlet {
                 	prod= new prodottoBean();
                 	prod.setNome(request.getParameter("nome"));
                 	prod.setImmagine(request.getParameter("img"));
+                	prod.setVideo(request.getParameter("video"));
                 	prod.setDescrizione(request.getParameter("dsc"));
                 	prod.setCoV(Boolean.valueOf(request.getParameter("cov")));
                 	prod.setPrezzo(Double.parseDouble(request.getParameter("prz").trim()));

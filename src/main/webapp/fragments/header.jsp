@@ -27,6 +27,7 @@
                         <form action="<%= request.getContextPath() %>/prodottiServlet" method="POST">
                             <input type="hidden" name="param" value="idProdotti" />
                             <input class="dec btn" type="submit" value="Prodotti">
+                            <input type="hidden" name="stampa" value="tutto">
                           </form>
                     </li>
                     <c:if test="${empty sessionScope.cl}">
