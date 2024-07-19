@@ -86,7 +86,7 @@ public class OrdineServlet extends HttpServlet {
 		        request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
 			
-	        request.getRequestDispatcher("/home.jsp").forward(request, response);
+	        request.getRequestDispatcher("/aggiungiPuntiServlet").forward(request, response);
 	        pcart.svuota();
 		}
 

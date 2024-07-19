@@ -29,14 +29,16 @@
 		if(pcart != null && !pcart.isEmpty()){%>
 		<div class="carrelloBtnContainer">
 			<h3><button class="carrelloBtn" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
-			<h3><button style="margin-left: 10px" class="carrelloBtn" onclick="showPopupOrdine()">Conferma Ordine</button></h3>
+			<form action="confermaAcquisto.jsp" method="post">
+                <h3><button style="margin-left: 10px" type="submit" class="carrelloBtn">Procedi all'acquisto</button></h3>
+            </form>
 		</div>
 		
 		<% 	List <pCarrelloBean> cart=pcart.getProdotti();
 		Iterator<?> it = cart.iterator();
 		while (it.hasNext()) {
 			pCarrelloBean bean = (pCarrelloBean) it.next();
-	%>
+		%>
 
 		<div class="contenitore-grid">
 				<div class="item-grid" data-name="immagine">
@@ -53,11 +55,11 @@
 				
 		    </div>
 			<div class="item-grid">
-		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly></h2>
+		      	<h4><input class="set-prezzo" type="text" value="<%=bean.getPrezzo() %>" readonly>&#8364;</h4>
 	      	</div>
 	      	
 	      	<div class="item-grid">
-		      	<h5><button class="functionButton" onclick="deleteButton('<%=bean.getIdProdotti() %>')">Rimuovi</button></h2>
+		      	<h5><button class="functionButton" onclick="deleteButton('<%=bean.getIdProdotti() %>')">Rimuovi</button></h5>
 	      	</div>
 	      	</div>
 	      		<%	}
@@ -73,11 +75,7 @@
 		<%clienteRegBean cl=(clienteRegBean) request.getSession().getAttribute("cl");
 		if(cl!=null){
 		%>
-		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
-		<div id="popupOrdine">
-			<h2 id="prodTit">Vuoi confermare l'ordine</h2>
-			 <a id="confirmOrderLink" class="cartBtn" href="#" onclick="confirmOrder()">Conferma</a>
-		</div>	 
+			 
 		<script>
 		    function confirmOrder() {
 		        
@@ -106,7 +104,3 @@
 		
 </body>
 </html>
-
-
-
-

@@ -14,6 +14,7 @@ public class clienteRegBean implements Serializable {
 	private String telefono;
 	private String ruolo;
 	
+	
 	public clienteRegBean() {
 		this.punti = 0;
 	}
@@ -81,6 +82,9 @@ public class clienteRegBean implements Serializable {
 	public void setRuolo(String ruolo) {
 		this.ruolo = ruolo;
 	}
+	public void setPunti(int punti) {
+        this.punti = punti;
+    }
 	
 	 public void addPunti(int punti) {
 	        this.punti += punti; 
@@ -89,5 +93,4 @@ public class clienteRegBean implements Serializable {
 	    public int getPunti() {
 	        return punti;
 	    }
-	    
-}
+	    }

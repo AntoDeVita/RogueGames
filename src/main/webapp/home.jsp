@@ -71,7 +71,7 @@
 		        </a>
 		    </div>
 		    <div class="item-grid" data-name="Pc">
-		        <a href="Piattaforma?piattaforma=Pc">
+		        <a href="Piattaforma?piattaforma=Pc"> 
 		            <img src="images/pcLogo.jpg" class="img" alt="Pc">
 		        </a>
 		    </div>

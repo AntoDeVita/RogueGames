@@ -45,16 +45,6 @@ function showPopupElimina(id, nome) {
             document.getElementById('overlayModifica').style.display = 'none';
         }
         
-        function showPopupOrdine(){
-			document.getElementById('popupOrdine').style.display = 'block';
-            document.getElementById('overlayOrdine').style.display = 'block';
-		}
-		
-		function hidePopupOrdine() {
-            document.getElementById('popupOrdine').style.display = 'none';
-            document.getElementById('overlayOrdine').style.display = 'none';
-        }
-        
         function showPopupDescrizione(descr){
 			document.getElementById('popupDescrizione').style.display = 'block';
             document.getElementById('overlayDescrizione').style.display = 'block';
@@ -74,4 +64,25 @@ function showPopupElimina(id, nome) {
 		function hidePopupOrdinaData() {
             document.getElementById('popupOrdinaData').style.display = 'none';
             document.getElementById('overlayOrdinaData').style.display = 'none';
+        }
+        
+        function showPopupConfermaOrdine(){
+			document.getElementById('popupConfermaOrdine').style.display = 'block';
+            document.getElementById('overlayConfermaOrdine').style.display = 'block';
+		}
+		
+		function hidePopupConfermaOrdine() {
+            document.getElementById('popupConfermaOrdine').style.display = 'none';
+            document.getElementById('overlayConfermaOrdine').style.display = 'none';
+        }
+        
+        function showPopupCronologia(Email){
+			document.getElementById('popupCronologia').style.display = 'block';
+            document.getElementById('overlayCronologia').style.display = 'block';
+            
+		}
+		
+		function hidePopupCronologia() {
+            document.getElementById('popupCronologia').style.display = 'none';
+            document.getElementById('overlayCronologia').style.display = 'none';
         }

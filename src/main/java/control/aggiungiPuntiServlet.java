@@ -34,20 +34,20 @@ public class aggiungiPuntiServlet extends HttpServlet {
 
                 if (updated) {
                     session.setAttribute("cl", cliente);
-                    response.sendRedirect("Profilo2.jsp");
+                    
                 } else {
                     // Handle database update failure
                     request.setAttribute("errorMessage", "Error updating points in the database.");
-                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                   
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
                 // Handle the error
                 request.setAttribute("errorMessage", "Invalid number format.");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+               
             }
         } else {
-            response.sendRedirect("login.jsp");
+            
         }
     }
 }

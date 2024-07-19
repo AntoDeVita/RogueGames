@@ -24,23 +24,21 @@
                             <input class="dec btn" type="submit" value="Prodotti">
                           </form>
                     </li>
-                    <li>
                     <c:if test="${empty sessionScope.cl}">
+                    <li>
                         <form action="login.jsp" method="POST">
                             <input class="dec btn" type="submit" value="Login">
                           </form>
-                    </c:if>
                     </li>
-                     <li>
+                    </c:if>
+                    <li>
                       	<form action="<%= request.getContextPath() %>/carrello.jsp" method="POST">
     						<input type="hidden" />
     						<input class="dec btn" type="submit" value="Carrello">
 						</form>
                     </li>
-                </ul>
                 <c:if test="${not empty sessionScope.cl}">
-                <ul class="nav-links">
-               		<li>
+                    <li>
                     	<form action="Profilo.jsp" method="POST">
                             <input class="dec btn" type="submit" value="Profilo">
                           </form>
@@ -59,32 +57,14 @@
 								</div>
 		                </li>
 		         	</c:if>
-                 </ul>
                  </c:if>
-                 <div class="dropdown">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-            <a href="<%= request.getContextPath() %>/prodottiServlet">Prodotti</a>
-            <c:if test="${empty sessionScope.cl}">
-                <a href="login.jsp">Login</a>
-            </c:if>
-            <a href="<%= request.getContextPath() %>/carrello.jsp">Carrello</a>
-            <c:if test="${not empty sessionScope.cl}">
-                <a href="Profilo2.jsp">Profilo</a>
-                <a href="logout.jsp">Logout</a>
-                <%-- 
-                <%
-                clienteRegBean cl= (clienteRegBean) request.getAttribute("cl");
-                if((cl.getRuolo()).equals("admin")){ %>
-                --%> 
-                <a href="<%= request.getContextPath() %>/adminServlet">Admin</a>
-                <%--
-                <%} %>
-                --%>   
-            </c:if>
-        </div>
-    </div>
-                 
+                 	<li>
+                        <form action="<%= request.getContextPath() %>/preferiti.jsp" method="POST">
+                            <input type="hidden" name="param" value="idProdotti" />
+                            <input class="dec btn" type="submit" value="Preferiti">
+                    	</form>
+                    </li>
+                 </ul>
                 <div class="search-container">
                     <input type="text" placeholder="Search for products">
                     <button type="button">Cerca</button>

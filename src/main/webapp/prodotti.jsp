@@ -3,6 +3,7 @@
 
 <%
     List<prodottoBean> products = (List<prodottoBean>) request.getAttribute("products");
+    preferiti ppref= (preferiti) request.getSession().getAttribute("ppref");
 %>
 
 <!DOCTYPE html>
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="css/prod.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <script src="script/btnQuantita.js"></script>
 </head>
 <body>
     <%@ include file="./fragments/header.jsp" %>
@@ -24,9 +26,30 @@
                 for (prodottoBean bean : products) {
         %>
         <div class="prodotto">
+        	<div style="text-align: right">
+                <form id="preferitiForm">
+                    <%
+                    boolean isFav= false;
+                    if(ppref!=null){
+                    	List <pPreferitiBean> pref=ppref.getProdotti();
+                		Iterator<?> it = pref.iterator();
+                    	while(it.hasNext()){
+                    		pPreferitiBean controllo= (pPreferitiBean) it.next();
+                    		if(controllo.getIdProdotti()==bean.getIdProdotti()){
+                    			isFav=true;
+                    		}
+                    	}
+                    }
+                    if((ppref!=null) && (isFav==true)){%>
+                    	<button type="button" class="star active" onclick="deleteButtonPref('<%=bean.getIdProdotti() %>')">&#9733;</button>
+        			<%}else{%>
+                    	<button type="button" id="btn<%=bean.getIdProdotti()%>" class="star" onclick="addPref(<%=bean.getIdProdotti()%>); changeColor(<%=bean.getIdProdotti()%>);">&#9733;</button>
+        			<%}%>
+        		</form>
+        	</div>
         	<a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotti() %>">
             <img src="<%=bean.getImmagine()%>" alt="<%=bean.getNome()%>">
-            <h3><%=bean.getNome() %></h3>
+            <h3><%=bean.getNome() %></h3> </a>
             <p class="descrizione"><%if(bean.getPiattaforma()==null){%>
             	<%=bean.getGenere()%>
             	<%}else{ %>
@@ -41,7 +64,7 @@
                 <form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
 					<input type="hidden" name="param" value="<%=bean.getIdProdotti() %>"/>
                     <input type="hidden" name="act" value="add"/>
-                    <input id="carrello" type="submit" value="Add to cart">
+                    <input id="carrello" type="submit" value="Aggiungi al carrello">
 				</form>
                 <%
                     } else {

@@ -133,7 +133,7 @@ public class CreditCardDao implements CreditCardBeanDAO {
 
             while (resultSet.next()) {
             	CreditCardBean carta = new CreditCardBean();
-                carta.setCif(resultSet.getString("cif"));
+                carta.setCif(resultSet.getString("Cif"));
                 
 
                 carte.add(carta);

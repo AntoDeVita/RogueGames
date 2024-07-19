@@ -70,7 +70,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 		if(c==true) {
 			return c;
 		}
-		String insertSQL ="INSERT INTO " + clienteDAO.TABLE_NAME +" VALUES(?, sha2(?, 256), ?, ?, ?, ?, ?, default)";		
+		String insertSQL ="INSERT INTO " + clienteDAO.TABLE_NAME +" VALUES(?, sha2(?, 256), ?, ?, ?, ?, ?, default, 0)";		
 		try {
 				connection = ds.getConnection();
 				preparedStatement = connection.prepareStatement(insertSQL);
@@ -117,6 +117,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 					bean.setIndirizzo(rs.getString("Indirizzo"));
 					bean.setTelefono(rs.getString("Tel"));
 					bean.setRuolo(rs.getString("Ruolo"));
+					bean.setPunti(rs.getInt("Punti"));
 				}
 			
 			

@@ -87,10 +87,37 @@
                         </select>
                         <hr>
                         
-                        <form action="" method="post">
-                            <!--  <input type="hidden" name="numberOfProducts" value="<%= pcart.getTotalQuantity() %>"> <!-- Total quantity -->
-                            <button type="submit" id="acquistaBtn" class="btn btn-purchase" onclick="confirmOrder()">Acquista</button>
+                        <form action="<%= request.getContextPath() %>/Ordine" method="post">
+                            <input type="hidden" name="numberOfProducts" value="<%= pcart.getTotalQuantity() %>"> 
+                            <button type="submit" id="acquistaBtn" class="btn btn-purchase" onclick="submitForm()">Acquista</button>
                         </form>
+			                   <script>
+function submitForm() {
+    // Prima richiesta AJAX per aggiungiPuntiServlet
+    fetch('<%= request.getContextPath() %>/aggiungiPuntiServlet', {
+        method: 'POST',
+        body: new URLSearchParams({ 'numberOfProducts': document.getElementById('numberOfProducts').value })
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Successo, ora invia la seconda richiesta AJAX per Ordine servlet
+        return fetch('<%= request.getContextPath() %>/Ordine', {
+            method: 'POST',
+            body: new URLSearchParams({ 'numberOfProducts': document.getElementById('numberOfProducts').value })
+        });
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Gestisci la risposta della seconda servlet, ad esempio, reindirizzando l'utente
+        window.location.href = 'Profilo.jsp';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+</script>                   
+			                   
+			                   
 			                       
 			            <script>
 					    function confirmOrder() {
@@ -121,11 +148,3 @@
     <%@ include file="./fragments/Footer.jsp" %>
 </body>
 </html>
->
-
-
-
-
-
-
-

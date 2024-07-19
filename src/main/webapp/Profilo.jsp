@@ -22,6 +22,8 @@
     if (cl != null) {
     	
 %>
+	
+	
     <div class="profile-container">
         <div class="profile-header">
             <h1>Profilo Utente</h1>
@@ -65,9 +67,12 @@
 					<button type="button" class="modify-btn" data-toggle="modal" data-target="#shippingModal">Inserisci Indirizzo di Spedizione</button> 
 					<button type="button" class="modify-btn" id="deleteAddressesBtn" data-toggle="modal" data-target="#addressModal">Elimina Indirizzi</button>
             	</div>
-            	<div class="detail-item">
-    				<h2>Cronologia Acquisti:</h2>
-    				<a href="cronologiaAcquisti.jsp" class="modify-btn">Visualizza Cronologia</a>
+            	<div class="detail-item"> 
+            		<h2>Visualizza Ordini:</h2>  				
+					<form action="<%= request.getContextPath() %>/profiloServlet" method="POST">
+						<input type="hidden" name="param" value="<%=cl.getEmail()%>">
+						<input type="submit" class="adminBtn" value="Cronologia Ordini">
+					</form>
 				</div>
 				<div class="detail-item">
     				<h2>Punti:</h2>
