@@ -63,6 +63,7 @@ public class ricercaAction extends HttpServlet {
 					}
 				} catch (SQLException e) {
 					System.out.println("Errore: " + e.getMessage());
+
 				}
 
 				// Creazione stringa JSON di risposta
