@@ -150,7 +150,7 @@
         </div>
     </div>
 </div>
-
+ 
 <div id="shippingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
