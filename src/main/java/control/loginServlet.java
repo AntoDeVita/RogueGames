@@ -35,6 +35,10 @@ public class loginServlet extends HttpServlet {
 
         try {
         	cl = userDAO.doLogin(username, password);
+        	if(cl==null) {
+        		request.setAttribute("errorMessage", "Invalid username or password.");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+        	}
             
         } catch (SQLException e) {
 			    e.printStackTrace();

@@ -85,4 +85,14 @@ function showPopupElimina(id, nome) {
             document.getElementById('popupCronologia').style.display = 'none';
             document.getElementById('overlayCronologia').style.display = 'none';
         }
-        
+	        
+		function showPopupError(message){
+			document.getElementById('popupError').style.display = 'block';
+            document.getElementById('overlayError').style.display = 'block';
+            document.getElementById('message').innerText = message;
+		}
+		
+		function hidePopupError() {
+            document.getElementById('popupError').style.display = 'none';
+            document.getElementById('overlayError').style.display = 'none';
+        }
