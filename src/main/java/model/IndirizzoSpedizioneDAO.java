@@ -28,8 +28,13 @@ public class IndirizzoSpedizioneDAO {
     private static final String INSERT_ADDRESS_SQL = "INSERT INTO indirizzospedizione (Provincia, CAP, Via, Civico, Email, Citta) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String GET_INDIRIZZI_BY_EMAIL = "SELECT * FROM indirizzospedizione WHERE Email = ?";
     private static final String DELETE_ADDRESS_SQL = "DELETE FROM indirizzospedizione WHERE Email = ? AND Via = ? AND Civico = ?";
+    private static final String CHECK_ADDRESS_EXISTS_SQL = "SELECT COUNT(*) FROM indirizzospedizione WHERE Email = ? AND Via = ? AND Civico = ? AND CAP = ? AND Provincia = ? AND Citta = ?";
 
+    // Metodo per salvare un indirizzo
     public void saveAddress(String email, String via, String civico, String cap, String provincia, String citta) throws SQLException {
+        if (addressExists(email, via, civico, cap, provincia, citta)) {
+            throw new SQLException("L'indirizzo esiste già.");
+        }
         try (Connection connection = ds.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ADDRESS_SQL)) {
             preparedStatement.setString(1, provincia);
@@ -42,6 +47,26 @@ public class IndirizzoSpedizioneDAO {
         }
     }
 
+    // Metodo per verificare se un indirizzo esiste
+    public boolean addressExists(String email, String via, String civico, String cap, String provincia, String citta) throws SQLException {
+        try (Connection connection = ds.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(CHECK_ADDRESS_EXISTS_SQL)) {
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, via);
+            preparedStatement.setString(3, civico);
+            preparedStatement.setInt(4, Integer.parseInt(cap)); // Parsing CAP come intero
+            preparedStatement.setString(5, provincia);
+            preparedStatement.setString(6, citta);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+                return false;
+            }
+        }
+    }
+
+    // Metodo per ottenere gli indirizzi per email
     public List<IndirizzoSpedizioneBean> getIndirizziByEmail(String email) {
         List<IndirizzoSpedizioneBean> indirizzi = new ArrayList<>();
 
@@ -67,6 +92,7 @@ public class IndirizzoSpedizioneDAO {
         return indirizzi;
     }
 
+    // Metodo per eliminare un indirizzo
     public void deleteAddress(String email, String via, String civico) throws SQLException {
         try (Connection connection = ds.getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_ADDRESS_SQL)) {
@@ -77,4 +103,3 @@ public class IndirizzoSpedizioneDAO {
         }
     }
 }
-

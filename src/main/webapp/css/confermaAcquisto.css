@@ -88,4 +88,81 @@
 		    text-align: center; /* Center text inside */
 		}
 
+/* For mobile screens */
+@media (max-width: 480px) {
+    .container {
+        margin-top: 10px;
+        padding: 0 5px;
+    }
 
+    .card-header {
+        font-size: 1em;
+        padding: 6px;
+    }
+
+    .total-price {
+        font-size: 1em;
+    }
+
+    .btn-purchase {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+
+    .popup-content {
+        padding: 10px;
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+
+    .card-header {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .total-price {
+        font-size: 1.2em;
+    }
+
+    .btn-purchase {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .popup-content {
+        padding: 15px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: 10px;
+        padding: 0 5px;
+    }
+
+    .card-header {
+        font-size: 1em;
+        padding: 6px;
+    }
+
+    .total-price {
+        font-size: 1em;
+    }
+
+    .btn-purchase {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+
+    .popup-content {
+        padding: 10px;
+        width: 95%;
+    }
+}

@@ -17,9 +17,6 @@ import javax.servlet.http.HttpSession;
 
 import model.*;
 
-/**
- * Servlet implementation class OrdineServlet
- */
 public class OrdineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -101,10 +98,11 @@ public class OrdineServlet extends HttpServlet {
 		        request.setAttribute("error", "Utente non loggato connection failed");
 		        request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
-			
+		
 			pcart.svuota();
 	        request.getRequestDispatcher("/carrello.jsp").forward(request, response);
-	  
+	 
+
 		}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

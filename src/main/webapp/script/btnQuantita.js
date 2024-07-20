@@ -78,6 +78,45 @@
 	    });
 	}
 	
+	function deleteButtonPref(idProdotti) {
+		fetch('preferitiServlet', {
+			        method: 'POST',
+			        body: new URLSearchParams({
+			            act: 'delete',
+			            param: idProdotti
+			        })
+			    })
+	    .then(response => response.text())
+	    .then(data => {
+	        // Optionally handle response, e.g., update the UI or redirect
+	        console.log(data);
+	        // For example, you can redirect to another page after successful request
+	        window.location.href = 'preferiti.jsp';  // change 'somePage.html' to your desired page
+	    })
+	    .catch(error => {
+	        console.error('Error:', error);
+	    });
+	}
+
+	function deleteAllButtonPref() {
+		fetch('preferitiServlet', {
+			        method: 'POST',
+			        body: new URLSearchParams({
+			            act: 'deleteAll',
+			        })
+			    })
+	    .then(response => response.text())
+	    .then(data => {
+	        // Optionally handle response, e.g., update the UI or redirect
+	        console.log(data);
+	        // For example, you can redirect to another page after successful request
+	        window.location.href = 'preferiti.jsp';  // change 'somePage.html' to your desired page
+	    })
+	    .catch(error => {
+	        console.error('Error:', error);
+	    });
+	}
+	
 	function addPref(productId, btn) {
 	        var xhr = new XMLHttpRequest();
 			const action= 'add';
@@ -126,4 +165,3 @@
 	        var params = "act=" + encodeURIComponent(action) + "&param=" + encodeURIComponent(productId);
 	        xhr.send(params);
 	    }
-	

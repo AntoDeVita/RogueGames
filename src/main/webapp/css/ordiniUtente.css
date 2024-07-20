@@ -76,3 +76,52 @@ tr:hover {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 768px) {
+    .cat {
+        font-size: 24px;
+    }
+
+    table#tb1 {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .adminBtn {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+
+    .avvolgiTabella {
+        padding: 15px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .cat {
+        font-size: 20px;
+    }
+
+    table#tb1 {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .adminBtn {
+        font-size: 0.7em;
+        padding: 3px 6px;
+    }
+
+    .avvolgiTabella {
+        padding: 10px;
+        max-width: 100%;
+    }
+}
+

@@ -21,12 +21,11 @@ function showPopupElimina(id, nome) {
             document.getElementById('overlayAggiungi').style.display = 'none';
         }
 	    
-        function showPopupModifica(idProdotto, nome, img, dsc, cov, prz, casaPrd, pltf, gnr, tipo, releaseDate, qnt) {
+        function showPopupModifica(idProdotto, nome, dsc, cov, prz, casaPrd, pltf, gnr, tipo, releaseDate, qnt) {
             document.getElementById('popupModifica').style.display = 'block';
             document.getElementById('overlayModifica').style.display = 'block';
             document.getElementById('idProdotto').innerText = idProdotto;
             document.getElementById('nome').value = nome;
-            document.getElementById('img').value = img;
             document.getElementById('dsc').value = dsc;
             document.getElementById('cov').value = cov;
             document.getElementById('prz').value = prz;
@@ -43,16 +42,6 @@ function showPopupElimina(id, nome) {
         function hidePopupModifica() {
             document.getElementById('popupModifica').style.display = 'none';
             document.getElementById('overlayModifica').style.display = 'none';
-        }
-        
-        function showPopupOrdine(){
-			document.getElementById('popupOrdine').style.display = 'block';
-            document.getElementById('overlayOrdine').style.display = 'block';
-		}
-		
-		function hidePopupOrdine() {
-            document.getElementById('popupOrdine').style.display = 'none';
-            document.getElementById('overlayOrdine').style.display = 'none';
         }
         
         function showPopupDescrizione(descr){
@@ -74,4 +63,36 @@ function showPopupElimina(id, nome) {
 		function hidePopupOrdinaData() {
             document.getElementById('popupOrdinaData').style.display = 'none';
             document.getElementById('overlayOrdinaData').style.display = 'none';
+        }
+        
+        function showPopupConfermaOrdine(){
+			document.getElementById('popupConfermaOrdine').style.display = 'block';
+            document.getElementById('overlayConfermaOrdine').style.display = 'block';
+		}
+		
+		function hidePopupConfermaOrdine() {
+            document.getElementById('popupConfermaOrdine').style.display = 'none';
+            document.getElementById('overlayConfermaOrdine').style.display = 'none';
+        }
+        
+        function showPopupCronologia(Email){
+			document.getElementById('popupCronologia').style.display = 'block';
+            document.getElementById('overlayCronologia').style.display = 'block';
+            
+		}
+		
+		function hidePopupCronologia() {
+            document.getElementById('popupCronologia').style.display = 'none';
+            document.getElementById('overlayCronologia').style.display = 'none';
+        }
+	        
+		function showPopupError(message){
+			document.getElementById('popupError').style.display = 'block';
+            document.getElementById('overlayError').style.display = 'block';
+            document.getElementById('message').innerText = message;
+		}
+		
+		function hidePopupError() {
+            document.getElementById('popupError').style.display = 'none';
+            document.getElementById('overlayError').style.display = 'none';
         }

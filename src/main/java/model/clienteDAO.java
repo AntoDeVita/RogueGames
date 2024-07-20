@@ -70,7 +70,7 @@ public class clienteDAO implements ClientBeanDAO<clienteRegBean>{
 		if(c==true) {
 			return c;
 		}
-		String insertSQL ="INSERT INTO " + clienteDAO.TABLE_NAME +" VALUES(?, sha2(?, 256), ?, ?, ?, ?, ?, default)";		
+		String insertSQL ="INSERT INTO " + clienteDAO.TABLE_NAME +" VALUES(?, sha2(?, 256), ?, ?, ?, ?, ?, default, 0)";		
 		try {
 				connection = ds.getConnection();
 				preparedStatement = connection.prepareStatement(insertSQL);

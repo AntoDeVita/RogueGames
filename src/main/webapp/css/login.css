@@ -1,145 +1,232 @@
+/* CSS esistente */
+
 @charset "ISO-8859-1";
 
-		* {
-			margin: 0;
-		    padding: 0;
-		    box-sizing: border-box;
-		    font-family: 'Poppins', sans-serif;
-		}
-		
-		.corpo{
-			display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    min-height: 95vh;
-		}
-		
-		.contenitore {
-			position: relative;
-			width: 256px;
-			height: 256px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			
-		}
-		
-		.contenitore span{
-			position: absolute;
-			left: 0;
-			width: 32px;
-			height: 6px;
-			background: #2c4766;
-			border-radius: 8px;
-			transform-origin: 128px;
-			transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
-			animation: animatedBlink 3s linear infinite;
-			animation-delay: calc(var(--i) * (3s / 50));
-		}
-		
-		@keyframes animatedBlink {
-			0% {
-				background: #0ef;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-			}
-			
-			25% {
-				background: #2c4766;
-			}
-		}
-		
-		.login-box {
-			position: absolute;
-			width: 400px;
-			/*background: red;*/
-		}
-		
-		.login-box form {
-			width: 100%;
-			padding: 0 50px;
-		}
-		
-		h2{
-			font-size: 2em;
-			color: #0ef;
-			text-align: center;
-		}
-		
-		.input-box {
-			position: relative;
-			margin: 25px 0;
-		}
-		
-		.input-box input {
-			width: 100%;
-			height: 50px;
-			background: transparent;
-			border: 2px solid #2c4766;
-			outline: none;
-			border-radius: 40px;
-			font-size: 1em;
-			color: #2c4766;
-			padding: 0 20px;
-			transition: .5s ease;
-		}
-		
-		.input-box input:focus,
-		.input-box input:valid {
-			border-color: #0ef;
-			
-		}
-		
-		.input-box label {
-			position: absolute;
-			top: 50%;
-			left: 20px;
-			transform: translateY(-50%);
-			font-size: 1em;
-			color: lightgrey;
-			pointer-events: none;
-			transition: 0.5 ease;
-		}
-		
-		.input-box input:focus~label,
-		.input-box input:valid~label {
-			top: 1px;
-			font-size: .8em;
-			background: #0ef;
-			padding: 0 6px;
-			color: black;
-		}
-		
-		.btn {
-			width: 100%;
-			height: 45px;
-			background: #0ef;
-			border: mnone;
-			outline: none;
-			border-radius: 40px;
-			cursor: pointer;
-			font-size: 1em;
-			color: #1f293a;
-			font-weight: 600;
-			}
-		
-		.signup-link {
-			margin: 20px 0 10px;
-			text-align: center;
-		}
-		
-		.signup-link a {
-			font-size: 1em;
-			color: #0ef;
-			text-decoration: none;
-			font-weight: 600;
-		}
-		
-		.signup-link a:hover{
-			text-decoration: underline;
-		}
-		
-		
-		
-		
-		
-		
+.corpo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 95vh;
+}
+
+.contenitore {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenitore span {
+    position: absolute;
+    left: 0;
+    width: 32px;
+    height: 6px;
+    background: #2c4766;
+    border-radius: 8px;
+    transform-origin: 128px;
+    transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+    animation: animatedBlink 3s linear infinite;
+    animation-delay: calc(var(--i) * (3s / 50));
+}
+
+#popupError {
+    display: none; /* Nasconde la finestra per impostazione predefinita */
+    position: fixed; /* Posiziona la finestra in modo fisso */
+    left: 50%; /* Centra la finestra orizzontalmente */
+    top: 50%; /* Centra la finestra verticalmente */
+    transform: translate(-50%, -50%); /* Effettua una traslazione per centrare */
+    border: 2px solid #444; /* Bordo della finestra */
+    background-color: #fff; /* Colore di sfondo della finestra */
+    padding: 20px; /* Padding interno della finestra */
+    z-index: 1000; /* Posiziona la finestra sopra altri elementi */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Aggiunge un'ombra */
+}
+
+#overlayError {
+    display: none; /* Nasconde lo sfondo per impostazione predefinita */
+    position: fixed; /* Posiziona lo sfondo in modo fisso */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Colore e opacit� dello sfondo */
+    z-index: 999; /* Posiziona lo sfondo sotto la finestra pop-up ma sopra altri elementi */
+}
+
+.errorTitle {
+	color: red;
+}
+
+.adminBtn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.adminBtn:hover {
+    color: white;
+    text-decoration: none;
+}
+
+@keyframes animatedBlink {
+    0% {
+        background: #0ef;
+    }
+    25% {
+        background: #2c4766;
+    }
+}
+
+.login-box {
+    position: absolute;
+    width: 400px;
+}
+
+.login-box form {
+    width: 100%;
+    padding: 0 50px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #0ef;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    margin: 25px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #2c4766;
+    outline: none;
+    border-radius: 40px;
+    font-size: 1em;
+    color: #2c4766;
+    padding: 0 20px;
+    transition: .5s ease;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-color: #0ef;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: lightgrey;
+    pointer-events: none;
+    transition: 0.5s ease;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: 1px;
+    font-size: .8em;
+    background: #0ef;
+    padding: 0 6px;
+    color: black;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #0ef;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #1f293a;
+    font-weight: 600;
+}
+
+.signup-link {
+    margin: 20px 0 10px;
+    text-align: center;
+}
+
+.signup-link a {
+    font-size: 1em;
+    color: #0ef;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries per Schermi Inferiori a 768px (Tablet e Smartphone) */
+
+@media (max-width: 768px) {
+    .login-box {
+        width: 90%;
+        padding: 0 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .input-box input {
+        height: 40px;
+        font-size: 0.9em;
+    }
+
+    .btn {
+        height: 40px;
+        font-size: 0.9em;
+    }
+}
+
+/* Media Queries per Schermi Inferiori a 480px (Smartphone) */
+
+@media (max-width: 480px) {
+    .login-box {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .input-box input {
+        height: 35px;
+        font-size: 0.8em;
+    }
+
+    .btn {
+        height: 35px;
+        font-size: 0.8em;
+    }
+
+    /* Nascondere gli span per schermi piccoli */
+     .contenitore span {
+        display: none ;
+    }
+    }
+

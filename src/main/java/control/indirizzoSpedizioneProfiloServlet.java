@@ -2,14 +2,12 @@ package control;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.IndirizzoSpedizioneDAO;
 import model.clienteRegBean;
-
 
 public class indirizzoSpedizioneProfiloServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -38,29 +36,32 @@ public class indirizzoSpedizioneProfiloServlet extends HttpServlet {
             String citta = request.getParameter("citta");
 
             try {
-                indirizzoDAO.saveAddress(cl.getEmail(), via, civico, cap, provincia, citta);
-                response.setStatus(HttpServletResponse.SC_OK);
-                response.sendRedirect(request.getContextPath() + "/Profilo.jsp");
+                // Verifica se l'indirizzo esiste già
+                boolean exists = indirizzoDAO.addressExists(cl.getEmail(), via, civico, cap, provincia, citta);
+                if (exists) {
+                    request.setAttribute("errorMessage", "L'indirizzo esiste già.");
+                    request.getRequestDispatcher("/Profilo.jsp").forward(request, response);
+                } else {
+                    indirizzoDAO.saveAddress(cl.getEmail(), via, civico, cap, provincia, citta);
+                    response.sendRedirect(request.getContextPath() + "/Profilo.jsp");
+                }
             } catch (Exception e) {
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                e.printStackTrace();
+                request.setAttribute("errorMessage", "Errore durante il salvataggio dell'indirizzo: " + e.getMessage());
+                request.getRequestDispatcher("/Profilo.jsp").forward(request, response);
             }
         } else if ("delete".equals(action)) {
             String via = request.getParameter("via");
             String civico = request.getParameter("civico");
-            // Potresti voler considerare un ID unico per l'indirizzo
 
             try {
-                indirizzoDAO.deleteAddress(cl.getEmail(), via, civico); // Adjust method as needed
-                response.setStatus(HttpServletResponse.SC_OK);
+                indirizzoDAO.deleteAddress(cl.getEmail(), via, civico);
                 response.sendRedirect(request.getContextPath() + "/Profilo.jsp");
             } catch (Exception e) {
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                e.printStackTrace();
+                request.setAttribute("errorMessage", "Errore durante la cancellazione dell'indirizzo: " + e.getMessage());
+                request.getRequestDispatcher("/Profilo.jsp").forward(request, response);
             }
         } else {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action.");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Azione non valida.");
         }
     }
 }
-

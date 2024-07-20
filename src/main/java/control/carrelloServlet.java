@@ -17,9 +17,6 @@ import model.PCarrelloDAO;
 import model.carrello;
 import model.pCarrelloBean;
 import model.clienteRegBean;
-/**
- * Servlet implementation class carrelloServlet
- */
 
 public class carrelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

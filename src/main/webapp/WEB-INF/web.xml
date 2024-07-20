@@ -183,8 +183,18 @@
         <servlet-name>indirizzoSpedizioneProfiloServlet</servlet-name>
         <url-pattern>/indirizzoSpedizioneProfiloServlet</url-pattern>
     </servlet-mapping>
-    
-     <servlet>
+   
+    <servlet>
+    	<servlet-name>profiloServlet</servlet-name>
+    	<servlet-class>control.profiloServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>profiloServlet</servlet-name>
+    	<url-pattern>/profiloServlet</url-pattern>
+  	</servlet-mapping>
+	
+	<servlet>
         <servlet-name>AJXAddressServlet</servlet-name>
         <servlet-class>control.AJXAddressServlet</servlet-class>
     </servlet>
@@ -193,17 +203,6 @@
         <servlet-name>AJXAddressServlet</servlet-name>
         <url-pattern>/AJXAddressServlet</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-    	<servlet-name>profiloServlet</servlet-name>
-    	<servlet-class>control.profiloServlet</servlet-class>
-  	</servlet>
-  
-  	<servlet-mapping>
-
-   	<servlet-name>profiloServlet</servlet-name>
-    	<url-pattern>/profiloServlet</url-pattern>
-  	</servlet-mapping>
   	
   	<servlet>
     	<servlet-name>ordineProdServlet</servlet-name>
@@ -213,6 +212,16 @@
   	<servlet-mapping>
     	<servlet-name>ordineProdServlet</servlet-name>
     	<url-pattern>/ordineProdServlet</url-pattern>
-  	</servlet-mapping>
+     </servlet-mapping>	
+    	
+       <servlet>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<servlet-class>control.preferitiServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<url-pattern>/preferitiServlet</url-pattern>
+  	</servlet-mapping> 	
     
 </web-app>

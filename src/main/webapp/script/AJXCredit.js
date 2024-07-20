@@ -80,9 +80,3 @@ $(document).on('click', '.delete-card-btn', function() {
 
 
 
-
-
-
-
-
-

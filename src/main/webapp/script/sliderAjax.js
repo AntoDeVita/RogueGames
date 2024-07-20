@@ -1,4 +1,4 @@
-	document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
             const genreFantasy = document.getElementById("genreParamFantasy")?.value || "fantasy";
             const genreConsole = document.getElementById("genreParamConsole")?.value || "console";
 
@@ -7,7 +7,7 @@
 
             initializeSlider("#productContainerFantasy", "#prev-slide-fantasy", "#next-slide-fantasy");
             initializeSlider("#productContainerConsole", "#prev-slide-Console", "#next-slide-Console");
-        });
+        }); 
 
         function fetchProducts(url, containerSelector, params) {
             console.log('Fetching products with params:', params);
@@ -23,8 +23,8 @@
         },
         error: function(xhr, status, error) {
             console.error('Errore nella richiesta:', error);
-			}
-			  });
+}
+  });
         }
 
         function displayProducts(xmlDoc, containerSelector) {

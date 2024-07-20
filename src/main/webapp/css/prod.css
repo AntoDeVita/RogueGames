@@ -11,10 +11,22 @@ body {
     font-weight: bold;
     color: #ff007f;
 }
-#carrello{
-	background: #00bfff;
-	color: white;
+.adminBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
 }
+
+#carrello {
+    background: #00bfff;
+    color: white;
+}
+
 .company-name .highlight {
     color: #00bfff;
 }
@@ -66,5 +78,39 @@ body {
     transform: scale(1.05);
 }
 
+.star {
+    font-size: 30px;
+    color: #ccc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    align-self: right;
+}
 
+.star:focus {
+    outline: none;
+}
 
+.active {
+    color: #FDD017;
+}
+
+/* Media Queries per Schermi Mobili e Tablet */
+@media (max-width: 1200px) {
+    .prodotto {
+        width: calc(33.333% - 20px); /* 3 colonne */
+    }
+}
+
+@media (max-width: 768px) {
+    .prodotto {
+        width: calc(50% - 20px); /* 2 colonne */
+    }
+}
+
+@media (max-width: 480px) {
+    .prodotto {
+        width: 100%; /* 1 colonna */
+    }
+}
