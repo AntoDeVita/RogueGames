@@ -16,7 +16,7 @@ public class signinServlet extends HttpServlet {
     public signinServlet() {
         super();
     }
-
+ 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Recupero parametri dalla richiesta
         String username = request.getParameter("txtEmail");
