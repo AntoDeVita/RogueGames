@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             initializeSlider("#productContainerFantasy", "#prev-slide-fantasy", "#next-slide-fantasy");
             initializeSlider("#productContainerConsole", "#prev-slide-Console", "#next-slide-Console");
-        });
+        }); 
 
         function fetchProducts(url, containerSelector, params) {
             console.log('Fetching products with params:', params);
