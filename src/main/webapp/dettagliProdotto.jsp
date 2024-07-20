@@ -51,6 +51,11 @@
 					</div>
 				</div>
 			</div>
+			<%if(p.getVideo()!=null) {%>
+				<div class="descrizione">
+					<video src="<%=p.getVideo()%>" class="video" controls muted></video>
+				</div>
+			<%} %>
 			<div class="descrizione">
 				<p class="titoloDescrizione">DESCRIZIONE</p>
 				<p><%=p.getDescrizione() %></p>

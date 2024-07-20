@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* Aggiunto colore di sfondo per il body */
+    background-color: #f8f9fa; /* Colore di sfondo per il body */
 }
 
 .titoloProd {
@@ -37,6 +37,7 @@ body {
 .titoloDescrizione {
     font-size: 25px;
     color: #00bfff;
+    margin-top: 20px;
 }
 
 .gridMainInfo {
@@ -84,6 +85,12 @@ body {
     color: white;
 }
 
+/* Stili per il video */
+.video {
+    border-radius: 20px;
+    border: 3px solid #ff007f;
+}
+
 /* Media Queries per dispositivi più piccoli */
 
 /* Per tablet e schermi più piccoli */
@@ -113,7 +120,7 @@ body {
 
     .info {
         margin-right: 0;
-        padding: 30px 0px 30px 0px;
+        padding: 30px 0px;
         font-size: 20px;
     }
 
@@ -129,6 +136,10 @@ body {
     .btnAggiungi #carrello {
         padding: 5px 20px;
         font-size: 18px;
+    }
+
+    .video {
+        max-width: 100%; /* Limita la larghezza del video per adattarlo agli schermi più piccoli */
     }
 }
 
@@ -172,5 +183,9 @@ body {
     .btnAggiungi #carrello {
         padding: 5px 15px;
         font-size: 16px;
+    }
+
+    .video {
+        max-width: 100%; /* Limita ulteriormente la larghezza del video per adattarsi agli schermi piccoli */
     }
 }

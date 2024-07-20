@@ -26,13 +26,16 @@
 	    //session.setAttribute("sessionToken", sessionToken);
 	    
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
+		
 		if(pcart != null && !pcart.isEmpty()){%>
 		<div class="carrelloBtnContainer">
 			<h3><button class="carrelloBtn" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
 			<form action="confermaAcquisto.jsp" method="post">
+			
                 <h3><button style="margin-left: 10px" type="submit" class="carrelloBtn">Procedi all'acquisto</button></h3>
             </form>
 		</div>
+	
 		
 		<% 	List <pCarrelloBean> cart=pcart.getProdotti();
 		Iterator<?> it = cart.iterator();
