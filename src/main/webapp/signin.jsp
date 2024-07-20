@@ -16,7 +16,11 @@
                     String errorMessage = (String) request.getAttribute("errorMessage");
                     if (errorMessage != null) {
                 %>
-                <div class="error-message"><%= errorMessage %></div>
+                <script>
+                    window.onload = function() {
+                        alert('<%= errorMessage %>');
+                    }
+                </script>
                 <%
                     }
                 %>

@@ -206,7 +206,6 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 		
 		try {
 			connection = ds.getConnection();
-			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSQL);
 
 
@@ -221,10 +220,9 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 			preparedStatement.setString(9, product.getDataRilascio());
 			preparedStatement.setInt(10, product.getQuantita());
 			preparedStatement.setString(11, product.getImmagine());
-			preparedStatement.setInt(12, id);
-			preparedStatement.setString(13, product.getVideo());
+			preparedStatement.setString(12, product.getVideo());
+			preparedStatement.setInt(13, id);
 			preparedStatement.executeUpdate();
-			connection.commit();
 			
 		} finally {
 			try {

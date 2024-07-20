@@ -21,12 +21,11 @@ function showPopupElimina(id, nome) {
             document.getElementById('overlayAggiungi').style.display = 'none';
         }
 	    
-        function showPopupModifica(idProdotto, nome, img, dsc, cov, prz, casaPrd, pltf, gnr, tipo, releaseDate, qnt) {
+        function showPopupModifica(idProdotto, nome, dsc, cov, prz, casaPrd, pltf, gnr, tipo, releaseDate, qnt) {
             document.getElementById('popupModifica').style.display = 'block';
             document.getElementById('overlayModifica').style.display = 'block';
             document.getElementById('idProdotto').innerText = idProdotto;
             document.getElementById('nome').value = nome;
-            document.getElementById('img').value = img;
             document.getElementById('dsc').value = dsc;
             document.getElementById('cov').value = cov;
             document.getElementById('prz').value = prz;
@@ -85,4 +84,15 @@ function showPopupElimina(id, nome) {
 		function hidePopupCronologia() {
             document.getElementById('popupCronologia').style.display = 'none';
             document.getElementById('overlayCronologia').style.display = 'none';
+        }
+	        
+		function showPopupError(message){
+			document.getElementById('popupError').style.display = 'block';
+            document.getElementById('overlayError').style.display = 'block';
+            document.getElementById('message').innerText = message;
+		}
+		
+		function hidePopupError() {
+            document.getElementById('popupError').style.display = 'none';
+            document.getElementById('overlayError').style.display = 'none';
         }

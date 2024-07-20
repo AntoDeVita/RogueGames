@@ -6,13 +6,19 @@
 	    <link rel="stylesheet" href="css/login.css" type="text/css">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
-	    
+	  	<script src="script/Popup.js"></script>
 	</head>
 	
 	
 	<body>   
 	
-		<%@ include file="./fragments/header.jsp" %>   
+		<%@ include file="./fragments/header.jsp" %>  
+		<div id="overlayError" onclick="hidePopupError()"></div>
+		<div id="popupError">
+		    <h2 class="errorTitle">Errore Inserimento Credenziali</h2>
+	        <p id="message"></p>
+			<a class="adminBtn" onclick="hidePopupError()">Chiudi</a>
+	    </div> 
 		<div class="corpo">
 			<div class="contenitore">
 				<div class="login-box">
@@ -86,7 +92,16 @@
 					<span style="--i:49;">	</span>
 			</div>
 		</div>
-		
+		<%
+	        String errorMessage = (String) request.getAttribute("errorMessage");
+	        if (errorMessage != null) {
+	    %>
+	        <script type="text/javascript">
+	        showPopupError("<%= errorMessage %>");
+	        </script>
+	    <%
+	        }
+	    %>
 		<%@ include file="./fragments/Footer.jsp" %>  
 	</body>
 </html>
