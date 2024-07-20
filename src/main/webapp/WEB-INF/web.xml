@@ -53,7 +53,6 @@
     	<url-pattern>/carrelloServlet</url-pattern>
   	</servlet-mapping>
   	
-  	
   	<servlet>
     	<servlet-name>dettagliServlet</servlet-name>
     	<servlet-class>control.dettagliServlet</servlet-class>
@@ -201,8 +200,19 @@
   	</servlet>
   
   	<servlet-mapping>
-    	<servlet-name>profiloServlet</servlet-name>
+
+   	<servlet-name>profiloServlet</servlet-name>
     	<url-pattern>/profiloServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>ordineProdServlet</servlet-name>
+    	<servlet-class>control.ordineProdServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>ordineProdServlet</servlet-name>
+    	<url-pattern>/ordineProdServlet</url-pattern>
   	</servlet-mapping>
     
 </web-app>

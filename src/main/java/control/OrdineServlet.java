@@ -50,7 +50,7 @@ public class OrdineServlet extends HttpServlet {
 	        clienteRegBean cl = (clienteRegBean) session.getAttribute("cl");
 	        carrello pcart = (carrello) session.getAttribute("pcart");
 			ordineDAO dao=new ordineDAO();
-			
+			prodottiDAO2 daop=new prodottiDAO2();
 			String sc= request.getParameter("sc");
 			
 			List <pCarrelloBean> cart=pcart.getProdotti();
@@ -58,17 +58,25 @@ public class OrdineServlet extends HttpServlet {
 			int i=0;
 			if(cl!=null) {
 				List <ordineBean> ordine= new ArrayList <ordineBean>();
-				double prezzoTot=pcart.prezzoTot()-Double.parseDouble(sc);
+				double prezzoTot=pcart.prezzoTot()-(Double.parseDouble(sc)/10.00);
 			   
-				while (it.hasNext()) {
+				for (pCarrelloBean bean : cart) {
 					i++;
-					pCarrelloBean bean = (pCarrelloBean) it.next();
-					ordineBean order=new ordineBean();
-					order.setIdProdotto(bean.getIdProdotti());
-					order.setEmail(cl.getEmail());
-					order.setPrezzoTot(prezzoTot);
-					order.setQuantita(bean.getIdQuantita());
-					ordine.add(order);
+					
+		            int id = bean.getIdProdotti();
+		            String nome = bean.getProdotto().getNome();
+		            double prezzo = bean.getPrezzo();
+		            int quantita = bean.getIdQuantita();
+		            
+		            ordineBean order = new ordineBean();
+		            
+		            order.setIdProdotto(id);
+		            order.setNome(nome);
+		            order.setPrezzo(prezzo);
+		            order.setEmail(cl.getEmail());
+		            order.setPrezzoTot(prezzoTot);
+		            order.setQuantita(quantita);
+		            ordine.add(order);
 				}
 				i=i*5;
 				cl.addPunti(i);
@@ -78,7 +86,7 @@ public class OrdineServlet extends HttpServlet {
 					dao.doSave(ordine);
 					
 	                clienteDAO clienteDAO = new clienteDAO();
-	                boolean updated = clienteDAO.updateClientPoints(cl.getEmail(), (cl.getPunti()-(s*10))); 
+	                boolean updated = clienteDAO.updateClientPoints(cl.getEmail(), (cl.getPunti()-s)); 
 	                
 	                PCarrelloDAO daoc = new PCarrelloDAO();
 	                daoc.doDeleteAll(cl.getEmail());

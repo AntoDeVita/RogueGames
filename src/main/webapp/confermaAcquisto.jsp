@@ -27,7 +27,7 @@
 
             if (pcart != null && !pcart.isEmpty()) {
                 List<pCarrelloBean> cart = pcart.getProdotti();
-                double totalPrice = 0;
+
         %>
         <div class="row">
             <div class="col-lg-12">
@@ -36,7 +36,7 @@
                     <ul class="list-group list-group-flush">
                         <%
                         for (pCarrelloBean bean : cart) {
-                            totalPrice += bean.getPrezzo() * bean.getIdQuantita();
+                           
                         %>
                         <li class="list-group-item">
                             <div class="row">
@@ -50,10 +50,10 @@
                                     <input class="form-control text-center" type="number" value="<%=bean.getIdQuantita() %>" readonly>
                                 </div>
                                 <div class="col-md-2">
-                                    <h5>€ <%=bean.getPrezzo() * bean.getIdQuantita() %></h5>
+                                    <h5>€ <%=bean.getPrezzo() %></h5>
                                 </div>
                                 <div class="col-md-2 text-right">
-                                    <a href="carrelloServlet?act=delete&param=<%=bean.getProdotto().getIdProdotti() %>" class="btn btn-danger">X</a>
+                                    <a href="carrelloServlet?act=delete&param=<%=bean.getIdProdotti() %>" class="btn btn-danger">X</a>
                                 </div>
                             </div>
                         </li>
@@ -66,22 +66,22 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="total-price">Prezzo Totale: € <%=totalPrice%></div>
+                        <div class="total-price">Prezzo Totale: € <%=pcart.prezzoTot()%></div>
                         <div class="form-punti">
                         <select id="punti" name="Punti">
                             <option value="0">Seleziona Sconto</option>
                             <%if(cliente.getPunti()>=100){%>
-                                <option value="10">
+                                <option value="100">
                                    10&euro;
                                 </option>
                                 <% } %>
                             <%if(cliente.getPunti()>=200){%>
-                                <option value="20">
+                                <option value="200">
                                    20&euro;
                                 </option>
                                 <% } %>
                             <%if(cliente.getPunti()>=300){%>
-                                <option value="30">
+                                <option value="300">
                                    30&euro;
                               </option>
                              <% } %>

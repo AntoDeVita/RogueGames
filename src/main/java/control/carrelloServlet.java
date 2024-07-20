@@ -57,29 +57,53 @@ public class carrelloServlet extends HttpServlet {
 				    	  int d=pcart.addCarr(pc); //ritorna 1 se il prodotto è già presente altrimenti 0
 				    	  if(cl!=null && d==0)
 				    		  daoc.doSave(pc, cl.getEmail());
+							 request.getSession().setAttribute("pcart", pcart);
+					         request.setAttribute("pcart", pcart);
+					         response.setStatus(HttpServletResponse.SC_OK);
 				        break;
+				        
 				      case "delete":
 				    	  pc=new pCarrelloBean(dao.doRetrieveByKey(id));
 				    	  boolean d1= pcart.removeCarr(pc);
 				    	  if(cl!=null && d1)
 				    	  daoc.doDelete(id, cl.getEmail());
+							 request.getSession().setAttribute("pcart", pcart);
+					         request.setAttribute("pcart", pcart);
+
+					         request.getRequestDispatcher("/carrello.jsp").forward(request, response); 
+					         
 				        break;
 				      case "dec":
 				    	  pcart.getProd(id).decrementaQnt();
 				    	  if(cl!=null) {
 				    		  daoc.doUpdateQnt(id, pcart.getProd(id).getIdQuantita(), cl.getEmail(), pcart.getProd(id).getPrezzo());
 				    	  	}
+				    	  
+							 request.getSession().setAttribute("pcart", pcart);
+					         request.setAttribute("pcart", pcart);
+
+					         request.getRequestDispatcher("/carrello.jsp").forward(request, response);  
 				        break;
 				      case "inc":
 				    	  pcart.getProd(id).incrementaQnt();
 				    	  if(cl!=null) {
 				    		  daoc.doUpdateQnt(id, pcart.getProd(id).getIdQuantita(), cl.getEmail(), pcart.getProd(id).getPrezzo());
 				    	  }
+				    	  
+							 request.getSession().setAttribute("pcart", pcart);
+					         request.setAttribute("pcart", pcart);
+
+					         request.getRequestDispatcher("/carrello.jsp").forward(request, response);
 				        break;
 				      case "deleteAll":
 				    	  pcart.svuota();
 				    	  if(cl!=null)
 				    		  daoc.doDeleteAll(cl.getEmail());
+				    	  
+							 request.getSession().setAttribute("pcart", pcart);
+					         request.setAttribute("pcart", pcart);
+
+					         request.getRequestDispatcher("/carrello.jsp").forward(request, response);
 				        break;
 				    }
 				}
@@ -90,10 +114,7 @@ public class carrelloServlet extends HttpServlet {
          request.getRequestDispatcher("/error.jsp").forward(request, response);
          return;
      }	            
-			 request.getSession().setAttribute("pcart", pcart);
-	         request.setAttribute("pcart", pcart);
 
-	         request.getRequestDispatcher("/carrello.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

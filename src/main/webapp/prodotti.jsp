@@ -9,10 +9,14 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
     <title>Catalogo Prodotti</title>
     <link rel="stylesheet" href="css/prod.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <script src="script/btnQuantita.js"></script>
+	<script src="script/Popup.js"></script>
+	
 </head>
 <body>
     <%@ include file="./fragments/header.jsp" %>
@@ -34,15 +38,16 @@
             	<%} %>
             </p>
             <p class="prezzo"><%=bean.getPrezzo()%>&euro;</p>
-            <div class="button">
+            <div class="button"></a>
                 <%
                     if (bean.getQuantita() > 0) {
                 %>
-                <form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
+                <!-- <form action="<%= request.getContextPath() %>/carrelloServlet" method="POST">
 					<input type="hidden" name="param" value="<%=bean.getIdProdotti() %>"/>
                     <input type="hidden" name="act" value="add"/>
                     <input id="carrello" type="submit" value="Add to cart">
-				</form>
+				</form>-->
+				<button id="carrello"  onclick="addCart(<%=bean.getIdProdotti()%>);">Add to cart</button>
                 <%
                     } else {
                     	
@@ -65,7 +70,7 @@
             }
         %>
     </div>
-
+		
     <%@ include file="./fragments/Footer.jsp" %>
     
 </body>

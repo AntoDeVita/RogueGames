@@ -80,7 +80,6 @@ public class loginServlet extends HttpServlet {
 					String email=cl.getEmail();
             		try {
 						if(!daoc.doRetrieveByKey(id, email)) {
-						System.out.println("id "+ p.getIdProdotti());
 								daoc.doSave(p, email);
 						}
 						

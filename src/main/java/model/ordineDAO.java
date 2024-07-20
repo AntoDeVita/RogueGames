@@ -41,17 +41,19 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		prodottiDAO2 dao=new prodottiDAO2();
-		String insertSQL = "INSERT INTO " + ordineDAO.TABLE_NAME + "(idProdotto, Email, PrezzoTot, Quantita, Data) VALUES (?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO " + ordineDAO.TABLE_NAME + "(idProdotto, Nome, Prezzo, Email, PrezzoTot, Quantita, Data) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			ordineBean order = ordine.remove(0);
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1, order.getIdProdotto());
-			preparedStatement.setString(2, order.getEmail());
-			preparedStatement.setDouble(3, order.getPrezzoTot());
-			preparedStatement.setInt(4, order.getQuantita());
-			preparedStatement.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			preparedStatement.setString(2, order.getNome());
+			preparedStatement.setDouble(3, order.getPrezzo());
+			preparedStatement.setString(4, order.getEmail());
+			preparedStatement.setDouble(5, order.getPrezzoTot());
+			preparedStatement.setInt(6, order.getQuantita());
+			preparedStatement.setDate(7, java.sql.Date.valueOf(java.time.LocalDate.now()));
 			
 			   int affectedRows = preparedStatement.executeUpdate();
 			   int id=0;
@@ -73,16 +75,18 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
 			
 			dao.doUpdateQnt(order.getIdProdotto(), order.getQuantita());
 			if(!ordine.isEmpty()) {
-				insertSQL = "INSERT INTO " + ordineDAO.TABLE_NAME + "(idOrdine, idProdotto, Email, PrezzoTot, Quantita, Data) VALUES (?, ?, ?, ?, ?, ?)";
+				insertSQL = "INSERT INTO " + ordineDAO.TABLE_NAME + "(idOrdine, idProdotto, Nome, Prezzo, Email, PrezzoTot, Quantita, Data) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 				preparedStatement = connection.prepareStatement(insertSQL);
 				for(ordineBean order2: ordine) {
 
 					preparedStatement.setInt(1, id);
 					preparedStatement.setInt(2, order2.getIdProdotto());
-					preparedStatement.setString(3, order2.getEmail());
-					preparedStatement.setDouble(4, order2.getPrezzoTot());
-					preparedStatement.setInt(5, order2.getQuantita());
-					preparedStatement.setDate(6, java.sql.Date.valueOf(java.time.LocalDate.now()));
+					preparedStatement.setString(3, order2.getNome());
+					preparedStatement.setDouble(4, order2.getPrezzo());
+					preparedStatement.setString(5, order2.getEmail());
+					preparedStatement.setDouble(6, order2.getPrezzoTot());
+					preparedStatement.setInt(7, order2.getQuantita());
+					preparedStatement.setDate(8, java.sql.Date.valueOf(java.time.LocalDate.now()));
 					preparedStatement.executeUpdate();
 					dao.doUpdateQnt(order2.getIdProdotto(), order2.getQuantita());
 				}
@@ -121,8 +125,10 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
                 
                 bean.setIdOrdine(rs.getInt("idOrdine"));
                 bean.setIdProdotto(rs.getInt("idProdotto"));
+                bean.setNome(rs.getString("Nome"));
+                bean.setPrezzo(rs.getDouble("Prezzo"));
                 bean.setEmail(rs.getString("Email"));
-                bean.setPrezzoTot(rs.getInt("PrezzoTot"));
+                bean.setPrezzoTot(rs.getDouble("PrezzoTot"));
                 bean.setQuantita(rs.getInt("Quantita"));
                 bean.setData(rs.getString("Data"));
                 ordini.add(bean);
@@ -161,8 +167,10 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
 	                
 	                bean.setIdOrdine(rs.getInt("idOrdine"));
 	                bean.setIdProdotto(rs.getInt("idProdotto"));
+	                bean.setNome(rs.getString("Nome"));
+	                bean.setPrezzo(rs.getDouble("Prezzo"));
 	                bean.setEmail(rs.getString("Email"));
-	                bean.setPrezzoTot(rs.getInt("PrezzoTot"));
+	                bean.setPrezzoTot(rs.getDouble("PrezzoTot"));
 	                bean.setQuantita(rs.getInt("Quantita"));
 	                bean.setData(rs.getString("Data"));
 	                ordini.add(bean);
@@ -180,13 +188,13 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
 	        }
 	        return ordini;
 	}
-
-	@Override
-	public List<ordineBean> doRetrieveAllOrderedByEmail() throws SQLException{//stampa tutti gli ordini ordinati per Email
-		Connection connection = null;
+	
+	@Override 
+    public List<ordineBean> doRetrieveAllOrderedByEmail() throws SQLException{
+        Connection connection = null;
         PreparedStatement preparedStatement = null;
-        List<ordineBean> ordini = new ArrayList<ordineBean>();
-        String selectSQL = "SELECT * FROM " + ordineDAO.TABLE_NAME + " ORDER BY Email";
+        List<ordineBean> ordiniUtente = new ArrayList<ordineBean>();
+        String selectSQL = "SELECT idOrdine, idProdotto, Nome, Prezzo, PrezzoTot, Quantita, Data FROM " + ordineDAO.TABLE_NAME + "ORDER BY Email";
         try {
             connection = ds.getConnection();
             preparedStatement = connection.prepareStatement(selectSQL);
@@ -195,16 +203,18 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
 
             while (rs.next()) {
                 ordineBean bean = new ordineBean();
-                
+
                 bean.setIdOrdine(rs.getInt("idOrdine"));
                 bean.setIdProdotto(rs.getInt("idProdotto"));
+                bean.setNome(rs.getString("Nome"));
+                bean.setPrezzo(rs.getDouble("Prezzo"));
                 bean.setEmail(rs.getString("Email"));
-                bean.setPrezzoTot(rs.getInt("PrezzoTot"));
+                bean.setPrezzoTot(rs.getDouble("PrezzoTot"));
                 bean.setQuantita(rs.getInt("Quantita"));
                 bean.setData(rs.getString("Data"));
-                ordini.add(bean);
+                ordiniUtente.add(bean);
             }
-            
+
 
         } finally {
             try {
@@ -215,15 +225,15 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
                     connection.close();
             }
         }
-        return ordini;
-	}
+        return ordiniUtente;
+    }
 	
 	@Override 
     public List<ordineBean> doRetrieveForClient(String Email) throws SQLException{
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         List<ordineBean> ordiniUtente = new ArrayList<ordineBean>();
-        String selectSQL = "SELECT idOrdine, idProdotto, PrezzoTot, Quantita, Data FROM " + ordineDAO.TABLE_NAME + " WHERE Email=? ORDER BY Data";
+        String selectSQL = "SELECT idOrdine, idProdotto, Nome, Prezzo, PrezzoTot, Quantita, Data FROM " + ordineDAO.TABLE_NAME + " WHERE Email=? ORDER BY Data";
         try {
             connection = ds.getConnection();
             preparedStatement = connection.prepareStatement(selectSQL);
@@ -236,7 +246,9 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
 
                 bean.setIdOrdine(rs.getInt("idOrdine"));
                 bean.setIdProdotto(rs.getInt("idProdotto"));
-                bean.setPrezzoTot(rs.getInt("PrezzoTot"));
+                bean.setNome(rs.getString("Nome"));
+                bean.setPrezzo(rs.getDouble("Prezzo"));
+                bean.setPrezzoTot(rs.getDouble("PrezzoTot"));
                 bean.setQuantita(rs.getInt("Quantita"));
                 bean.setData(rs.getString("Data"));
                 ordiniUtente.add(bean);

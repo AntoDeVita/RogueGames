@@ -22,26 +22,34 @@
 			    <thead>
 			        <tr>
 			            <th id="a">Id Ordine</th>
-			            <th id="a">Id Prodotto</th>
-			            <th id="a">Email</th>
+			            <th id="b">Id Prodotto</th>
+			            <th id="b">Nome</th>
+			            <th id="b">Prezzo</th>
 			            <th id="b">Prezzo Totale</th>
+			            <th id="a">Quantità</th>
 			            <th id="b">Data</th>
 			        </tr>
 			    </thead>
 			    <tbody>
-			    <%
+			    <%	   
             		if (!ordini.isEmpty()) {
                 		for (ordineBean bean : ordini) {
-      			%>
+
+                			%>
 			        <tr>
-			            <td><%=bean.getIdOrdine()%></td>
-			            <td style="curser: pointer;" onClick="<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotto() %>"><%=bean.getIdProdotto()%></td>
-			            <td><%=bean.getEmail() %></td>
+			            <td><%=bean.getIdOrdine() %></td>
+			            <td style="curser: pointer;" onClick="location.href='<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotto() %>';"><%=bean.getIdProdotto()%></td>
+			            <td><%=bean.getNome() %></td>
+			            <td><%= bean.getPrezzo()%></td>
 			            <td><%=bean.getPrezzoTot() %></td>
+			            <td><%=bean.getQuantita() %></td>
 			            <td><%=bean.getData() %></td>
 			            </tr>
-			    <%     }
-            		} else {
+			            
+			            
+			    <%
+                	}
+            	} else {
         		%>
         			<h2>No orders available</h2>
         		<%
