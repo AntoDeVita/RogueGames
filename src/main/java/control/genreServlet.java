@@ -54,6 +54,7 @@ public class genreServlet extends HttpServlet {
             xmlResponse.append("<products>");
             for (prodottoBean product : products) {
                 xmlResponse.append("<product>");
+                xmlResponse.append("<id>").append(product.getIdProdotti()).append("</id>");
                 xmlResponse.append("<name>").append(product.getNome()).append("</name>");
                 xmlResponse.append("<price>").append(product.getPrezzo()).append("</price>");
                 xmlResponse.append("<img>").append(product.getImmagine()).append("</img>");

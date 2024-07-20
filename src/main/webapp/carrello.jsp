@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
+
 <!DOCTYPE html>
 <html>
 
@@ -21,14 +22,20 @@
 		<%@ include file="./fragments/header.jsp" %>   
 		<p class="cat">Carrello</p>
 		<%
+	    //String sessionToken = UUID.randomUUID().toString();
+	    //session.setAttribute("sessionToken", sessionToken);
+	    
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
+		
 		if(pcart != null && !pcart.isEmpty()){%>
 		<div class="carrelloBtnContainer">
 			<h3><button class="carrelloBtn" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
 			<form action="confermaAcquisto.jsp" method="post">
+			
                 <h3><button style="margin-left: 10px" type="submit" class="carrelloBtn">Procedi all'acquisto</button></h3>
             </form>
 		</div>
+	
 		
 		<% 	List <pCarrelloBean> cart=pcart.getProdotti();
 		Iterator<?> it = cart.iterator();
@@ -68,6 +75,34 @@
 		<% 
 			}
 		%>
+		<%clienteRegBean cl=(clienteRegBean) request.getSession().getAttribute("cl");
+		if(cl!=null){
+		%>
+			 
+		<script>
+		    function confirmOrder() {
+		        
+		        <%--var sessionToken = '<%= session.getAttribute("sessionToken") %>';
+		        
+		        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken);
+		        
+		        document.getElementById('confirmOrderLink').href = servletUrl;--%>
+		        
+		        window.location.href='confermaAcquisto.jsp';
+		        hidePopupOrdine();
+		        
+		    }
+		</script>
+		<%}else{%>
+		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
+		<div id="popupOrdine">
+			<h2 id="prodTit">Devi effettuare la login per poter acquistare i prodotti</h2>
+			
+		</div>
+				<% 
+			}
+		%>
+		
 		<%@ include file="./fragments/Footer.jsp" %>  
 		
 </body>

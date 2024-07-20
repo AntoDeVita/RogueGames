@@ -47,7 +47,6 @@ public class creditCardServlet extends HttpServlet {
 		                switch (field) {
 		                	case 1:
 		                		boolean success = creditCardDao.insertCreditCard(cl.getEmail(), cif, CVV, Scadenza);
-		                		System.out.println(success);
 		                		if (success==true) 
 		                			request.getRequestDispatcher("/Profilo.jsp").forward(request, response); 
 		                		break;
@@ -70,6 +69,3 @@ public class creditCardServlet extends HttpServlet {
        
         
 }
-
-
-

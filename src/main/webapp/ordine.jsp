@@ -22,28 +22,29 @@
 			    <thead>
 			        <tr>
 			            <th id="a">Id Ordine</th>
-			            <th id="b">Id Prodotto</th>
 			            <th id="a">Email</th>
 			            <th id="b">Prezzo Totale</th>
-			            <th id="a">Quantità</th>
 			            <th id="b">Data</th>
 			        </tr>
 			    </thead>
 			    <tbody>
 			    <%
             		if (!ordini.isEmpty()) {
+            			int i=-1;
                 		for (ordineBean bean : ordini) {
+                			int id=bean.getIdOrdine();
+                			if(i!=id){
       			%>
 			        <tr>
-			            <td><%=bean.getIdOrdine() %></td>
-			            <td><%=bean.getIdProdotto() %></td>
+			            <td><%=id%></td>
 			            <td><%=bean.getEmail() %></td>
 			            <td><%=bean.getPrezzoTot() %></td>
-			            <td><%=bean.getQuantita() %></td>
 			            <td><%=bean.getData() %></td>
 			            </tr>
 			    <%
-                	}
+                		i=id;
+                			}
+                		}
             		} else {
         		%>
         			<h2>No orders available</h2>

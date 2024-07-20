@@ -7,11 +7,12 @@ public class carrello {
 
 
     private List<pCarrelloBean> cart;
-    public carrello(){
+
+    public carrello() {
         cart = new ArrayList<pCarrelloBean>();
     }
 
-    public void addCarr(pCarrelloBean p) {
+    public int addCarr(pCarrelloBean p) {
         int i=0;
         for(pCarrelloBean prod : cart) {
             if(prod.getIdProdotti()==p.getIdProdotti()) {
@@ -19,17 +20,19 @@ public class carrello {
                 break;
             }
         }
-        if(i==0)
+        if (i == 0) 
             cart.add(p);
+       return i;
     }
 
-    public void removeCarr(pCarrelloBean p) {
+    public boolean removeCarr(pCarrelloBean p) {
         for(pCarrelloBean prod : cart) {
             if(prod.getIdProdotti()==p.getIdProdotti()) {
                 cart.remove(prod);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public void svuota() {
@@ -41,27 +44,34 @@ public class carrello {
     }
 
     public pCarrelloBean getProd(int id) {
-        for(pCarrelloBean prod : cart) {
-            if(prod.getIdProdotti()==id) {
+        for (pCarrelloBean prod : cart) {
+            if (prod.getIdProdotti() == id) {
                 return prod;
             }
         }
         return null;
     }
 
-    public List getProdotti() {
+    public List<pCarrelloBean> getProdotti() {
         return cart;
     }
 
     public double prezzoTot() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return 0;
         }
-        double som=0;
-        for(pCarrelloBean prod : cart) {
-                som+=prod.getPrezzo();
-            }
+        double som = 0;
+        for (pCarrelloBean prod : cart) {
+            som += prod.getPrezzo();
+        }
         return som;
     }
-}
 
+	public int getTotalQuantity() {
+	    int totalQuantity = 0;
+	    for (pCarrelloBean bean : cart) {
+	        totalQuantity += bean.getIdQuantita();
+	    }
+	    return totalQuantity;
+	}
+}

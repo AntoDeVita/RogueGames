@@ -15,24 +15,26 @@
 		<%@ include file="./fragments/header.jsp" %>
 		<p class="cat">Catalogo<span class="cat" id="cat2"> Ordini</span></p>
 		<div class="avvolgiTabella">
+		<%
+            		if (!ordini.isEmpty()) {
+            			%>
+            		
 			<table border="1">
 			    <thead>
 			        <tr>
 			            <th id="a">Id Ordine</th>
-			            <th id="b">Id Prodotto</th>
+			            <th id="a">Email</th>
 			            <th id="b">Prezzo Totale</th>
-			            <th id="a">Quantità</th>
 			            <th id="b">Data</th>
 			        </tr>
 			    </thead>
 			    <tbody>
 			    <%
-            		if (!ordini.isEmpty()) {
+            		
                 		for (ordineBean bean : ordini) {
       			%>
 			        <tr>
 			            <td><%=bean.getIdOrdine() %></td>
-			            <td><%=bean.getIdProdotto() %></td>
 			            <td><%=bean.getPrezzoTot() %></td>
 			            <td><%=bean.getQuantita() %></td>
 			            <td><%=bean.getData() %></td>

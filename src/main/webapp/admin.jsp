@@ -14,7 +14,7 @@
 		<script src="script/checktext.js" defer></script>
 	</head>
 	<body>
-	    <%@ include file="./fragments/header.jsp" %>
+<%@ include file="./fragments/header.jsp" %>
 	    <p class="cat">Catalogo<span class="cat" id="cat2"> Prodotti</span></p>
 		<button class="adminBtn" style="margin-left: 10px" onclick="showPopupAggiungi()">Aggiungi Un Prodotto</button>
 			<table id="tb1" border="1">

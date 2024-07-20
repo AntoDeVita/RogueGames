@@ -126,16 +126,6 @@
   	</servlet-mapping>
   	
   	<servlet>
-    	<servlet-name>creditCardServlet</servlet-name>
-    	<servlet-class>control.creditCardServlet</servlet-class>
-  	</servlet>
-  
-  	<servlet-mapping>
-    	<servlet-name>creditCardServlet</servlet-name>
-    	<url-pattern>/creditCardServlet</url-pattern>
-  	</servlet-mapping>
-  	
-  	<servlet>
     	<servlet-name>AJXCreditservlet</servlet-name>
     	<servlet-class>control.AJXCreditservlet</servlet-class>
   	</servlet>
@@ -146,16 +136,61 @@
   	</servlet-mapping>
   	
   	<servlet>
-    	<servlet-name>preferitiServlet</servlet-name>
-    	<servlet-class>control.preferitiServlet</servlet-class>
+    	<servlet-name>modificaProfiloServlet</servlet-name>
+    	<servlet-class>control.modificaProfiloServlet</servlet-class>
   	</servlet>
   
   	<servlet-mapping>
-    	<servlet-name>preferitiServlet</servlet-name>
-    	<url-pattern>/preferitiServlet</url-pattern>
+    	<servlet-name>modificaProfiloServlet</servlet-name>
+    	<url-pattern>/modificaProfiloServlet</url-pattern>
   	</servlet-mapping>
   	
   	<servlet>
+    	<servlet-name>OrdineServlet</servlet-name>
+    	<servlet-class>control.OrdineServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>OrdineServlet</servlet-name>
+    	<url-pattern>/Ordine</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+        <servlet-name>creditCardServlet</servlet-name>
+        <servlet-class>control.creditCardServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>creditCardServlet</servlet-name>
+        <url-pattern>/creditCardServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>indirizzoSpedizioneServlet</servlet-name>
+        <servlet-class>control.indirizzoSpedizioneServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>indirizzoSpedizioneServlet</servlet-name>
+        <url-pattern>/indirizzoSpedizioneServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>indirizzoSpedizioneProfiloServlet</servlet-name>
+        <servlet-class>control.indirizzoSpedizioneProfiloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>indirizzoSpedizioneProfiloServlet</servlet-name>
+        <url-pattern>/indirizzoSpedizioneProfiloServlet</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>AJXAddressServlet</servlet-name>
+        <servlet-class>control.AJXAddressServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
     	<servlet-name>profiloServlet</servlet-name>
     	<servlet-class>control.profiloServlet</servlet-class>
   	</servlet>
@@ -164,4 +199,20 @@
     	<servlet-name>profiloServlet</servlet-name>
     	<url-pattern>/profiloServlet</url-pattern>
   	</servlet-mapping>
+	
+    <servlet-mapping>
+        <servlet-name>AJXAddressServlet</servlet-name>
+        <url-pattern>/AJXAddressServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<servlet-class>control.preferitiServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<url-pattern>/preferitiServlet</url-pattern>
+  	</servlet-mapping>
+    
 </web-app>

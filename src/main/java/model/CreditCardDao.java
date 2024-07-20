@@ -31,7 +31,8 @@ public class CreditCardDao implements CreditCardBeanDAO {
     private static final String INSERT_CREDIT_CARD_SQL = "INSERT INTO CartaDiCredito (EmailUT, cif, CVV, Scadenza) VALUES (?, ?, ?, ?)";
     private static final String DELATE_CREDIT_CARD_SQL = "DELETE FROM CartaDiCredito  WHERE cif=? && EmailUT=?";
     private static final String SELECT_CREDIT_CARD_SQL = "SELECT cif FROM CartaDiCredito  WHERE  EmailUT=?";
-
+    private static final String SELECT2_CREDIT_CARD_SQL = "SELECT cif FROM CartaDiCredito  WHERE  EmailUT=?";
+    
 @Override
     public boolean insertCreditCard(String EmailUT,String Cif,String CVV,String Scadenza) throws SQLException  {
 		Connection connection = null;
@@ -116,7 +117,40 @@ public class CreditCardDao implements CreditCardBeanDAO {
         }
         return ciffino;
     }
-    
+   
+    @Override
+    public List<CreditCardBean> getCarteByEmail(String email) throws SQLException {
+        List<CreditCardBean> carte = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = ds.getConnection(); // Assicurati che il metodo Database.getConnection() esista e ritorni una connessione valida
+            preparedStatement = connection.prepareStatement(SELECT2_CREDIT_CARD_SQL);
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+            	CreditCardBean carta = new CreditCardBean();
+                carta.setCif(resultSet.getString("Cif"));
+                
+
+                carte.add(carta);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return carte;
+    }
+       
 }
-
-

@@ -2,13 +2,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const deleteCardsBtn = document.getElementById("deleteCardsBtn");
     const cardContainer = document.getElementById("card-container");
 
-    showCardsBtn.addEventListener("click", function() {
-        fetchCards('AJXCreditservlet', '#card-container');
-    });
-
-    deleteCardsBtn.addEventListener("click", function() {
-        fetchCards('AJXCreditservlet', '#card-container');
-    });
+    if (deleteCardsBtn) {
+        deleteCardsBtn.addEventListener("click", function() {
+            fetchCards('AJXCreditservlet', '#card-container');
+        });
+    }
 });
 
 function fetchCards(url, containerSelector) {
@@ -43,9 +41,9 @@ function displayCards(xmlDoc, containerSelector) {
         console.log('Card CIF:', cif);
         
         const cardHTML = `
-            <div class="card-item">
+            <div class="card-item" data-cif="${cif}">
                 <p>Carta di Credito: ${cif}</p>
-                <button class="delete-card-btn" data-cif="${cif}">Elimina</button>
+                <button class="btn btn-danger delete-card-btn" data-cif="${cif}">Elimina</button>
             </div>
         `;
 
@@ -60,6 +58,8 @@ function displayCards(xmlDoc, containerSelector) {
 $(document).on('click', '.delete-card-btn', function() {
     const cif = $(this).data('cif');
     
+    console.log('Deleting card with CIF:', cif); // Log CIF before making request
+
     $.ajax({
         url: 'creditCardServlet',
         type: "POST",
@@ -68,7 +68,7 @@ $(document).on('click', '.delete-card-btn', function() {
             Cif: cif
         },
         success: function(response) {
-            console.log('Card deleted successfully');
+            console.log('Card deleted successfully:', response);
             fetchCards('AJXCreditservlet', '#card-container'); // Refresh card list
         },
         error: function(xhr, status, error) {
