@@ -55,8 +55,8 @@
                           </form>
                     </li>
                     <c:if test="${sessionScope.cl.ruolo == 'admin'}">
-		                <li style="margin-top: 5px">
-							<button onclick="toggleDropdown()" class="menuTendina">Admin</button>
+		                <li>
+							<button onclick="toggleDropdown()" class="dec btn menuTendina">Admin</button>
 								<div id="dropdown-content" class="dropdown-content">
 		                        	<a href="<%= request.getContextPath() %>/adminServlet">Prodotti</a>
 		                          	<a href="adminOrdiniServlet?num=0"> Ordini</a>

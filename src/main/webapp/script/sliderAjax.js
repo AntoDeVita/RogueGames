@@ -28,6 +28,7 @@ function displayProducts(xmlDoc, containerSelector) {
     console.log('Displaying products:', xmlDoc);
     const products = $(xmlDoc).find('product');
     const productContainer = $(containerSelector);
+    productContainer.empty(); // Clear any existing products
 
     products.each(function(index) {
         const id = $(this).find('id').text();
@@ -51,48 +52,40 @@ function displayProducts(xmlDoc, containerSelector) {
 }
 
 function initializeSlider(containerSelector) {
-    const sliderBarId = containerSelector === "#productContainerFantasy" ? "#sliderBarFantasy" : "#sliderBarConsole";
-    const sliderBar = document.querySelector(sliderBarId);
-    const productContainer = document.querySelector(containerSelector);
-    const items = document.querySelectorAll(containerSelector + ' .product-item');
-    const totalItems = items.length;
+    const productContainer = $(containerSelector);
+    const productItems = productContainer.children();
+    const numItems = productItems.length;
 
-    if (totalItems > 0) {
-        noUiSlider.create(sliderBar, {
-            start: 0,
-            range: {
-                min: 0,
-                max: totalItems - 1
-            },
-            step: 1,
-            connect: [true, false]
-        });
+    if (numItems === 0) return; // No items to display
 
-        sliderBar.noUiSlider.on('update', function(values, handle) {
-            const currentIndex = Math.round(values[handle]);
-            updateSlider(productContainer, currentIndex);
-        });
+    const itemWidth = productItems.first().outerWidth(true);
+    const sliderWidth = productContainer.width();
+    
+    productContainer.css('width', `${itemWidth * numItems}px`); // Set the width of the slider content
 
-        updateSliderRange(productContainer, sliderBar);
+    // Slider controls
+    const controlsId = containerSelector === "#productContainerFantasy" ? '#productControlsFantasy' : '#productControlsConsole';
+    const prevBtnId = `${controlsId} #prev-slide-${containerSelector.includes('Fantasy') ? 'fantasy' : 'console'}`;
+    const nextBtnId = `${controlsId} #next-slide-${containerSelector.includes('Fantasy') ? 'fantasy' : 'console'}`;
+
+    let currentIndex = 0;
+
+    $(prevBtnId).on('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+
+    $(nextBtnId).on('click', function() {
+        if (currentIndex < numItems - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+
+    function updateSlider() {
+        const newTransform = -currentIndex * itemWidth;
+        productContainer.css('transform', `translateX(${newTransform}px)`);
     }
-}
-
-function updateSliderRange(productContainer, sliderBar) {
-    const items = $(productContainer).children('.product-item');
-    const totalItems = items.length;
-
-    if (totalItems > 0) {
-        sliderBar.noUiSlider.updateOptions({
-            range: {
-                min: 0,
-                max: totalItems - 1
-            }
-        });
-    }
-}
-
-function updateSlider(productContainer, currentIndex) {
-    const items = $(productContainer).children('.product-item');
-    const translateX = -currentIndex * (items.outerWidth(true));
-    $(productContainer).css('transform', 'translateX(' + translateX + 'px)');
 }

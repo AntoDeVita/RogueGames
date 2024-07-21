@@ -8,7 +8,6 @@
     <title>RogueGames.it</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
-    <link rel="stylesheet" href="css/home2.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -18,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.0/noUiSlider.min.js"></script>
     <script src="script/slider.js" defer></script>
     <script src="script/sliderAjax.js" defer></script>
+    <script src="script/prodottiRandom.js" defer></script>
 </head>
 
 <style>
@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <hr class="divider">
+    <!--<hr class="divider">
     
     <div class="container">
         <h1 class="miniTitle">Fantasy</h1>
@@ -142,6 +142,44 @@
             <div id="productContainerConsole" class="slider-content"></div>
             <div id="sliderBarConsole" class="slider-bar"></div>
         </div>
+    </div>-->
+    
+    <hr class="divider">
+
+    <!-- Slider Fantasy -->
+    <div class="container">
+        <h1 class="miniTitle">Fantasy</h1>
+        <div class="slider-wrapper">
+            <div id="productContainerFantasy" class="slider-content">
+                <!-- Products will be loaded here -->
+            </div>
+            <div id="sliderBarFantasy" class="slider-bar">
+                <!-- The scrollbar and handle will be added dynamically -->
+            </div>
+            <div id="productControlsFantasy" class="slider-controls">
+                <button id="prev-slide-fantasy" class="slide-button">❮</button>
+                <button id="next-slide-fantasy" class="slide-button">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Slider Console -->
+    <div class="container">
+        <h1 class="miniTitle">Console</h1>
+        <div class="slider-wrapper">
+            <div id="productContainerConsole" class="slider-content">
+                <!-- Products will be loaded here -->
+            </div>
+            <div id="sliderBarConsole" class="slider-bar">
+                <!-- The scrollbar and handle will be added dynamically -->
+            </div>
+            <div id="productControlsConsole" class="slider-controls">
+                <button id="prev-slide-console" class="slide-button">❮</button>
+                <button id="next-slide-console" class="slide-button">❯</button>
+            </div>
+        </div>
     </div>
 
     <input type="hidden" id="genreParamFantasy" value="fantasy">
@@ -149,54 +187,8 @@
     
     <hr class="divider">
     
-    <main>
-        <section class="catalog container">
-            <div class="row">
-                <div class="col-6 col-md-4 col-lg-2 product">
-                    <a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=5">
-                        <img src="images/EldenRing.jpg" alt="Product 1" class="img-fluid">
-                        <h3>EldenRing</h3>
-                        <p>39.99&euro;</p>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 product">
-                    <a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=8">
-                        <img src="images/Happy.jpg" alt="Product 2" class="img-fluid">
-                        <h3>Fairytail Happy Peluche</h3>
-                        <p>10.97&euro;</p>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 product">
-                    <a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=2">            
-                        <img src="images/LinkAF.jpg" alt="Product 3" class="img-fluid">
-                        <h3>The legend of Zelda Action figure Link</h3>
-                        <p>651.57&euro;</p>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 product">
-                    <a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=3">  
-                        <img src="images/PS5.png" alt="Product 4" class="img-fluid">
-                        <h3>PlayStation 5 Digital Edition</h3>
-                        <p>399.99&euro;</p>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 product">
-                    <a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=9">  
-                        <img src="images/Xbox.jpg" alt="Product 5" class="img-fluid">
-                        <h3>Xbox Series X</h3>
-                        <p>479.99&euro;</p>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 product">
-                    <a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=7">  	
-                        <img src="images/R6S.jpg" alt="Product 6" class="img-fluid">
-                        <h3>Tom Clancy's Rainbow Six Siege</h3>
-                        <p>19.99&euro;</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="llallero" id="productContainerElectronics">
+    </div>
 
     <%@ include file="./fragments/Footer.jsp" %>  
 
