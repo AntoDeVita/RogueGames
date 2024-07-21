@@ -145,7 +145,7 @@
 	        		<p>ID Prodotto: <span id="IdProdotto"></span></p>
 		        	<div class="btnCont">
 		        		<input type="hidden" name="act" value="1">
-		        		<input type="hidden" id="id" name="idProdotto" value="">
+		        		<input type="hidden" id="Id" name="idProdotto" value="">
 			       		<a class="adminBtn" onclick="hidePopupElimina()">Chiudi</a>
 			       		<input type="submit" class="adminBtn" value="Conferma"></input>
 					</div>
@@ -187,7 +187,7 @@
                 <p>Quantità: <input type="number" id="qntAggiungi" name="qnt" onblur="controllaQuantita(this)"></input></p>
                 <div class="btnCont">
                     <a class="adminBtn" onclick="hidePopupAggiungi()">Chiudi</a>
-                    <input type="hidden" name="act" value="2">
+                    <input type="hidden" name="act" value="3">
                     <input type="submit" class="adminBtn" value="Conferma"></input>
                 </div>
             </form>

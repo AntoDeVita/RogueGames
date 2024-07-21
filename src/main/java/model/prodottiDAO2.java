@@ -37,7 +37,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 		String insertSQL = "INSERT INTO " + prodottiDAO2.TABLE_NAME
 				+ "(Nome, Immagine, Video, Descrizione, CoV, prezzo, CasaProd, Piattaforma, Genere, Tipo, DataRilascio, Quantita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+		System.out.println("FsF");
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
@@ -55,6 +55,7 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 			preparedStatement.setInt(12, product.getQuantita());
 
 			preparedStatement.executeUpdate();
+			System.out.println("FF");
 
 		} finally {
 			try {
@@ -79,8 +80,9 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
 
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, id);
-
+			System.out.println("FF");
 			preparedStatement.executeUpdate();
+			System.out.println("FF");
 
 		} finally {
 			try {

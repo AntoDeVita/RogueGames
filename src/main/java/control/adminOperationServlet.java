@@ -28,18 +28,24 @@ public class adminOperationServlet extends HttpServlet {
     	prodottoBean prod;
     	HttpSession session = request.getSession();
         String sessionToken = (String) session.getAttribute("sessionToken");
-		if(sessionToken!=null) {    	
-        try {if(act!=null) {
+    	System.out.println(act);
+		if(sessionToken!=null) {
+			System.out.println("FF");
+        try {System.out.println("FF");
+        	if(act!=null) {
+        	System.out.println("FF");
             switch (act) {
                 case "1": // Chiamata pulsante Elimina in admin.jsp
                     int id = Integer.parseInt(request.getParameter("idProdotto"));
-             
+                    System.out.println("FF");
                     dao.doDelete(id);
+                    System.out.println("FF");
                     break;
                 case "2":  // Chiamata pulsante Aggiungi in admin.jsp
                 	prod= new prodottoBean();
                 	prod.setNome(request.getParameter("nome"));
                 	prod.setImmagine(request.getParameter("img"));
+                	prod.setVideo(request.getParameter("video"));
                 	prod.setDescrizione(request.getParameter("dsc"));
                 	prod.setCoV(Boolean.valueOf(request.getParameter("cov")));
                 	prod.setPrezzo(Double.parseDouble(request.getParameter("prz").trim()));
@@ -49,6 +55,7 @@ public class adminOperationServlet extends HttpServlet {
                 	prod.setTipo(request.getParameter("tipo"));
                 	prod.setDataRilascio(request.getParameter("releaseDate"));
                 	prod.setQuantita(Integer.parseInt(request.getParameter("qnt")));
+                	System.out.println("FF");
                 	dao.doSave(prod);
                 	break;
                 case "3": // Chiamata pulsante Modifica in admin.jsp
@@ -56,6 +63,7 @@ public class adminOperationServlet extends HttpServlet {
                 	int i= Integer.parseInt(request.getParameter("idProdotto"));
                 	prod.setNome(request.getParameter("nome"));
                 	prod.setImmagine(request.getParameter("img"));
+                	prod.setVideo(request.getParameter("video"));
                 	prod.setDescrizione(request.getParameter("dsc"));
                 	prod.setCoV(Boolean.valueOf(request.getParameter("cov")));
                 	prod.setPrezzo(Double.parseDouble(request.getParameter("prz").trim()));
