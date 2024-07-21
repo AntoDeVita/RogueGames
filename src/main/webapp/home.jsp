@@ -20,6 +20,8 @@
     <script src="script/prodottiRandom.js" defer></script>
 </head>
 
+
+
 <body>
 
     <%@ include file="./fragments/header.jsp" %>  
