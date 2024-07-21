@@ -152,7 +152,6 @@
 		        </form>
         </div>
         
-        
         		<div id="overlayAggiungi" onclick="hidePopupAggiungi()"></div>
 			<div id="popupAggiungi">
 				<form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST" onsubmit="return validateImageInput(this)"><%--Bottone Conferma Aggiunta act= 2 --%>
