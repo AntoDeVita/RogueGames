@@ -16,8 +16,12 @@
     <div class="container">
         <h1 class="text-center my-4">Riepilogo Acquisto</h1>
         <%
-	    	String sessionToken = UUID.randomUUID().toString();
-	    	session.setAttribute("sessionToken", sessionToken);
+	    	// Assegna solo se non esiste già
+	    	String sessionToken = (String) session.getAttribute("sessionToken");
+	    	if (sessionToken == null) {
+	    		sessionToken = UUID.randomUUID().toString();
+	    		session.setAttribute("sessionToken", sessionToken);
+	    	}
 	    
             carrello pcart = (carrello) request.getSession().getAttribute("pcart");
             clienteRegBean cliente = (clienteRegBean) request.getSession().getAttribute("cl");
@@ -86,12 +90,11 @@
                                    30&euro;
                               </option>
                              <% } %>
-                                                    
                         </select>
                         </div>
                         
                        <h5>Seleziona un Indirizzo Esistente</h5>
-                        <select class="form-control" id="existingAddressSelect" name="existingAddress">
+                        <select class="form-control" id="existingAddressSelect" name="existingAddress" onchange="checkSelections()">
                             <option value="">Seleziona Indirizzo</option>
                             <% for (IndirizzoSpedizioneBean indirizzo : indirizzi) { %>
                                 <option value="<%= indirizzo.getVia() %>, <%= indirizzo.getCivico() %>, <%= indirizzo.getCap() %>, <%= indirizzo.getProvincia() %>, <%= indirizzo.getCitta() %>">
@@ -100,7 +103,7 @@
                             <% } %>
                         </select>
                         <h5>Seleziona una Carta di Credito Esistente</h5>
-                        <select class="form-control" id="existingCardSelect" name="existingCard">
+                        <select class="form-control" id="existingCardSelect" name="existingCard" onchange="checkSelections()">
                             <option value="">Seleziona Carta</option>
                             <% for (CreditCardBean carta : carte) { %>
                                 <option value="<%= carta.getCif() %>">
@@ -109,21 +112,34 @@
                             <% } %>
                         </select>
                        				
-						 <a id="confirmOrderLink" id="acquistaBtn" class="btn btn-purchase" text-align="center" href="#" onclick="confirmOrder()">Conferma</a>
+						 <a id="confirmOrderLink" class="btn btn-purchase" href="#" onclick="confirmOrder(event)" disabled>Conferma</a>
 					</div>	 
 					<script>
-				    function confirmOrder() {
-				        
-				    	var sc= document.getElementById('punti').value;
-				    	console.log('Fetching:', sc);
+				    function confirmOrder(event) {
+				    	var addressSelected = document.getElementById('existingAddressSelect').value;
+				        var cardSelected = document.getElementById('existingCardSelect').value;
+				        if (!addressSelected || !cardSelected) {
+				            event.preventDefault();
+				            alert('Per favore seleziona un indirizzo e una carta di credito.');
+				            return false;
+				        }
 				    	
+				        var sc = document.getElementById('punti').value;
 				        var sessionToken = '<%= session.getAttribute("sessionToken") %>';
-				        
-				        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken)+'&sc='+sc;
-				        
+				        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken) + '&sc=' + sc;
 				        document.getElementById('confirmOrderLink').href = servletUrl;
+				    }
+				    
+				    function checkSelections() {
+				        var addressSelected = document.getElementById('existingAddressSelect').value;
+				        var cardSelected = document.getElementById('existingCardSelect').value;
+				        var confirmButton = document.getElementById('confirmOrderLink');
 				        
-				        hidePopupOrdine();
+				        if (addressSelected && cardSelected) {
+				            confirmButton.removeAttribute('disabled');
+				        } else {
+				            confirmButton.setAttribute('disabled', 'true');
+				        }
 				    }
 					</script>
 
@@ -140,9 +156,8 @@
         <%
             }
         %>
-    </div>
+    
 
     <%@ include file="./fragments/Footer.jsp" %>
 </body>
 </html>
->
