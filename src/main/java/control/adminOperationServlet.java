@@ -55,7 +55,6 @@ public class adminOperationServlet extends HttpServlet {
                 	prod.setTipo(request.getParameter("tipo"));
                 	prod.setDataRilascio(request.getParameter("releaseDate"));
                 	prod.setQuantita(Integer.parseInt(request.getParameter("qnt")));
-                	System.out.println("FF");
                 	dao.doSave(prod);
                 	break;
                 case "3": // Chiamata pulsante Modifica in admin.jsp

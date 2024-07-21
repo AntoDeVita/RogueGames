@@ -151,47 +151,48 @@
 					</div>
 		        </form>
         </div>
-
-        <div id="overlayAggiungi" onclick="hidePopupAggiungi()"></div>
-        <div id="popupAggiungi">
-            <form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST" enctype="multipart/form-data" onsubmit="return validateImageInput(this)">
-                <h2>Aggiungi Nuovo Prodotto</h2>
-                <p>Nome: <input type="text" id="nomeAggiungi" name="nome"></input></p>
-                <p>Immagine: <input type="file" id="imgAggiungi" name="img" accept=".jpg, .jpeg, .png"></input></p>
-                <p>Video: <input type="file" id="videoAggiungi" name="video" accept=".mp4"></input></p>
-                <div style="display:flex">
-                    <p>Descrizione: </p>
-                    <textarea style="margin-left:5px" id="dscAggiungi" name="dsc" placeholder="Descrizione"></textarea>
-                </div>
-                <p>CoV: <select id="covAggiungi" name="cov">
-                          <option value="true">True</option>
-                          <option value="false">False</option>
-                        </select></p>
-                <p>Prezzo: <input type="number" step="0.01" id="przAggiungi" name="prz" onblur="controllaPrezzo(this)"></input></p>
-                <p>Casa Produttrice: <input type="text" id="casaPrdAggiungi" name="casaPrd"></input></p>
-                <p>Piattaforma: <select id="pltfAggiungi" name="pltf">
-                                  <option value="PlayStation">PlayStation</option>
-                                  <option value="Xbox">Xbox</option>
-                                  <option value="Pc">Pc</option>
-                                  <option value="Nintendo Switch">Nintendo Switch</option>
-                                  <option value="null">Nessuna</option>
-                                </select></p>
-                <p>Genere: <input type="text" id="gnrAggiungi" name="gnr"></input></p>
-                <p>Tipo: <select id="tipoAggiungi" name="tipo">
-                          <option value="Videogiochi">Videogiochi</option>
-                          <option value="Console">Console</option>
-                          <option value="AF">AF</option>
-                          <option value="Accessori">Accessori</option>
-                        </select></p>
-                <p>Data Rilascio: <input type="date" id="releaseDateAggiungi" name="releaseDate"></input></p>
-                <p>Quantità: <input type="number" id="qntAggiungi" name="qnt" onblur="controllaQuantita(this)"></input></p>
-                <div class="btnCont">
-                    <a class="adminBtn" onclick="hidePopupAggiungi()">Chiudi</a>
-                    <input type="hidden" name="act" value="3">
-                    <input type="submit" class="adminBtn" value="Conferma"></input>
-                </div>
-            </form>
-        </div>
+        
+        
+        		<div id="overlayAggiungi" onclick="hidePopupAggiungi()"></div>
+			<div id="popupAggiungi">
+				<form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST" onsubmit="return validateImageInput(this)"><%--Bottone Conferma Aggiunta act= 2 --%>
+				    <h2 id="prodTit">Aggiungi Prodotto</h2>
+			        <p>Nome: <input type="text" name="nome" placeholder="Nome"></input></p>
+			        <p>Immagine: <input type="file" name="img" placeholder="Es.images/img.jpg" accept=".png .jpg .jpeg"></input></p>
+			        <p>Video: <input type="file" name="video" placeholder="Es. video/video.mp4" accept=".mp4"></input></p>
+			        <div style="display:flex">
+				        <p>Descrizione: </p>
+				        <textarea style="margin-left:5px" name="dsc" placeholder="Descrizione"></textarea>
+			        </div>
+			        <p>CoV: <select name="cov">
+								<option value="true">True</option>
+								<option value="false">False</option>
+							</select></p>
+			        <p>Prezzo: <input type="number" name="prz" step="0.01" placeholder="Prezzo" onblur="controllaPrezzo(this)"></input></p>
+			        <p>Casa Produttrice: <input type="text" name="casaPrd" placeholder="Casa Produttrice"></input></p>
+			        <p>Piattaforma: <select name="pltf">
+										<option value="PlayStation">PlayStation</option>
+										<option value="Xbox">Xbox</option>
+										<option value="Pc">Pc</option>
+										<option value="Nintendo Switch">Nintendo Switch</option>
+										<option value="null">Nessuna</option>
+									</select></p>
+			        <p>Genere: <input type="text" name="gnr" maxlenght="45" title="Genere troppo lungo" placeholder="Es.Fantasy"></input></p>
+			        <p>Tipo: <select name="tipo">
+							 	<option value="Videogiochi">Videogiochi</option>
+								<option value="Console">Console</option>
+								<option value="AF">AF</option>
+								<option value="Accessori">Accessori</option>
+							 </select></p>
+			        <p>Data Rilascio: <input type="date" name="releaseDate"></input></p>
+			        <p>Quantità: <input type="number" name="qnt" onBlur="controllaQuantita(this)" placeholder="Quantità"></p>
+			        <div class="btnCont">
+				        <a class="adminBtn" onclick="hidePopupAggiungi()">Chiudi</a>
+				       	<input type="submit" class="adminBtn" value="Conferma"></input>
+				       	<input type="hidden" name="act" value="2">
+					</div>
+		    </form>
+			</div>
     </body>
 </html>
         
