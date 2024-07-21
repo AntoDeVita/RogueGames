@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import model.clienteRegBean;
 import model.clienteDAO;
 
-@WebServlet("/modificaProfiloServlet")
+
 public class modificaProfiloServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

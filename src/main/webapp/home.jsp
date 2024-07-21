@@ -13,13 +13,50 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/home.css" type="text/css">
-	<script src="script/slider.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.0/noUiSlider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.0/noUiSlider.min.js"></script>
+    <script src="script/slider.js" defer></script>
+    <script src="script/sliderAjax.js" defer></script>
+    <script src="script/prodottiRandom.js" defer></script>
 </head>
+
+<style>
+    .slider-wrapper {
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .slider-bar {
+        width: 100%;
+        margin-top: 10px;
+        height: 10px; /* Altezza della barra di scorrimento */
+        position: relative;
+    }
+
+    .noUi-target {
+        height: 10px; /* Altezza della barra di scorrimento */
+    }
+
+    .noUi-connect {
+        background: #007bff; /* Colore del segmento connesso */
+    }
+
+    .noUi-origin {
+        height: 20px; /* Altezza del cursore */
+        width: 20px; /* Larghezza del cursore */
+        background: #007bff; /* Colore del cursore */
+    }
+
+    .noUi-horizontal {
+        margin: 0; /* Rimuove margini extra */
+    }
+</style>
+
+</head>
+
 <body>
 
-    <script src="script/sliderAjax.js" defer></script> 
-
-
+    <%@ include file="./fragments/header.jsp" %>  
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -38,7 +75,7 @@
             <div class="carousel-item">
                 <img src="images/SwitchGame.jpg" class="d-block w-100" alt="Third slide">
             </div>
-             <div class="carousel-item">
+            <div class="carousel-item">
                 <img src="images/funkoBanner.jpg" class="d-block w-100" alt="Fourth slide">
             </div>
         </div>
@@ -51,87 +88,107 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    
+    <hr class="divider">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <div class="item-grid" data-name="Xbox">
+                    <a href="Piattaforma?piattaforma=Xbox">
+                        <img src="images/xboxLogo.png" class="img-fluid" alt="Xbox">
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="item-grid" data-name="Ps5">
+                    <a href="Piattaforma?piattaforma=PlayStation">
+                        <img src="images/ps5Logo.png" class="img-fluid" alt="Ps5">
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="item-grid" data-name="Switch">
+                    <a href="Piattaforma?piattaforma=Nintendo Switch">
+                        <img src="images/switchLogo.jpg" class="img-fluid" alt="Switch">
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="item-grid" data-name="Pc">
+                    <a href="Piattaforma?piattaforma=Pc">
+                        <img src="images/pcLogo.jpg" class="img-fluid" alt="Pc">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<hr class="divider">
+    
+    <div class="container">
+        <h1 class="miniTitle">Fantasy</h1>
+        <div class="slider-wrapper">
+            <div id="productContainerFantasy" class="slider-content"></div>
+            <div id="sliderBarFantasy" class="slider-bar"></div>
+        </div>
+    </div>
+    
+    <hr class="divider">
+    
+    <div class="container">
+        <h1 class="miniTitle">Console</h1>
+        <div class="slider-wrapper">
+            <div id="productContainerConsole" class="slider-content"></div>
+            <div id="sliderBarConsole" class="slider-bar"></div>
+        </div>
+    </div>-->
+    
+    <hr class="divider">
+
+    <!-- Slider Fantasy -->
+    <div class="container">
+        <h1 class="miniTitle">Fantasy</h1>
+        <div class="slider-wrapper">
+            <div id="productContainerFantasy" class="slider-content">
+                <!-- Products will be loaded here -->
+            </div>
+            <div id="sliderBarFantasy" class="slider-bar">
+                <!-- The scrollbar and handle will be added dynamically -->
+            </div>
+            <div id="productControlsFantasy" class="slider-controls">
+                <button id="prev-slide-fantasy" class="slide-button">❮</button>
+                <button id="next-slide-fantasy" class="slide-button">❯</button>
+            </div>
+        </div>
+    </div>
 
     <hr class="divider">
 
-<div class="container">
-    <h1 class="miniTitle">Fantasy</h1>
-    <div class="slider-wrapper">
-        <button id="prev-slide-fantasy" class="slide-button material-symbols-rounded">chevron_left</button>
-        <div class="image-list">
-            <div id="productContainerFantasy" class="slider-content"></div>
-        </div>
-        <button id="next-slide-fantasy" class="slide-button material-symbols-rounded">chevron_right</button>
-    </div>
-    <div class="slider-scrollbar">
-        <div class="scrollbar-track">
-            <div class="scrollbar-thumb"></div>
-        </div>
-    </div>
-</div>
-	 <hr class="divider">
-	 
-<div class="container">
-    <h1 class="miniTitle">Console</h1>
-    <div class="slider-wrapper">
-        <button id="prev-slide-Console" class="slide-button material-symbols-rounded">chevron_left</button>
-        <div class="image-list">
-            <div id="productContainerConsole" class="slider-content"></div>
-        </div>
-        <button id="next-slide-Console" class="slide-button material-symbols-rounded">chevron_right</button>
-    </div>
-    <div class="slider-scrollbar">
-        <div class="scrollbar-track">
-            <div class="scrollbar-thumb"></div>
+    <!-- Slider Console -->
+    <div class="container">
+        <h1 class="miniTitle">Console</h1>
+        <div class="slider-wrapper">
+            <div id="productContainerConsole" class="slider-content">
+                <!-- Products will be loaded here -->
+            </div>
+            <div id="sliderBarConsole" class="slider-bar">
+                <!-- The scrollbar and handle will be added dynamically -->
+            </div>
+            <div id="productControlsConsole" class="slider-controls">
+                <button id="prev-slide-console" class="slide-button">❮</button>
+                <button id="next-slide-console" class="slide-button">❯</button>
+            </div>
         </div>
     </div>
-</div>
 
-<input type="hidden" id="genreParamFantasy" value="fantasy">
-<input type="hidden" id="genreParamConsole" value="Console">  
-	
-	<hr class="divider">
-
-    <main>
-        <section class="catalog">
-            <div class="product">
-            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=5">
-                <img src="images/EldenRing.jpg" alt="Product 1">
-                <h3>EldenRing</h3>
-                <p>39.99&euro;</p>
-            </div>
-            <div class="product">
-            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=8">
-                <img src="images/Happy.jpg" alt="Product 2">
-                <h3>Fairytail Happy Peluche</h3>
-                <p>10.97&euro;</p>
-            </div>
-            <div class="product">
-            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=2">            
-                <img src="images/LinkAF.jpg" alt="Product 3">
-                <h3>The legend of Zelda Action figure Link</h3>
-                <p>651.57&euro;</p>
-            </div>
-            <div class="product">
-            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=3">  
-                <img src="images/PS5.png" alt="Product 4">
-                <h3>PlayStation 5 Digital Edition</h3>
-                <p>399.99&euro;</p>
-            </div>
-            <div class="product">
-            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=9">  
-                <img src="images/Xbox.jpg" alt="Product 5">
-                <h3>Xbox Series X</h3>
-                <p>479.99&euro;</p>
-            </div>
-            <div class="product">
-            	<a href="<%= request.getContextPath() %>/dettagliServlet?param=7">  	
-                <img src="images/R6S.jpg" alt="Product 6">
-                <h3>Tom Clancy's Rainbow Six Siege</h3>
-                <p>19.99&euro;</p>
-            </div>
-        </section>
-    </main>
+    <input type="hidden" id="genreParamFantasy" value="fantasy">
+    <input type="hidden" id="genreParamConsole" value="Console">  
+    
+    <hr class="divider">
+    
+    <div class="llallero" id="productContainerElectronics">
+    </div>
 
     <%@ include file="./fragments/Footer.jsp" %>  
 

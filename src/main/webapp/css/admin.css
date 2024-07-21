@@ -1,19 +1,41 @@
-p#cat {
-	text-align: center;
-	font-size: 30px;
-	font-style: bold;
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+.container {
+    margin-top: 50px;
+    padding: 0 15px; /* Padding per schermi più piccoli */
+}
+
+/* Stili per .cat */
+.cat {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff007f;
+}
+
+.cat#cat2 {
+    color: #00bfff;
+}
+
+/* Stili per h2#prodTit */
 h2#prodTit {
-	text-align: center;
+    text-align: center;
 }
 
-table {
+/* Stili per la tabella */
+table#tb1 {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 18px;
-    text-align: left;
+    text-align: center;
+    table-layout: auto;
 }
 
 th, td {
@@ -45,93 +67,40 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-#popupModifica {
-	display: none; /* Nasconde la finestra per impostazione predefinita */
-	position: fixed; /* Posiziona la finestra in modo fisso */
-	left: 50%; /* Centra la finestra orizzontalmente */
- 	top: 50%; /* Centra la finestra verticalmente */
- 	transform: translate(-50%, -50%); /* Effettua una traslazione per centrare */
-	border: 2px solid #444; /* Bordo della finestra */
-	background-color: #fff; /* Colore di sfondo della finestra */
-	padding: 20px; /* Padding interno della finestra */
-	z-index: 1000; /* Posiziona la finestra sopra altri elementi */
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Aggiunge un'ombra */
+/* Stili per i popup */
+#popupModifica, #popupElimina, #popupAggiungi, #popupDescrizione {
+    display: none; /* Nasconde la finestra per impostazione predefinita */
+    position: fixed; /* Posiziona la finestra in modo fisso */
+    left: 50%; /* Centra la finestra orizzontalmente */
+    top: 50%; /* Centra la finestra verticalmente */
+    transform: translate(-50%, -50%); /* Effettua una traslazione per centrare */
+    border: 2px solid #444; /* Bordo della finestra */
+    background-color: #fff; /* Colore di sfondo della finestra */
+    padding: 20px; /* Padding interno della finestra */
+    z-index: 1000; /* Posiziona la finestra sopra altri elementi */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Aggiunge un'ombra */
 }
 
-#overlayModifica {
-	display: none; /* Nasconde lo sfondo per impostazione predefinita */
-	position: fixed; /* Posiziona lo sfondo in modo fisso */
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5); /* Colore e opacitÃ  dello sfondo */
-	z-index: 999; /* Posiziona lo sfondo sotto la finestra pop-up ma sopra altri elementi */
+#overlayModifica, #overlayElimina, #overlayAggiungi, #overlayDescrizione {
+    display: none; /* Nasconde lo sfondo per impostazione predefinita */
+    position: fixed; /* Posiziona lo sfondo in modo fisso */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Colore e opacità dello sfondo */
+    z-index: 999; /* Posiziona lo sfondo sotto la finestra pop-up ma sopra altri elementi */
 }
 
-#popupElimina {
-	display: none; /* Nasconde la finestra per impostazione predefinita */
-	position: fixed; /* Posiziona la finestra in modo fisso */
-	left: 50%; /* Centra la finestra orizzontalmente */
- 	top: 50%; /* Centra la finestra verticalmente */
- 	transform: translate(-50%, -50%); /* Effettua una traslazione per centrare */
-	border: 2px solid #444; /* Bordo della finestra */
-	background-color: #fff; /* Colore di sfondo della finestra */
-	padding: 20px; /* Padding interno della finestra */
-	z-index: 1000; /* Posiziona la finestra sopra altri elementi */
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Aggiunge un'ombra */
+/* Stili per i pulsanti */
+.btnCont {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Aggiunge wrap per pulsanti su schermi piccoli */
 }
 
-#overlayElimina {
-	display: none; /* Nasconde lo sfondo per impostazione predefinita */
-	position: fixed; /* Posiziona lo sfondo in modo fisso */
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5); /* Colore e opacitÃ  dello sfondo */
-	z-index: 999; /* Posiziona lo sfondo sotto la finestra pop-up ma sopra altri elementi */
-}
-
-#popupAggiungi {
-	display: none; /* Nasconde la finestra per impostazione predefinita */
-	position: fixed; /* Posiziona la finestra in modo fisso */
-	left: 50%; /* Centra la finestra orizzontalmente */
- 	top: 50%; /* Centra la finestra verticalmente */
- 	transform: translate(-50%, -50%); /* Effettua una traslazione per centrare */
-	border: 2px solid #444; /* Bordo della finestra */
-	background-color: #fff; /* Colore di sfondo della finestra */
-	padding: 20px; /* Padding interno della finestra */
-	z-index: 1000; /* Posiziona la finestra sopra altri elementi */
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Aggiunge un'ombra */
-}
-
-#overlayAggiungi {
-	display: none; /* Nasconde lo sfondo per impostazione predefinita */
-	position: fixed; /* Posiziona lo sfondo in modo fisso */
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5); /* Colore e opacitÃ  dello sfondo */
-	z-index: 999; /* Posiziona lo sfondo sotto la finestra pop-up ma sopra altri elementi */
-}
-
-.btnCont{
-	display: flex;
-	gap:15px;
-}  
-     
-.btnCont#top{
-	margin: 20px;
-}    
-
-.btnCont#top p#cat{
-	margin-left: 430px;
-}
-  
 .adminBtn {
-	background-color: #007bff;
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -142,6 +111,88 @@ tr:hover {
 }
 
 .adminBtn:hover {
-	color: white;
-	text-decoration: none;
+    color: white;
+    text-decoration: none;
+}
+
+.adminBtn#descr {
+    background-color: #ff007f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+/* Media Queries per rendere il design responsive */
+
+/* Per tablet e schermi più piccoli */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+
+    .cat {
+        font-size: 24px;
+    }
+
+    table#tb1 {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 10px 12px;
+    }
+
+    .btnCont {
+        gap: 10px;
+    }
+
+    .adminBtn, .adminBtn#descr {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+
+    #popupModifica, #popupElimina, #popupAggiungi, #popupDescrizione {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+/* Per smartphone e schermi molto piccoli */
+@media (max-width: 480px) {
+    .container {
+        margin-top: 10px;
+        padding: 0 5px;
+    }
+
+    .cat {
+        font-size: 20px;
+    }
+
+    table#tb1 {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+
+    .btnCont {
+        flex-direction: column; /* Dispone i pulsanti in colonna */
+        gap: 10px;
+    }
+
+    .adminBtn, .adminBtn#descr {
+        font-size: 0.7em;
+        padding: 3px 6px;
+    }
+
+    #popupModifica, #popupElimina, #popupAggiungi, #popupDescrizione {
+        width: 95%;
+        padding: 10px;
+    }
 }

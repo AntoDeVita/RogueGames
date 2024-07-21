@@ -53,7 +53,6 @@
     	<url-pattern>/carrelloServlet</url-pattern>
   	</servlet-mapping>
   	
-  	
   	<servlet>
     	<servlet-name>dettagliServlet</servlet-name>
     	<servlet-class>control.dettagliServlet</servlet-class>
@@ -74,6 +73,7 @@
     	<servlet-name>genreServlet</servlet-name>
     	<url-pattern>/genreServlet</url-pattern>
   	</servlet-mapping>
+  	
   	<servlet>
     	<servlet-name>logoutServlet</servlet-name>
     	<servlet-class>control.logoutServlet</servlet-class>
@@ -83,4 +83,155 @@
     	<servlet-name>logoutServlet</servlet-name>
     	<url-pattern>/logoutServlet</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>piattaformaServlet</servlet-name>
+    	<servlet-class>control.piattaformaServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>piattaformaServlet</servlet-name>
+    	<url-pattern>/Piattaforma</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>adminServlet</servlet-name>
+    	<servlet-class>control.adminServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>adminServlet</servlet-name>
+    	<url-pattern>/adminServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>adminOperationServlet</servlet-name>
+    	<servlet-class>control.adminOperationServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>adminOperationServlet</servlet-name>
+    	<url-pattern>/adminOperationServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>adminOrdiniServlet</servlet-name>
+    	<servlet-class>control.adminOrdiniServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>adminOrdiniServlet</servlet-name>
+    	<url-pattern>/adminOrdiniServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>AJXCreditservlet</servlet-name>
+    	<servlet-class>control.AJXCreditservlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>AJXCreditservlet</servlet-name>
+    	<url-pattern>/AJXCreditservlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>modificaProfiloServlet</servlet-name>
+    	<servlet-class>control.modificaProfiloServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>modificaProfiloServlet</servlet-name>
+    	<url-pattern>/modificaProfiloServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>OrdineServlet</servlet-name>
+    	<servlet-class>control.OrdineServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>OrdineServlet</servlet-name>
+    	<url-pattern>/Ordine</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+        <servlet-name>creditCardServlet</servlet-name>
+        <servlet-class>control.creditCardServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>creditCardServlet</servlet-name>
+        <url-pattern>/creditCardServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>indirizzoSpedizioneServlet</servlet-name>
+        <servlet-class>control.indirizzoSpedizioneServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>indirizzoSpedizioneServlet</servlet-name>
+        <url-pattern>/indirizzoSpedizioneServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>indirizzoSpedizioneProfiloServlet</servlet-name>
+        <servlet-class>control.indirizzoSpedizioneProfiloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>indirizzoSpedizioneProfiloServlet</servlet-name>
+        <url-pattern>/indirizzoSpedizioneProfiloServlet</url-pattern>
+    </servlet-mapping>
+   
+    <servlet>
+    	<servlet-name>profiloServlet</servlet-name>
+    	<servlet-class>control.profiloServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>profiloServlet</servlet-name>
+    	<url-pattern>/profiloServlet</url-pattern>
+  	</servlet-mapping>
+	
+	<servlet>
+        <servlet-name>AJXAddressServlet</servlet-name>
+        <servlet-class>control.AJXAddressServlet</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>AJXAddressServlet</servlet-name>
+        <url-pattern>/AJXAddressServlet</url-pattern>
+    </servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>ordineProdServlet</servlet-name>
+    	<servlet-class>control.ordineProdServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>ordineProdServlet</servlet-name>
+    	<url-pattern>/ordineProdServlet</url-pattern>
+     </servlet-mapping>	
+    	
+       <servlet>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<servlet-class>control.preferitiServlet</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>preferitiServlet</servlet-name>
+    	<url-pattern>/preferitiServlet</url-pattern>
+  	</servlet-mapping> 	
+    
+    <error-page>
+    	<error-code>404</error-code>
+    	<location>/ErrorePage.jsp</location>
+    </error-page>
+    
+    <error-page>
+    	<error-code>500</error-code>
+    	<location>/ErrorePage.jsp</location>
+    </error-page>
+    
 </web-app>

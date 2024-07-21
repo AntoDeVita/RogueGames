@@ -7,8 +7,9 @@ public class prodottoBean implements  Serializable{
 	private int idProdotti;
 	private String nome;
 	private String immagine;
+	private String video;
 	private String descrizione;
-	private boolean CoV; //True=Vendita False=Cancellato
+	private boolean CoV; //True0=Vendita False1=Cancellato
 	private double prezzo;
 	private String casaProduttrice;
 	private String piattaforma;
@@ -115,4 +116,13 @@ public class prodottoBean implements  Serializable{
 	public void setImmagine(String immagine) {
 		this.immagine = immagine;
 	}	
+	
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
+	}	
+
 }
