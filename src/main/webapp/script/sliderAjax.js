@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     fetchProducts("genreServlet", "#productContainerFantasy", { genre: genreFantasy });
     fetchProducts("genreServlet", "#productContainerConsole", { genre: genreConsole });
-
-    initializeSlider("#productContainerFantasy", "#slider-fantasy");
-    initializeSlider("#productContainerConsole", "#slider-console");
 });
 
 function fetchProducts(url, containerSelector, params) {
@@ -33,7 +30,7 @@ function displayProducts(xmlDoc, containerSelector) {
     const productContainer = $(containerSelector);
 
     products.each(function(index) {
-        const id = $(this).find('name').text();
+        const id = $(this).find('id').text();
         const name = $(this).find('name').text();
         const price = $(this).find('price').text();
         const imgSrc = $(this).find('img').text();
@@ -50,28 +47,52 @@ function displayProducts(xmlDoc, containerSelector) {
         productContainer.append(productHTML);
     });
 
-    updateSliderRange(containerSelector);
+    initializeSlider(containerSelector);
 }
 
-function initializeSlider(containerSelector, sliderSelector) {
-    const slider = $(sliderSelector);
-
-    slider.on("input", function() {
-        const currentIndex = $(this).val();
-        updateSlider(containerSelector, currentIndex);
-    });
-}
-
-function updateSliderRange(containerSelector) {
-    const items = $(containerSelector).children('.product-item');
-    const slider = $(containerSelector).next('.slider-bar');
+function initializeSlider(containerSelector) {
+    const sliderBarId = containerSelector === "#productContainerFantasy" ? "#sliderBarFantasy" : "#sliderBarConsole";
+    const sliderBar = document.querySelector(sliderBarId);
+    const productContainer = document.querySelector(containerSelector);
+    const items = document.querySelectorAll(containerSelector + ' .product-item');
     const totalItems = items.length;
 
-    slider.attr("max", totalItems - 1);
+    if (totalItems > 0) {
+        noUiSlider.create(sliderBar, {
+            start: 0,
+            range: {
+                min: 0,
+                max: totalItems - 1
+            },
+            step: 1,
+            connect: [true, false]
+        });
+
+        sliderBar.noUiSlider.on('update', function(values, handle) {
+            const currentIndex = Math.round(values[handle]);
+            updateSlider(productContainer, currentIndex);
+        });
+
+        updateSliderRange(productContainer, sliderBar);
+    }
 }
 
-function updateSlider(containerSelector, currentIndex) {
-    const items = $(containerSelector).children('.product-item');
+function updateSliderRange(productContainer, sliderBar) {
+    const items = $(productContainer).children('.product-item');
+    const totalItems = items.length;
+
+    if (totalItems > 0) {
+        sliderBar.noUiSlider.updateOptions({
+            range: {
+                min: 0,
+                max: totalItems - 1
+            }
+        });
+    }
+}
+
+function updateSlider(productContainer, currentIndex) {
+    const items = $(productContainer).children('.product-item');
     const translateX = -currentIndex * (items.outerWidth(true));
-    $(containerSelector).css('transform', 'translateX(' + translateX + 'px)');
+    $(productContainer).css('transform', 'translateX(' + translateX + 'px)');
 }

@@ -29,6 +29,7 @@
 			            <th id="b">Prezzo Totale</th>
 			            <th id="a">Quantità</th>
 			            <th id="b">Data</th>
+			            <th id="b">Email</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -45,6 +46,7 @@
 			            <td><%=bean.getPrezzoTot() %></td>
 			            <td><%=bean.getQuantita() %></td>
 			            <td><%=bean.getData() %></td>
+			            <td><%=bean.getEmail() %></td>
 			            </tr>
 			            
 			            

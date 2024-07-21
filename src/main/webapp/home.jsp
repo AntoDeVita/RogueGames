@@ -14,26 +14,46 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/home.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.0/noUiSlider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.0/noUiSlider.min.js"></script>
     <script src="script/slider.js" defer></script>
     <script src="script/sliderAjax.js" defer></script>
-    <style>
-        .product-container {
-            display: flex;
-            overflow: hidden;
-        }
-        .product-item {
-            flex: 0 0 auto;
-            width: 200px; /* Adjust as needed */
-            margin-right: 10px; /* Adjust as needed */
-        }
-        .slider-bar {
-            width: 100%;
-        }
-        .slider-scrollbar {
-            margin-top: 10px;
-        }
-    </style>
 </head>
+
+<style>
+    .slider-wrapper {
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .slider-bar {
+        width: 100%;
+        margin-top: 10px;
+        height: 10px; /* Altezza della barra di scorrimento */
+        position: relative;
+    }
+
+    .noUi-target {
+        height: 10px; /* Altezza della barra di scorrimento */
+    }
+
+    .noUi-connect {
+        background: #007bff; /* Colore del segmento connesso */
+    }
+
+    .noUi-origin {
+        height: 20px; /* Altezza del cursore */
+        width: 20px; /* Larghezza del cursore */
+        background: #007bff; /* Colore del cursore */
+    }
+
+    .noUi-horizontal {
+        margin: 0; /* Rimuove margini extra */
+    }
+</style>
+
+</head>
+
 <body>
 
     <%@ include file="./fragments/header.jsp" %>  
@@ -55,7 +75,7 @@
             <div class="carousel-item">
                 <img src="images/SwitchGame.jpg" class="d-block w-100" alt="Third slide">
             </div>
-             <div class="carousel-item">
+            <div class="carousel-item">
                 <img src="images/funkoBanner.jpg" class="d-block w-100" alt="Fourth slide">
             </div>
         </div>
@@ -109,10 +129,8 @@
     <div class="container">
         <h1 class="miniTitle">Fantasy</h1>
         <div class="slider-wrapper">
-            <div class="image-list">
-                <div id="productContainerFantasy" class="slider-content"></div>
-            </div>
-            <input type="range" id="slider-fantasy" class="slider-bar" min="0" step="1">
+            <div id="productContainerFantasy" class="slider-content"></div>
+            <div id="sliderBarFantasy" class="slider-bar"></div>
         </div>
     </div>
     
@@ -121,10 +139,8 @@
     <div class="container">
         <h1 class="miniTitle">Console</h1>
         <div class="slider-wrapper">
-            <div class="image-list">
-                <div id="productContainerConsole" class="slider-content"></div>
-            </div>
-            <input type="range" id="slider-console" class="slider-bar" min="0" step="1">
+            <div id="productContainerConsole" class="slider-content"></div>
+            <div id="sliderBarConsole" class="slider-bar"></div>
         </div>
     </div>
 

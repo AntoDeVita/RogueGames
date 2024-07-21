@@ -194,7 +194,7 @@ public class ordineDAO implements ordineBeanDAO<ordineBean>{
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         List<ordineBean> ordiniUtente = new ArrayList<ordineBean>();
-        String selectSQL = "SELECT idOrdine, idProdotto, Nome, Prezzo, PrezzoTot, Quantita, Data FROM " + ordineDAO.TABLE_NAME + "ORDER BY Email";
+        String selectSQL = "SELECT idOrdine, idProdotto, Nome, Prezzo, Email, PrezzoTot, Quantita, Data FROM " + ordineDAO.TABLE_NAME + " ORDER BY Email";
         try {
             connection = ds.getConnection();
             preparedStatement = connection.prepareStatement(selectSQL);

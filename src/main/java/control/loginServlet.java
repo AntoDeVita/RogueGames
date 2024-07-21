@@ -25,7 +25,8 @@ public class loginServlet extends HttpServlet {
         super();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    @SuppressWarnings("unused")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("txtEmail");
         String password = request.getParameter("txtPass");
@@ -38,6 +39,7 @@ public class loginServlet extends HttpServlet {
         	if(cl==null) {
         		request.setAttribute("errorMessage", "Invalid username or password.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
         	}
             
         } catch (SQLException e) {
