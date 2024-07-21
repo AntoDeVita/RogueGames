@@ -30,16 +30,13 @@ public class adminOperationServlet extends HttpServlet {
         String sessionToken = (String) session.getAttribute("sessionToken");
     	System.out.println(act);
 		if(sessionToken!=null) {
-			System.out.println("FF");
-        try {System.out.println("FF");
+        try {
         	if(act!=null) {
-        	System.out.println("FF");
+
             switch (act) {
                 case "1": // Chiamata pulsante Elimina in admin.jsp
                     int id = Integer.parseInt(request.getParameter("idProdotto"));
-                    System.out.println("FF");
                     dao.doDelete(id);
-                    System.out.println("FF");
                     break;
                 case "2":  // Chiamata pulsante Aggiungi in admin.jsp
                 	prod= new prodottoBean();

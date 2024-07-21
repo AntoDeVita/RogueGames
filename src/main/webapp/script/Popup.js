@@ -3,6 +3,7 @@ function showPopupElimina(nome, IdProdotto) {
             document.getElementById('overlayElimina').style.display = 'block';
             document.getElementById('Nome').innerText = nome;
             document.getElementById('IdProdotto').innerText = IdProdotto;
+			document.getElementById('id').value=IdProdotto;
 	    }
 	    
 	    function hidePopupElimina() {

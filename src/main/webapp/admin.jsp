@@ -145,7 +145,7 @@
 	        		<p>ID Prodotto: <span id="IdProdotto"></span></p>
 		        	<div class="btnCont">
 		        		<input type="hidden" name="act" value="1">
-		        		<input type="hidden" id="Id" name="idProdotto" value="">
+		        		<input type="hidden" id="id" name="idProdotto" value="">
 			       		<a class="adminBtn" onclick="hidePopupElimina()">Chiudi</a>
 			       		<input type="submit" class="adminBtn" value="Conferma"></input>
 					</div>
