@@ -34,7 +34,7 @@ public class adminOperationServlet extends HttpServlet {
              
                     dao.doDelete(id);
                     break;
-                case "2": // Chiamata pulsante Aggiungi in admin.jsp
+                case "2":  // Chiamata pulsante Aggiungi in admin.jsp
                 	prod= new prodottoBean();
                 	prod.setNome(request.getParameter("nome"));
                 	prod.setImmagine(request.getParameter("img"));
