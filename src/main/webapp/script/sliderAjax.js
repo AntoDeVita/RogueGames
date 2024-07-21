@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const productHTML = 
 				    `<div class="product-item">
 				        <a style="text-decoration: none" href="dettagliServlet?param=${id}">
-				            <img src="${imgSrc}" alt="${name}" class="product-image">
+				            <img src="images/${imgSrc}" alt="${name}" class="product-image">
 				            <h5>${name}</h5>
 				            <h5>${price}€</h5>
 				        </a>

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  import="model.*, java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
+	<link rel="shortcut icon" href="#">
 	<title>Carrello</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +44,7 @@
 
 		<div class="contenitore-grid">
 				<div class="item-grid" data-name="immagine">
-	      		<img src=<%=bean.getProdotto().getImmagine()%> class="img" alt="prod">
+	      		<img src="images/<%=bean.getProdotto().getImmagine()%>" class="img" alt="prod">
       		</div>
       		<div class="item-grid">
 				<h1><%=bean.getProdotto().getNome() %></h1>
@@ -80,17 +79,9 @@
 		%>
 			 
 		<script>
-		    function confirmOrder() {
-		        
-		        <%--var sessionToken = '<%= session.getAttribute("sessionToken") %>';
-		        
-		        var servletUrl = 'Ordine?sessionToken=' + encodeURIComponent(sessionToken);
-		        
-		        document.getElementById('confirmOrderLink').href = servletUrl;--%>
-		        
+		    function confirmOrder() 	        
 		        window.location.href='confermaAcquisto.jsp';
-		        hidePopupOrdine();
-		        
+		        hidePopupOrdine();        
 		    }
 		</script>
 		<%}else{%>

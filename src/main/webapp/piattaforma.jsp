@@ -9,6 +9,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
     <title>Catalogo Prodotti</title>
     <link rel="stylesheet" href="css/prod.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -25,7 +26,7 @@
         %>
         <div class="prodotto">
         	<a href="<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotti() %>">
-            <img src="<%=bean.getImmagine()%>" alt="<%=bean.getNome()%>">
+            <img src="images/<%=bean.getImmagine()%>" alt="<%=bean.getNome()%>"></a>
             <h3><%=bean.getNome() %></h3>
             <p class="descrizione">Una breve descrizione del prodotto.</p>
             <p class="prezzo"><%=bean.getPrezzo()%>&euro;</p>

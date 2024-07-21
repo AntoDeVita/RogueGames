@@ -3,6 +3,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
     <title>Riepilogo Acquisto</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/confermaAcquisto.css" type="text/css">
@@ -41,7 +42,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="<%=bean.getProdotto().getImmagine() %>" class="img-fluid" alt="prod">
+                                    <img src="images/<%=bean.getProdotto().getImmagine() %>" class="img-fluid" alt="prod">
                                 </div>
                                 <div class="col-md-4">
                                     <h5><%=bean.getProdotto().getNome() %></h5>

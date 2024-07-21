@@ -56,7 +56,7 @@
         		</form>
         	</div>
         	<a style="text-decoration: none" href="<%= request.getContextPath() %>/dettagliServlet?param=<%=bean.getIdProdotti() %>">
-            <img src="<%=bean.getImmagine()%>" alt="<%=bean.getNome()%>">
+            <img src="images/<%=bean.getImmagine()%>" alt="<%=bean.getNome()%>">
             <h3><%=bean.getNome() %></h3> </a>
             <p class="descrizione"><%if(bean.getPiattaforma()==null){%>
             	<%=bean.getGenere()%>
@@ -97,7 +97,7 @@
             }
         %>
     </div>
-		
+		 <div id="response"></div>
     <%@ include file="./fragments/Footer.jsp" %>
     
 </body>

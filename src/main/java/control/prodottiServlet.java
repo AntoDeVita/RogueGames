@@ -30,6 +30,7 @@ public class prodottiServlet extends HttpServlet {
             prodottiDAO2 dao = new prodottiDAO2();
             List<prodottoBean>products = new ArrayList<prodottoBean>();
             try {
+            	if(stampa!=null) {
             	switch(stampa) {
             		case("tutto"):
             			products = dao.doRetrieveAll(i);
@@ -39,8 +40,8 @@ public class prodottiServlet extends HttpServlet {
             			products = dao.doRetrieveAll(i);
                         request.setAttribute("products", products);
             			break;
+            		}
             	}
-            	
 
 
                 //request.getSession().setAttribute("pSession", products);

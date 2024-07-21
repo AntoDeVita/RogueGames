@@ -3,6 +3,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
     <title>Modifica Campo</title>
     <link rel="stylesheet" href="css/Profilo.css" type="text/css">
     <script>

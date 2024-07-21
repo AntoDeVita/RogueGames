@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
     <title>Logout</title>
     <link rel="stylesheet" href="css/logout.css" type="text/css">
 </head>

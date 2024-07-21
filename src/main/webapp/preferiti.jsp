@@ -4,6 +4,7 @@
 <html>
 
 <head>
+	<link rel="shortcut icon" href="#">
 	<title>Preferiti</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +34,7 @@
 
 		<div class="contenitore-grid">
 				<div class="item-grid" data-name="immagine">
-	      		<img src=<%=bean.getProdotto().getImmagine()%> class="img" alt="prod">
+	      		<img src="images/<%=bean.getProdotto().getImmagine()%>" class="img" alt="prod">
       		</div>
       		<div class="item-grid">
 				<h1><%=bean.getProdotto().getNome() %></h1>

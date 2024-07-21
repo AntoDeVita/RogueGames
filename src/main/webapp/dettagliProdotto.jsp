@@ -6,6 +6,7 @@
 <html lang="en">
 	<head>
 	    <meta charset="UTF-8">
+	    <link rel="shortcut icon" href="#">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="css/dettagliProdotto.css" type="text/css">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -25,7 +26,7 @@
 			<p class="sottoTitoloProd">by <strong style="color: #949494"><%=p.getCasaProduttrice() %></strong></p>
 			<div class="gridMainInfo">
 				<div class="imgContainer">
-					<img src="<%=p.getImmagine() %>" class="img" alt="prodotto">
+					<img src="images/<%=p.getImmagine() %>" class="img" alt="prodotto">
 				</div>
 				<div class="info">
 					<p>Prezzo: <span style="font-size: 20px; color: black" ><%=p.getPrezzo() %>&euro;</span></p>

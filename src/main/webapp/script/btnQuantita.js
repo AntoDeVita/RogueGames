@@ -9,10 +9,10 @@
 	    })
 	    .then(response => response.text())
 	    .then(data => {
-	        // Optionally handle response, e.g., update the UI or redirect
+	    
 	        console.log(data);
-	        // For example, you can redirect to another page after successful request
-	        window.location.href = 'carrello.jsp';  // change 'somePage.html' to your desired page
+	
+	        window.location.href = 'carrello.jsp';  
 	    })
 	    .catch(error => {
 	        console.error('Error:', error);
@@ -29,10 +29,10 @@
 			    })
 	    .then(response => response.text())
 	    .then(data => {
-	        // Optionally handle response, e.g., update the UI or redirect
+	      
 	        console.log(data);
-	        // For example, you can redirect to another page after successful request
-	        window.location.href = 'carrello.jsp';  // change 'somePage.html' to your desired page
+	       
+	        window.location.href = 'carrello.jsp';  
 	    })
 	    .catch(error => {
 	        console.error('Error:', error);
@@ -49,10 +49,10 @@
 			    })
 	    .then(response => response.text())
 	    .then(data => {
-	        // Optionally handle response, e.g., update the UI or redirect
+	        
 	        console.log(data);
-	        // For example, you can redirect to another page after successful request
-	        window.location.href = 'carrello.jsp';  // change 'somePage.html' to your desired page
+	    
+	        window.location.href = 'carrello.jsp';  
 	    })
 	    .catch(error => {
 	        console.error('Error:', error);
@@ -68,10 +68,10 @@
 			    })
 	    .then(response => response.text())
 	    .then(data => {
-	        // Optionally handle response, e.g., update the UI or redirect
+	       
 	        console.log(data);
-	        // For example, you can redirect to another page after successful request
-	        window.location.href = 'carrello.jsp';  // change 'somePage.html' to your desired page
+	     
+	        window.location.href = 'carrello.jsp';  
 	    })
 	    .catch(error => {
 	        console.error('Error:', error);
@@ -88,10 +88,10 @@
 			    })
 	    .then(response => response.text())
 	    .then(data => {
-	        // Optionally handle response, e.g., update the UI or redirect
+
 	        console.log(data);
-	        // For example, you can redirect to another page after successful request
-	        window.location.href = 'preferiti.jsp';  // change 'somePage.html' to your desired page
+			
+	        window.location.href = 'preferiti.jsp';  
 	    })
 	    .catch(error => {
 	        console.error('Error:', error);
@@ -107,10 +107,10 @@
 			    })
 	    .then(response => response.text())
 	    .then(data => {
-	        // Optionally handle response, e.g., update the UI or redirect
+	        
 	        console.log(data);
-	        // For example, you can redirect to another page after successful request
-	        window.location.href = 'preferiti.jsp';  // change 'somePage.html' to your desired page
+	        
+	        window.location.href = 'preferiti.jsp';  
 	    })
 	    .catch(error => {
 	        console.error('Error:', error);
