@@ -156,7 +156,6 @@ public class prodottiDAO2 implements IBeanDAO<prodottoBean>{
             selectSQL += " ORDER BY " + where;
         }
 
-        
         try {
             connection = ds.getConnection();
             preparedStatement = connection.prepareStatement(selectSQL);
