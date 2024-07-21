@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.clienteRegBean"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String sessionToken = (String) session.getAttribute("sessionToken");
+%>
+
 <!DOCTYPE html>
 <html>
 	<head>	
@@ -30,7 +34,7 @@
                             <input type="hidden" name="stampa" value="tutto">
                           </form>
                     </li>
-                    <c:if test="${empty sessionScope.cl}">
+                    <c:if test="${empty sessionScope.sessionToken}">
                     <li>
                         <form action="login.jsp" method="POST">
                             <input class="dec btn" type="submit" value="Login">
@@ -43,7 +47,7 @@
     						<input class="dec btn" type="submit" value="Carrello">
 						</form>
                     </li>
-                <c:if test="${not empty sessionScope.cl}">
+                <c:if test="${not empty sessionScope.sessionToken}">
                     <li>
                     	<form action="Profilo.jsp" method="POST">
                             <input class="dec btn" type="submit" value="Profilo">

@@ -15,14 +15,7 @@
 	
     <div class="container">
         <h1 class="text-center my-4">Riepilogo Acquisto</h1>
-        <%
-	    	// Assegna solo se non esiste già
-	    	String sessionToken = (String) session.getAttribute("sessionToken");
-	    	if (sessionToken == null) {
-	    		sessionToken = UUID.randomUUID().toString();
-	    		session.setAttribute("sessionToken", sessionToken);
-	    	}
-	    
+        <%	    	
             carrello pcart = (carrello) request.getSession().getAttribute("pcart");
             clienteRegBean cliente = (clienteRegBean) request.getSession().getAttribute("cl");
             IndirizzoSpedizioneDAO indirizzoDao = new IndirizzoSpedizioneDAO();
@@ -94,7 +87,7 @@
                         </div>
                         
                        <h5>Seleziona un Indirizzo Esistente</h5>
-                        <select class="form-control" id="existingAddressSelect" name="existingAddress" onchange="checkSelections()">
+                        <select style="margin-bottom: 20px" class="form-control" id="existingAddressSelect" name="existingAddress" onchange="checkSelections()">
                             <option value="">Seleziona Indirizzo</option>
                             <% for (IndirizzoSpedizioneBean indirizzo : indirizzi) { %>
                                 <option value="<%= indirizzo.getVia() %>, <%= indirizzo.getCivico() %>, <%= indirizzo.getCap() %>, <%= indirizzo.getProvincia() %>, <%= indirizzo.getCitta() %>">
@@ -103,7 +96,7 @@
                             <% } %>
                         </select>
                         <h5>Seleziona una Carta di Credito Esistente</h5>
-                        <select class="form-control" id="existingCardSelect" name="existingCard" onchange="checkSelections()">
+                        <select style="margin-bottom: 20px" class="form-control" id="existingCardSelect" name="existingCard" onchange="checkSelections()">
                             <option value="">Seleziona Carta</option>
                             <% for (CreditCardBean carta : carte) { %>
                                 <option value="<%= carta.getCif() %>">

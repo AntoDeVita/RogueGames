@@ -21,16 +21,12 @@
 		<%@ include file="./fragments/header.jsp" %>   
 		<p class="cat">Carrello</p>
 		<%
-	    //String sessionToken = UUID.randomUUID().toString();
-	    //session.setAttribute("sessionToken", sessionToken);
-	    
 		carrello pcart = (carrello) request.getSession().getAttribute("pcart");
-		clienteRegBean cl = (clienteRegBean) request.getSession().getAttribute("cl");
 		
 		if(pcart != null && !pcart.isEmpty()) { %>
 		<div class="carrelloBtnContainer">
 			<h3><button class="carrelloBtn" onclick="deleteAllButton()">Rimuovi Tutto</button></h3>
-			<% if (cl != null) { %>
+			<% if (sessionToken != null) { %>
 			<form action="confermaAcquisto.jsp" method="post">
                 <h3><button style="margin-left: 10px" type="submit" class="carrelloBtn">Procedi all'acquisto</button></h3>
             </form>
@@ -73,7 +69,7 @@
 		</div>	
 		<% } %>
 		
-		<% if (cl == null) { %>
+		<% if (sessionToken == null) { %>
 		<div id="overlayOrdine" onclick="hidePopupOrdine()"></div>
 		<div id="popupOrdine">
 			<h2 id="prodTit">Devi effettuare la login per poter acquistare i prodotti</h2>

@@ -24,9 +24,11 @@ public class adminOperationServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         prodottiDAO2 dao = new prodottiDAO2();
-        
         String act = request.getParameter("act");
     	prodottoBean prod;
+    	HttpSession session = request.getSession();
+        String sessionToken = (String) session.getAttribute("sessionToken");
+		if(sessionToken!=null) {    	
         try {if(act!=null) {
             switch (act) {
                 case "1": // Chiamata pulsante Elimina in admin.jsp
@@ -80,6 +82,9 @@ public class adminOperationServlet extends HttpServlet {
         }
         
         request.getRequestDispatcher("adminServlet").forward(request, response);
+    }else {
+		request.getRequestDispatcher("/ErrorePage.jsp").forward(request, response);
+	}
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

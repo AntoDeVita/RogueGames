@@ -25,12 +25,9 @@ public class carrelloServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		 HttpSession session = request.getSession(false);
 		 clienteRegBean cl=(clienteRegBean) session.getAttribute("cl");
-		
 		 prodottiDAO2 dao = new prodottiDAO2();
 		 PCarrelloDAO daoc = new PCarrelloDAO();
 		 carrello pcart = (carrello) request.getSession().getAttribute("pcart");

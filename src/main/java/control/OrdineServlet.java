@@ -19,13 +19,9 @@ import model.*;
 
 public class OrdineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
     public OrdineServlet() {
         super();
     }
-
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session = request.getSession(false);
 	        if (session == null) {

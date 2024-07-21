@@ -16,11 +16,11 @@ import javax.servlet.http.HttpSession;
 public class aggiungiPuntiServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         clienteRegBean cliente = (clienteRegBean) session.getAttribute("cl");
-
-        if (cliente != null) {
+        String sessionToken = (String) session.getAttribute("sessionToken");
+		if(sessionToken!=null) {
             try {
                 int numberOfProducts = Integer.parseInt(request.getParameter("numberOfProducts"));
                 int pointsToAdd = numberOfProducts * 5;
@@ -47,8 +47,12 @@ public class aggiungiPuntiServlet extends HttpServlet {
                
             }
         } else {
-            
+    		request.getRequestDispatcher("/ErrorePage.jsp").forward(request, response);
         }
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	doGet(request, response);
     }
 }
 
