@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.prodottiDAO2;
 import model.prodottoBean;
@@ -23,29 +24,24 @@ public class adminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		/*List<prodottoBean> pSession= (List<prodottoBean>) request.getSession().getAttribute("pSession");
-		if(pSession==null) {
-			pSession= new  ArrayList<prodottoBean>();
-			request.getSession().setAttribute("pSession", pSession);
-		}
-		if(pSession.isEmpty()){*/
 		prodottiDAO2 dao = new prodottiDAO2();
-	    try {
-	         List<prodottoBean> products = dao.doRetrieveAll("idProdotti");
-	         //pSession.addAll(products);
-	         request.setAttribute("products", products);
-	         //request.getSession().setAttribute("pSession", pSession);
-	         request.getRequestDispatcher("/admin.jsp").forward(request, response);
-	    }   
-	    catch (SQLException e) {
-	    	e.printStackTrace();
-	        request.setAttribute("error", "Database connection failed: " + e.getMessage());
-	        request.getRequestDispatcher("/error.jsp").forward(request, response);
-	       
-	     }
-	    /*}else
-			request.getRequestDispatcher("/admin.jsp").forward(request, response);
-		*/
+		HttpSession session = request.getSession();
+        String sessionToken = (String) session.getAttribute("sessionToken");
+		if(sessionToken!=null) {
+		    try {
+		         List<prodottoBean> products = dao.doRetrieveAll("idProdotti");
+		         request.setAttribute("products", products);
+		         request.getRequestDispatcher("/admin.jsp").forward(request, response);
+		    }   
+		    catch (SQLException e) {
+		    	e.printStackTrace();
+		        request.setAttribute("error", "Database connection failed: " + e.getMessage());
+		        request.getRequestDispatcher("/error.jsp").forward(request, response);
+		       
+		    }
+		}else {
+			request.getRequestDispatcher("/ErrorePage.jsp").forward(request, response);
+		}
 }
 
 

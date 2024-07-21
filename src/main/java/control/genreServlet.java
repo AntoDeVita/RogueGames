@@ -14,28 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import model.prodottiDAO2;
 import model.prodottoBean;
 
-/**
- * Servlet implementation class genreServlet
- */
 
 public class genreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
+
     public genreServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-    	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    	
         prodottiDAO2 dao = new prodottiDAO2();
         String genre = request.getParameter("genre");
         String f= "Fantasy";
@@ -63,27 +50,15 @@ public class genreServlet extends HttpServlet {
             xmlResponse.append("</products>");
   
             response.getWriter().write(xmlResponse.toString());
-        
-         
-            
-
-
     } catch (SQLException e) {
         e.printStackTrace();
         request.setAttribute("error", "Database connection failed: " + e.getMessage());
         request.getRequestDispatcher("/error.jsp").forward(request, response);
         return;
     }
-        
-        //request.getRequestDispatcher("/home.jsp").forward(request, response);
 }
-	
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

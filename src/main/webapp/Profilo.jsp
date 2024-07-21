@@ -34,6 +34,8 @@
 <body>
 <%@ include file="./fragments/header.jsp" %> 
 <%
+	/*String sessionToken = (String) session.getAttribute("sessionToken");
+	if(sessionToken==)*/
     clienteRegBean cl = (clienteRegBean) request.getSession().getAttribute("cl");
     if (cl != null) {
     	

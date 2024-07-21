@@ -1,8 +1,8 @@
-function showPopupElimina(id, nome) {
+function showPopupElimina(nome, IdProdotto) {
             document.getElementById('popupElimina').style.display = 'block';
             document.getElementById('overlayElimina').style.display = 'block';
             document.getElementById('Nome').innerText = nome;
-            document.getElementById('id').value= id;
+            document.getElementById('IdProdotto').innerText = IdProdotto;
 	    }
 	    
 	    function hidePopupElimina() {

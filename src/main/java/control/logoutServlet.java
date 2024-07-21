@@ -20,8 +20,10 @@ public class logoutServlet extends HttpServlet {
 	        	session.removeAttribute("cl");
 	            session.invalidate(); 
 	        }
-
-	       
-	    }
+	    
+	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			doGet(request, response);
+		}
 	}
+}
 

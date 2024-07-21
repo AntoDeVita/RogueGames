@@ -26,51 +26,55 @@ public class modificaProfiloServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         clienteRegBean cl = (clienteRegBean) session.getAttribute("cl");
-
-        if (cl != null) {
-            String field = request.getParameter("field");
-            String newValue = request.getParameter("newValue");
-
-            clienteDAO userDAO = new clienteDAO();
-            try {
-                switch (field) {
-                    case "nome":
-                        cl.setNome(newValue);
-                        userDAO.aggiornaCampo(cl, "Nome", newValue);
-                        break;
-                    case "cognome":
-                        cl.setCognome(newValue);
-                        userDAO.aggiornaCampo(cl, "Cognome", newValue);
-                        break;
-                    case "email":
-                        cl.setEmail(newValue);
-                        userDAO.aggiornaCampo(cl, "Email", newValue);
-                        break;
-                    case "telefono":
-                        cl.setTelefono(newValue);
-                        userDAO.aggiornaCampo(cl, "Tel", newValue);
-                        break;
-                    case "password":
-                        String hashedPassword = hashSHA256(newValue);
-                        cl.setPassword(hashedPassword);
-                        userDAO.aggiornaCampo(cl, "Password", hashedPassword);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Campo di modifica non valido");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                request.setAttribute("error", "Errore SQL durante l'aggiornamento: " + e.getMessage());
-                request.getRequestDispatcher("/error.jsp").forward(request, response);
-                return;
-            }
-
-            session.setAttribute("cl", cl);
-            response.sendRedirect("Profilo.jsp");
-        } else {
-            request.setAttribute("error", "Utente non autenticato.");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-        }
+        String sessionToken = (String) session.getAttribute("sessionToken");
+		if(sessionToken!=null) {
+	        if (cl != null) {
+	            String field = request.getParameter("field");
+	            String newValue = request.getParameter("newValue");
+	
+	            clienteDAO userDAO = new clienteDAO();
+	            try {
+	                switch (field) {
+	                    case "nome":
+	                        cl.setNome(newValue);
+	                        userDAO.aggiornaCampo(cl, "Nome", newValue);
+	                        break;
+	                    case "cognome":
+	                        cl.setCognome(newValue);
+	                        userDAO.aggiornaCampo(cl, "Cognome", newValue);
+	                        break;
+	                    case "email":
+	                        cl.setEmail(newValue);
+	                        userDAO.aggiornaCampo(cl, "Email", newValue);
+	                        break;
+	                    case "telefono":
+	                        cl.setTelefono(newValue);
+	                        userDAO.aggiornaCampo(cl, "Tel", newValue);
+	                        break;
+	                    case "password":
+	                        String hashedPassword = hashSHA256(newValue);
+	                        cl.setPassword(hashedPassword);
+	                        userDAO.aggiornaCampo(cl, "Password", hashedPassword);
+	                        break;
+	                    default:
+	                        throw new IllegalArgumentException("Campo di modifica non valido");
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	                request.setAttribute("error", "Errore SQL durante l'aggiornamento: " + e.getMessage());
+	                request.getRequestDispatcher("/error.jsp").forward(request, response);
+	                return;
+	            }
+	
+	            session.setAttribute("cl", cl);
+	            response.sendRedirect("Profilo.jsp");
+	        } else {
+	            request.setAttribute("error", "Utente non autenticato.");
+	            request.getRequestDispatcher("/login.jsp").forward(request, response);
+	        }
+		}else {
+            request.getRequestDispatcher("/ErrorePage.jsp").forward(request, response);
+		}
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

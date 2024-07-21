@@ -80,7 +80,7 @@
                         <td><%=bean.getDataRilascio() %></td>
                         <td><%=bean.getQuantita() %></td>
                         <td><button class="adminBtn" onclick="showPopupModifica('<%=bean.getIdProdotti() %>','<%=bean.getNome() %>', '<%=bean.getDescrizione() %>','<%=bean.getCoV() %>','<%=bean.getPrezzo() %>','<%=bean.getCasaProduttrice() %>','<%=bean.getPiattaforma() %>','<%=bean.getGenere() %>','<%=bean.getTipo() %>','<%=bean.getDataRilascio() %>','<%=bean.getQuantita() %>')">Modifica</button>
-                        <button style="margin-top:10px" class="adminBtn" onclick="showPopupElimina('<%=bean.getIdProdotti() %>','<%=bean.getNome() %>')">Elimina</button></td> 
+                        <button style="margin-top:10px" class="adminBtn" onclick="showPopupElimina('<%=bean.getNome() %>','<%=bean.getIdProdotti() %>')">Elimina</button></td> 
                     </tr>
                 <%
                     }
@@ -139,17 +139,17 @@
 
         <div id="overlayElimina" onclick="hidePopupElimina()"></div>
         <div id="popupElimina">
-            <form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST">
-                <h2>Sei sicuro di voler eliminare questo prodotto?</h2>
-                <p>Id Prodotto: <span id="idProdottoElimina"></span></p>
-                <p>Nome: <span id="nomeProdottoElimina"></span></p>
-                <div class="btnCont">
-                    <a class="adminBtn" onclick="hidePopupElimina()">Chiudi</a>
-                    <input type="hidden" name="act" value="4">
-                    <input type="hidden" id="idElimina" name="idProdotto" value="">
-                    <input type="submit" class="adminBtn" value="Conferma"></input>
-                </div>
-            </form>
+            <h2 id="prodTit">Elimina Prodotto</h2>
+		        <form action="<%= request.getContextPath() %>/adminOperationServlet" method="POST"><%--Bottone Conferma Eliminazione act= 1 --%>
+	        		<p>Vuoi eliminare il prodotto: <span id="Nome"></span> ?</p>
+	        		<p>ID Prodotto: <span id="IdProdotto"></span></p>
+		        	<div class="btnCont">
+		        		<input type="hidden" name="act" value="1">
+		        		<input type="hidden" id="id" name="idProdotto" value="">
+			       		<a class="adminBtn" onclick="hidePopupElimina()">Chiudi</a>
+			       		<input type="submit" class="adminBtn" value="Conferma"></input>
+					</div>
+		        </form>
         </div>
 
         <div id="overlayAggiungi" onclick="hidePopupAggiungi()"></div>

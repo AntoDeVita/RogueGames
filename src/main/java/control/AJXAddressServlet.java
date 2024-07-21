@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class AJXAddressServlet extends HttpServlet {
@@ -24,8 +25,10 @@ public class AJXAddressServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         clienteRegBean cl = (clienteRegBean) request.getSession().getAttribute("cl");
         IndirizzoSpedizioneDAO dao = new IndirizzoSpedizioneDAO();
-
-        if (cl != null) {
+        HttpSession session = request.getSession();
+        String sessionToken = (String) session.getAttribute("sessionToken");
+		if(sessionToken!=null) {   
+			if (cl != null) {
             List<IndirizzoSpedizioneBean> indirizzi = dao.getIndirizziByEmail(cl.getEmail());
 
 			response.setContentType("application/xml");
@@ -51,6 +54,9 @@ public class AJXAddressServlet extends HttpServlet {
         } else {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User not logged in.");
         }
+		}else {
+			request.getRequestDispatcher("/ErrorePage.jsp").forward(request, response);
+		}
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

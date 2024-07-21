@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,6 +52,12 @@ public class loginServlet extends HttpServlet {
         if (cl != null) {
             HttpSession session = request.getSession();
             session.setAttribute("cl", cl); // Salva l'utente autenticato nella sessione
+            
+            String sessionToken = (String) session.getAttribute("sessionToken");
+	    	if (sessionToken == null) {
+	    		sessionToken = UUID.randomUUID().toString();
+	    		session.setAttribute("sessionToken", sessionToken);
+	    	}
             
             PCarrelloDAO daoc=new PCarrelloDAO();
             List <pCarrelloBean> pcarr=new ArrayList<pCarrelloBean>();
