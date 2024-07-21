@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="#">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/signin.css" type="text/css">
     <script src="script/checktext.js" defer></script>
 </head>
 <body>
-    <%@ include file="./fragments/header.jsp" %>   
+   <%@ include file="./fragments/header.jsp" %>   
     <div class="corpo">
         <div class="contenitore">
             <div class="login-box">
@@ -17,9 +16,16 @@
                     String errorMessage = (String) request.getAttribute("errorMessage");
                     if (errorMessage != null) {
                 %>
+                <div class="popup" id="errorPopup">
+                    <div class="popup-content"><%= errorMessage %></div>
+                    <div class="close-btn"><button onclick="closePopup()">Close</button></div>
+                </div>
                 <script>
                     window.onload = function() {
-                        alert('<%= errorMessage %>');
+                        document.getElementById('errorPopup').style.display = 'block';
+                    }
+                    function closePopup() {
+                        document.getElementById('errorPopup').style.display = 'none';
                     }
                 </script>
                 <%

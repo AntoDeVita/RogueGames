@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
-            const genreFantasy = document.getElementById("genreParamFantasy")?.value || "fantasy";
-            const genreConsole = document.getElementById("genreParamConsole")?.value || "console";
+    const genreFantasy = document.getElementById("genreParamFantasy")?.value || "fantasy";
+    const genreConsole = document.getElementById("genreParamConsole")?.value || "console";
 
-            fetchProducts("genreServlet", "#productContainerFantasy", { genre: genreFantasy });
-            fetchProducts("genreServlet", "#productContainerConsole", { genre: genreConsole });
+    fetchProducts("genreServlet", "#productContainerFantasy", { genre: genreFantasy });
+    fetchProducts("genreServlet", "#productContainerConsole", { genre: genreConsole });
 
-            initializeSlider("#productContainerFantasy", "#prev-slide-fantasy", "#next-slide-fantasy");
-            initializeSlider("#productContainerConsole", "#prev-slide-Console", "#next-slide-Console");
-        }); 
+    initializeSlider("#productContainerFantasy", "#slider-fantasy");
+    initializeSlider("#productContainerConsole", "#slider-console");
+});
 
-        function fetchProducts(url, containerSelector, params) {
-            console.log('Fetching products with params:', params);
+function fetchProducts(url, containerSelector, params) {
+    console.log('Fetching products with params:', params);
 
     $.ajax({
         url: url,
@@ -23,68 +23,55 @@ document.addEventListener("DOMContentLoaded", function() {
         },
         error: function(xhr, status, error) {
             console.error('Errore nella richiesta:', error);
+        }
+    });
 }
-  });
-        }
 
-        function displayProducts(xmlDoc, containerSelector) {
-            console.log('Displaying products:', xmlDoc);
-            const products = $(xmlDoc).find('product');
-            const productContainer = $(containerSelector);
+function displayProducts(xmlDoc, containerSelector) {
+    console.log('Displaying products:', xmlDoc);
+    const products = $(xmlDoc).find('product');
+    const productContainer = $(containerSelector);
 
-            products.each(function(index) {
-				const id = $(this).find('name').text();
-                const name = $(this).find('name').text();
-                const price = $(this).find('price').text();
-                const imgSrc = $(this).find('img').text();
+    products.each(function(index) {
+        const id = $(this).find('name').text();
+        const name = $(this).find('name').text();
+        const price = $(this).find('price').text();
+        const imgSrc = $(this).find('img').text();
 
-                const productHTML = 
-				    `<div class="product-item">
-				        <a style="text-decoration: none" href="dettagliServlet?param=${id}">
-				            <img src="images/${imgSrc}" alt="${name}" class="product-image">
-				            <h5>${name}</h5>
-				            <h5>${price}€</h5>
-				        </a>
-				    </div>
-				`;
+        const productHTML = 
+            `<div class="product-item">
+                <a style="text-decoration: none" href="dettagliServlet?param=${id}">
+                    <img src="images/${imgSrc}" alt="${name}" class="product-image">
+                    <h5>${name}</h5>
+                    <h5>${price}€</h5>
+                </a>
+            </div>`;
 
-                productContainer.append(productHTML);
-            });
-        }
+        productContainer.append(productHTML);
+    });
 
-        function initializeSlider(containerSelector, prevButtonSelector, nextButtonSelector) {
-            let currentIndex = 0;
-            const items = $(containerSelector).children('.product-item');
-            const totalItems = items.length;
+    updateSliderRange(containerSelector);
+}
 
-            if (totalItems <= 1) {
-                $(prevButtonSelector).hide();
-                $(nextButtonSelector).hide();
-            } else {
-                $(prevButtonSelector).show();
-                $(nextButtonSelector).show();
-            }
+function initializeSlider(containerSelector, sliderSelector) {
+    const slider = $(sliderSelector);
 
-            $(prevButtonSelector).click(function() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = totalItems - 1;
-                }
-                updateSlider(containerSelector);
-            });
+    slider.on("input", function() {
+        const currentIndex = $(this).val();
+        updateSlider(containerSelector, currentIndex);
+    });
+}
 
-            $(nextButtonSelector).click(function() {
-                if (currentIndex < totalItems - 1) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0;
-                }
-                updateSlider(containerSelector);
-            });
+function updateSliderRange(containerSelector) {
+    const items = $(containerSelector).children('.product-item');
+    const slider = $(containerSelector).next('.slider-bar');
+    const totalItems = items.length;
 
-            function updateSlider(containerSelector) {
-                const translateX = -currentIndex * (items.outerWidth(true));
-                $(containerSelector).css('transform', 'translateX(' + translateX + 'px)');
-            }
-        }
+    slider.attr("max", totalItems - 1);
+}
+
+function updateSlider(containerSelector, currentIndex) {
+    const items = $(containerSelector).children('.product-item');
+    const translateX = -currentIndex * (items.outerWidth(true));
+    $(containerSelector).css('transform', 'translateX(' + translateX + 'px)');
+}

@@ -16,6 +16,23 @@
     <link rel="stylesheet" href="css/home.css" type="text/css">
     <script src="script/slider.js" defer></script>
     <script src="script/sliderAjax.js" defer></script>
+    <style>
+        .product-container {
+            display: flex;
+            overflow: hidden;
+        }
+        .product-item {
+            flex: 0 0 auto;
+            width: 200px; /* Adjust as needed */
+            margin-right: 10px; /* Adjust as needed */
+        }
+        .slider-bar {
+            width: 100%;
+        }
+        .slider-scrollbar {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -92,16 +109,10 @@
     <div class="container">
         <h1 class="miniTitle">Fantasy</h1>
         <div class="slider-wrapper">
-            <button id="prev-slide-fantasy" class="slide-button material-symbols-rounded">chevron_left</button>
             <div class="image-list">
                 <div id="productContainerFantasy" class="slider-content"></div>
             </div>
-            <button id="next-slide-fantasy" class="slide-button material-symbols-rounded">chevron_right</button>
-        </div>
-        <div class="slider-scrollbar">
-            <div class="scrollbar-track">
-                <div class="scrollbar-thumb"></div>
-            </div>
+            <input type="range" id="slider-fantasy" class="slider-bar" min="0" step="1">
         </div>
     </div>
     
@@ -110,16 +121,10 @@
     <div class="container">
         <h1 class="miniTitle">Console</h1>
         <div class="slider-wrapper">
-            <button id="prev-slide-Console" class="slide-button material-symbols-rounded">chevron_left</button>
             <div class="image-list">
                 <div id="productContainerConsole" class="slider-content"></div>
             </div>
-            <button id="next-slide-Console" class="slide-button material-symbols-rounded">chevron_right</button>
-        </div>
-        <div class="slider-scrollbar">
-            <div class="scrollbar-track">
-                <div class="scrollbar-thumb"></div>
-            </div>
+            <input type="range" id="slider-console" class="slider-bar" min="0" step="1">
         </div>
     </div>
 
