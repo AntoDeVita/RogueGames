@@ -12,8 +12,24 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	
-	
+	<script>
+        // Funzione per impostare la data minima nel campo di input "expiryDate"
+        function setMinExpiryDate() {
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1; // I mesi sono indicizzati da 0, quindi aggiungiamo 1
+            if (month < 10) {
+                month = '0' + month; // Aggiunge uno zero iniziale ai mesi inferiori a 10
+            }
+            var minDate = year + '-' + month;
+            document.getElementById('Scadenza').setAttribute('min', minDate);
+        }
+
+        // Imposta la data minima quando la pagina viene caricata
+        $(document).ready(function() {
+            setMinExpiryDate();
+        });
+    </script>
 </head>
 <body>
 <%@ include file="./fragments/header.jsp" %> 
@@ -71,7 +87,7 @@
     				<h2>Carta di Credito:</h2>
     				<button type="button" class="modify-btn" data-toggle="modal" data-target="#creditCardModal">Aggiungi Carta di Credito</button>
     				<button type="button" class="modify-btn" id="deleteCardsBtn" data-toggle="modal" data-target="#deleteCardsModal">Cancella Carte di Credito</button> 
-					</div>
+				</div>
 				<div class="detail-item">
 					<h2>Indirizzo Spedizione:</h2>
 					<button type="button" class="modify-btn" data-toggle="modal" data-target="#shippingModal">Inserisci Indirizzo di Spedizione</button> 
@@ -88,31 +104,30 @@
     				<h2>Punti:</h2>
     				<p><%= cl.getPunti()%></p>
 				</div>
-					</div>
-                </div>
-           <div id="deleteCardsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="deleteCardsModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteCardsModalLabel">Elimina Carte di Credito</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="card-container"></div> <!-- Will be filled with cards -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+			</div>
         </div>
         
+        <div id="deleteCardsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="deleteCardsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteCardsModalLabel">Elimina Carte di Credito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="card-container"></div> <!-- Will be filled with cards -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-<script src="script/AJXCredit.js"></script>
+
+    <script src="script/AJXCredit.js"></script>
     
     <div class="modal fade" id="creditCardModal" tabindex="-1" role="dialog" aria-labelledby="creditCardModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -125,7 +140,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="<%= request.getContextPath() %>/creditCardServlet" method="post">
-                    <input type="hidden" name="field" value="1">
+                        <input type="hidden" name="field" value="1">
                         <div class="form-group">
                             <label for="cardNumber">Numero Carta</label>
                             <input type="text" class="form-control" id="cardNumber" name="Cif" required pattern="\d{16}" title="Inserisci un numero di carta valido di 16 cifre">
@@ -144,61 +159,62 @@
             </div>
         </div>
     </div>
-   <script src="script/indirizzoProfilo.js"></script>
+   
+    <script src="script/indirizzoProfilo.js"></script>
     <div id="addressModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addressModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addressModalLabel">Indirizzi di Spedizione</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="address-container"></div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addressModalLabel">Indirizzi di Spedizione</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="address-container"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="shippingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="shippingModalLabel">Indirizzo di Spedizione</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<%= request.getContextPath() %>/indirizzoSpedizioneProfiloServlet" method="post">
-                <input type="hidden" name="action" value="add">
-                    <div class="form-group">
-                        <label for="via">Via</label>
-                        <input type="text" class="form-control" id="via" name="via" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="civico">Civico</label>
-                        <input type="text" class="form-control" id="civico" name="civico" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cap">CAP</label>
-                        <input type="text" class="form-control" id="cap" name="cap" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="provincia">Provincia</label>
-                        <input type="text" class="form-control" id="provincia" name="provincia" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="citta">Città</label>
-                        <input type="text" class="form-control" id="citta" name="citta" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Salva Indirizzo</button>
-                </form>
+    <div id="shippingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="shippingModalLabel">Indirizzo di Spedizione</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<%= request.getContextPath() %>/indirizzoSpedizioneProfiloServlet" method="post">
+                        <input type="hidden" name="action" value="add">
+                        <div class="form-group">
+                            <label for="via">Via</label>
+                            <input type="text" class="form-control" id="via" name="via" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="civico">Civico</label>
+                            <input type="text" class="form-control" id="civico" name="civico" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cap">CAP</label>
+                            <input type="text" class="form-control" id="cap" name="cap" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="provincia">Provincia</label>
+                            <input type="text" class="form-control" id="provincia" name="provincia" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="citta">Città</label>
+                            <input type="text" class="form-control" id="citta" name="citta" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salva Indirizzo</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
     
 <%
     } else {
@@ -209,8 +225,7 @@
 <%
     }
 %>
- <%@ include file="./fragments/Footer.jsp" %> 
-
+<%@ include file="./fragments/Footer.jsp" %> 
 
 </body>
 </html>
