@@ -13,7 +13,6 @@ const initSlider = () => {
         console.log("scrollbarThumb:", scrollbarThumb);
 
         if (!imageList || slideButtons.length === 0 || !sliderScrollbar || !scrollbarThumb) {
-            console.error('Missing elements for slider initialization.');
             return;
         }
 
