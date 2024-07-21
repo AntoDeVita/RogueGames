@@ -234,4 +234,14 @@
     	<location>/ErrorePage.jsp</location>
     </error-page>
     
+    <error-page>
+    	<error-code>405</error-code>
+    	<location>/ErrorePage.jsp</location>
+    </error-page>
+    
+    <error-page>
+    	<error-code>400</error-code>
+    	<location>/ErrorePage.jsp</location>
+    </error-page>
+    
 </web-app>
