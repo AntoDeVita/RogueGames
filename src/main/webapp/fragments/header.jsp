@@ -103,7 +103,7 @@
 				} else {
 					mostraProdotti([]);
 				}
-			}
+			} 
 			
 			function mostraProdotti(prodotti) {
 				var risultatiContainer = document.getElementById("risultati-search");
