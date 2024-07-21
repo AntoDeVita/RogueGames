@@ -9,7 +9,6 @@ body {
 
 /* Header e Menu di Navigazione */
 
-
 nav ul li {
     width: 100%;
 }
@@ -43,7 +42,6 @@ nav ul li a:hover {
 }
 
 /* Slider */
-/* Slider */
 .slider-wrapper {
     position: relative;
     width: 100%;
@@ -63,7 +61,7 @@ nav ul li a:hover {
 }
 
 .slider-bar {
-    display: nome;
+    display: none;
 }
 
 .slider-bar .handle {
@@ -94,7 +92,6 @@ nav ul li a:hover {
     z-index: 10; /* Ensure buttons are above other elements */
 }
 
-
 .image-list {
     display: flex;
     overflow-x: auto;
@@ -104,7 +101,6 @@ nav ul li a:hover {
 .image-list::-webkit-scrollbar {
     display: none;
 }
-
 
 .slider-scrollbar {
     position: relative;
@@ -125,58 +121,63 @@ nav ul li a:hover {
     background-color: #333;
 }
 
-
 .slide-button.material-symbols-rounded {
     font-size: 2rem;
 }
 
-#prev-slide-fantasy, #prev-slide-Console {
+#prev-slide-fantasy, #prev-slide-console {
     left: 0;
 }
 
-#next-slide-fantasy, #next-slide-Console {
+#next-slide-fantasy, #next-slide-console {
     right: 0;
 }
 
 .llallero {
-	width: 80%;	
-	display: flex;
-	flex-wrap: wrap;
-	margin-left: 150px;
-	}
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 150px;
+}
+
 .product {
-	border-radius: 20px;
-	background: #00bfff;
-	text-align: center;
-	border: 1px solid #ddd;
+    border-radius: 20px;
+    background: #00bfff;
+    text-align: center;
+    border: 1px solid #ddd;
     margin: 10px;
     padding: 10px;
-	width: calc(33.333% - 20px);
-	box-sizing: border-box;
-	}
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
 .product img {
-	max-width: 100%;
-	height: auto;
-	}
+    max-width: 100%;
+    height: auto;
+}
+
 .product h2 {
-	font-size: 1.2em;
-	margin: 10px 0;
-	}
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
 .product .price {
-	color: #E53238;
+    color: #E53238;
     font-weight: bold;
-	margin: 10px 0;
-	}
+    margin: 10px 0;
+}
+
 .pbutton {
-	background-color: #4CAF50;
+    background-color: #4CAF50;
     color: white;
-	border: none;
+    border: none;
     padding: 10px 20px;
     cursor: pointer;
-	}
+}
+
 .product button:hover {
-	background-color: #45a049;
-	}
+    background-color: #45a049;
+}
 
 /* Catalog */
 .catalog {
@@ -230,6 +231,11 @@ nav ul li a:hover {
     .slider-wrapper .slide-button {
         height: 40px;
         width: 40px;
+    }
+
+    .llallero {
+        width: 100%;
+        margin-left: 0;
     }
 }
 

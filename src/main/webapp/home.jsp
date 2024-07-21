@@ -20,40 +20,6 @@
     <script src="script/prodottiRandom.js" defer></script>
 </head>
 
-<style>
-    .slider-wrapper {
-        position: relative;
-        margin-top: 20px;
-    }
-
-    .slider-bar {
-        width: 100%;
-        margin-top: 10px;
-        height: 10px; /* Altezza della barra di scorrimento */
-        position: relative;
-    }
-
-    .noUi-target {
-        height: 10px; /* Altezza della barra di scorrimento */
-    }
-
-    .noUi-connect {
-        background: #007bff; /* Colore del segmento connesso */
-    }
-
-    .noUi-origin {
-        height: 20px; /* Altezza del cursore */
-        width: 20px; /* Larghezza del cursore */
-        background: #007bff; /* Colore del cursore */
-    }
-
-    .noUi-horizontal {
-        margin: 0; /* Rimuove margini extra */
-    }
-</style>
-
-</head>
-
 <body>
 
     <%@ include file="./fragments/header.jsp" %>  
