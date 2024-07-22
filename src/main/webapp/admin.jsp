@@ -192,6 +192,16 @@
 					</div>
 		    </form>
 			</div>
+			
+			<div id="overlayDescrizione" onclick="hidePopupDescrizione()"></div>
+		<div id="popupDescrizione">
+		    <h2 id="prodTit">Descrizione Prodotto</h2>
+		        <p id="descrizione"></p>
+		        <div class="btnCont">
+					<a class="adminBtn" onclick="hidePopupDescrizione()">Chiudi</a>
+				</div>
+	    </div>
+	    <%@ include file="./fragments/Footer.jsp" %>  
     </body>
 </html>
         
